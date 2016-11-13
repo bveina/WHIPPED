@@ -1,0 +1,41 @@
+\chapter{Trial Results} 
+%in this section i will first discuss the raw results of the trial, then discuss both the primary results (the raw data) and the secondary results (lessons on how the trial was run)
+
+\section {Limitations of Trial}
+The scope of the exploratory trial was limited after the Dissertation proposal due to timing of applicable grants. As a result, some parts of the proposed design, including detection of PIPs, generation of targeted interventions, and wireless data delivery were reduced in scale in order to comply with the timing demands enforced by the supporting grants. The project was refocused on collecting physiologic and psychosocial data and post processing that data. As a result the BKE was scrapped as a live updating entity, eliminating the requirement for a medical ontology.
+
+The goal of the trial, was now to build and implement a system for data collection consisting of a non-intrusive sensor apparatus to collect psychometric data and a cellphone application to accumulate psychosocial data. The sensor would need to have its data manually downloaded each week by a visiting clinician. Detailed information about the sensor package can be found in \cref{chap:ProtoTypeBuildTest}.
+
+
+\section{Exploratory Trial Initial Description}
+
+Sethares et al. proposed a trial to assess the usefulness of the sensor design concepts including both the new sensor hardware and the cellphone application to collect somatic awareness data.  The trial was originally proposed to run from November 2013 through August 2014 \cite{KristenASethares2013}. Due to issues unrelated to research the first patient was not equipped with sensors until May 2014.
+
+Each participant was provided with:
+\begin{itemize}
+\item An lg nexus 5 cellphone with the heart monitor application
+\item a sensor assembly
+	\begin{itemize}
+	\item a 3d printed enclosure
+	\item a sensor board
+	\item a modified polar(r) brand chest strap
+	\item a fabric pouch
+	\end{itemize}
+\item a tube of electrode gel
+\item a two port USB charger
+\item a USB A to USB mini cable
+\item a USB A to USB micro cable
+\end{itemize}
+
+The patient was instructed to wear the device during the day and to wear the finger clip, when convenient. At night the patient was instructed to take off the device and plug it in to charge. In addition, the patient was given a cell phone, with a data plan, and shown how to use the survey application (app). 
+
+
+\subsection{ The Phone application}
+
+The cell phone application was written in Java by an undergraduate researcher, based on previous masters projects in the MCHM research group (TODO:cite putin, and louro). The application underwent several revisions over the course of the trial. 
+
+The first iteration implemented a different version of one of the tool, using a 1-4 lickert scale, the instrument was supposed to have 0-5 with 0 indicating "I did not have that symptom". It also did not have the self reporting behaviors for COPD patient. Last, there was no alarm feature implemented inside the survey application to remind the patients to participate in the self care instruments.
+
+The timing of when the surveys should be administered was a reoccurring problem. Initially the phones clock alarm was used to remind the patients of when the surveys should be taken. This came to a sudden halt when one patient was unable to deactivate the alarm, only snooze it for 15 minutes at a time, for 3 days. After this patient, the decision was made to remove the alarm feature from the protocol. In addition, initially the patients were not allowed to take the survey instruments more than 3 times a week, as indicated by the initial proposal. However, the resulting user experience was suboptimal, the prevailing reaction to being unable to take a survey was the perception the patient had done something wrong, resulting in frustration. A modification was made to allow the surveys to be taken at any time.
+
+Unfortunately, integrating the required fixes for the changed lickert scale introduced an error in the submission process for the HFSA instrument that went unnoticed for several months. It was ultimately fixed but the patient information was un recoverable.

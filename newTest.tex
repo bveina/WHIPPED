@@ -1,0 +1,152 @@
+%\documentclass[oneside,draft]{book}   
+\documentclass[oneside]{book}   
+
+
+%% umd requirements 
+%% use 11 or 12 pt font
+%% chapter headings shouldnt be over 14 pt font
+
+%% begin new chapters on a new page
+
+%% no new heading on the bottom of a page unless there is room for at least two lines following the heading
+%% left margin >= 1.5 inches
+%% other margings == 1 inch
+%\usepackage{showframe}
+\usepackage{hyperref}
+\usepackage[all]{hypcap} % hyperlinks goto top of figures, not the bottom
+\usepackage{caption} 		% the internet says this is a better way of hyperlinking... not sure why.
+\usepackage[capitalise,noabbrev]{cleveref}		% now \cref yields Figure 1.1 instead of 1.1 alone
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{amsmath}
+
+\usepackage{tocloft}
+
+%\cftsetindents{chapter}{0em}{4em}
+
+%\cftsetindents{section}{0em}{5em}
+%\cftsetindents{subsection}{0em}{6em}
+%\cftsetindents{subsubsection}{0em}{7em}
+
+
+
+\begin{document}
+
+%%
+%% You must fill in all of these appropriately
+\title{Wireless Health Indicator Patch  for Patient \protect\\ Education and Diagnostics (WHIPPED): \protect\\ An Integrated System Approach to Patient Self-Care}
+\author{Benjamin Roy Viall}
+\date{May 2014} % The date you'll actually graduate -- must be
+                     % February, May, or September
+%\copyrightyear{2014}
+%\school {University of Massachusetts Dartmouth} 
+%\bachelors{B.Sc.}{University of Massachusetts Dartmouth}
+%\masters{M.Sc.}{University of Massachusetts Dartmouth}
+
+%\committeechair{Paul Fortier}{Professor of Computer Engineering}{Dissertation Advisor}
+%\firstreader{Honggang Wang}{Professor of Computer Engineering}{Dissertation Committee}
+%\secondreader{Liudong Xing}{Professor of Computer Engineering}{Dissertation Committee}
+%\thirdreader{Kristen Sethares}{Professor of Nursing}{Dissertation Committee}
+
+%\fourthreader{Janet Prichard}{Professor of Computer Science}{Dissertation Committee}
+
+
+%\graduatedirector {Karen Payton}
+%\chairperson {Anthony Costa}
+%\dean [Dean, College of Engineering] {Robert Peck} 
+%\provost {Alex Fowler}
+
+%\departmentchair{Dr. Anthony Costa} % Uses "Department Chair" as the title. To
+% use an alternate title, such as "Chair", use \departmentchair[Chair]{Pete Shearer}
+%\departmentname{Electrical and Computer Engineering}
+
+
+%\degree{Doctor of Philosophy}{Ph.D.}
+%\degreeTitle{Computer Engineering}
+
+%% start document with the basic bullshit that people pick over with a fine tooth comb
+
+
+\frontmatter
+
+
+\maketitle
+%\permissionpage
+%%\copyrightpage     %% not required for an M.S. thesis
+%\signaturepage
+
+
+%%
+%% Abstract is MANDATORY. -- Except for MS theses
+\include{Abstract}
+
+%
+%\begin{dedication}              % Dedication page
+%  \begin{center}
+%    \emph{To those little lost sheep.}
+%  \end{center}
+%\end{dedication}
+
+
+%% Acknowledgements are optional...yeah, right.
+\phantomsection
+\chapter*{Acknowledgments}             % Acknowledgements page
+  Thanks to all those fine shepherds. Not to mention all the great
+  border collies and suchlike fine animals.
+
+
+
+%%% option to show the table of contents with the hyper ref package.
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\contentsname}
+%% this should be removed before submitting to the graduate studies office.
+
+
+
+\clearpage
+\tableofcontents				 % table of contents
+\clearpage
+\listoffigures                  % List of Figures
+\clearpage
+\listoftables                   % List of Tables
+
+
+
+%% Time for the body of the dissertation
+\mainmatter   %% <-- This line is mandatory
+
+%pdf bookmarks cant have funny characters so we define alternative forms here.
+\def \spo2{ \texorpdfstring{(SpO$_{2}$)}{SpO2}}
+
+
+%% stuff goes HERE
+%optionally left justify (umass only allows full justification when using latex..whatever.)
+%\raggedright
+%\parindent=1.5em
+
+\include{1_Introduction}
+\include{2_LitReview}
+\include{3_SystemDesign}
+\include{4_SensorConcepts}
+\include{5_HardwareDesigns}
+\include{6_IntegrationAndTesting}
+\include{7_Datamining_CardiacOntology}
+\include{XX_Trial_results}
+\include{8_Conclusions}
+
+% Beginning of back matter
+\backmatter  %% <--- mandatory
+
+
+
+
+%% A bibliography is required.
+\interlinepenalty=10000  % prevent split bibliography entries
+%\bibliographystyle{umthesis}
+\bibliographystyle{ieeetr}
+\bibliography{Draft1}
+
+\end{document}

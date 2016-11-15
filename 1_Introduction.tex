@@ -43,7 +43,7 @@ Involving the patient in their own self-care can increase their QOL and reduce r
 
 With alerts to notify clinicians of an imminent event (an emergency) or a downward trend in need of correction, the WHIPPED system allows medical professionals to more effectively monitor a greater number of patients without degrading care. WHIPPED further provides a continuous link between patient and clinician which improves on the current visitation model, prescribed by Medicare, indicating that a home visit is needed after discharge and typically extends to ninety days post discharge \cite{Dansky2008}.
 
-The dissertation will address the design, implementation, and testing of the WHIPPED Systems' three parts: the WHIP sensor, the cellphone application, and the Back-end Knowledge Engine. The dissertation will also discuss the exploratory study, conducted by Dr. Sethares and its role in validating the WHIPPED System.
+The dissertation will address the design, implementation, and testing of the WHIPPED Systems'  three parts: the WHIP sensor, the cellphone application, and the Back-end Knowledge Engine. The dissertation will also discuss the exploratory study, conducted by Dr. Sethares and its role in validating the WHIPPED System.
 
 \section{Importance of topic}
 \label{sec:importanceOfTopic}
@@ -67,25 +67,11 @@ Mussilino, working for the National Institutes of Health, compiled statistical d
 	\end{center}
 \end{figure}
 
-\begin{verse}
-NOTE: timmy makes a case, the boys make a case..... is Lee et al. plural?
-\end{verse}
 
 Lee et al. make a compelling case concerning patients who engage in self-care management \cref{fig:SurvivalRates}. \cite{Lee2011} The benefits of actively engaging patients in their own self-care can clearly be seen in their research.   Patients engaged in self-care management cut in half their risk of death, hospitalization, and need for emergency treatment compared to patient not involved in their own care. Furthermore, self-care managed patients with high-risk profiles were also shown to be nearly equivalent to patient who were symptom free \cite{Lee2011}.
 
 Sethares and Elliott conduct a study providing tailored educational messages to patients to induce healthy self-care behaviors \cite{Sethares2004249}. Sethares and Elliot assess patient's QOL in their study using the Minnesota Living with Heart Failure questionnaire (MLHF). These tailored educational messages, from now on called interventions, were designed to encourage patients to engage in self-care such as taking medication on time, following a low sodium diet, etc. The statistical analysis showed patients were more likely to engage in self-care behaviors given these tailored message interventions. The study also did not show a significant decrease in re-hospitalizations. 
-\begin{quote}
-NOTE: yes this is a true fact.
 
-
-"A Kruskall-Wallis test was run to answer research
-question 1. HF readmission rate was not signifi-
-cantly related to group assignment in this study ( P
-ϭ .22). As seen in Table IV, 12 subjects in the
-control group were rehospitalized 1 or more times,
-whereas 6 subjects in the treatment group were
-rehospitalized 1 or more times."
-\end{quote}
 
 However, one of the limitations of Sethares and Elliott's study, the inability to monitor actual self-care behaviors, suggests an avenue for improvement, or augmentation of the tailored message interventions. Several other proven instruments for measuring perceived patient status exist including the Heart Failure Somatic Awareness (HFSA) \cite{Jurgens2006} test and the Duke Activity Status Index (DASI) \cite{Hlatky1989}. Using a combination of the MLHF, HFSA, and DASI instruments, self-care management can be augmented by allowing treatment evaluation \cref{fig:SelfCare}.   
 
@@ -162,7 +148,7 @@ For the engineering domain, we will develop new and novel techniques for data fu
 
 \section{Research Done To Date}
 \label{sec:ResearchDoneToDate}
-In preparation for the main research component of my dissertation, we have already performed some preliminary work in the fields of bio-sensing. The first step was to get up to speed on the research group's status. During the 2009-2010 school years, a senior design group was tasked with building an analog front end to capture an ECG signal. Also, during the 2009-2010 school years, master's candidate Osama Aljaroudi designed an analog front-end excitation and conditioning circuit for a \spo2/PPG circuit. A device with both circuits was designed and fabricated on a four-layer PCB board and shown in \cref{fig:PCB_alpha}. Unfortunately, because of the inexperience with the tools the board suffered from many problems. These were eventually rectified with “green wire fixes”. A great deal was learned from the initial foray into fabrication.
+In preparation for the main research component of the dissertation, some preliminary work in the fields of bio-sensing has already been performed . The first step was to get up to speed on the research group's status. During the 2009-2010 school years, a senior design group was tasked with building an analog front end to capture an ECG signal. Also, during the 2009-2010 school years, master's candidate Osama Aljaroudi designed an analog front-end excitation and conditioning circuit for a \spo2/PPG circuit. A device with both circuits was designed and fabricated on a four-layer PCB board and shown in \cref{fig:PCB_alpha}. Unfortunately, because of the inexperience with the tools the board suffered from many problems. These were eventually rectified with “green wire fixes”. A great deal was learned from the initial foray into fabrication.
 
 \begin{figure}
 	\begin{center}
@@ -182,7 +168,7 @@ The next revision of the hardware was personally undertaken by me in the spring 
 	\end{center}
 \end{figure}
 
-To interact with the analog front-end board a controller PCB was manufactured in-house to host an ADuC7020 development socket. This board was designed in the same fashion, using the same tools as the analog front-end board but was manufactured by hand using an acid etching process and drilled on my CNC router (designed to improve the turnaround time and cost of prototypes). Front and back views are shown in \cref{fig:PCB_digital_beta}. The controller board served to validate the results of the initial analog designs. Using results from early prototyping work began on the first revision of an integrated solution. This board integrated as many components as possible into the sensor design.
+To interact with the analog front-end board a controller PCB was manufactured in-house to host an ADuC7020 development socket. This board was designed in the same fashion, using the same tools as the analog front-end board but was manufactured by hand using an acid etching process and drilled on a CNC router (designed to improve the turnaround time and cost of prototypes). Front and back views are shown in \cref{fig:PCB_digital_beta}. The controller board served to validate the results of the initial analog designs. Using results from early prototyping work began on the first revision of an integrated solution. This board integrated as many components as possible into the sensor design.
 
 \begin{figure}
 	\begin{center}
@@ -225,7 +211,7 @@ However, the application note presents an alternative, shown in \cref{fig:sigmaD
 	\end{center}
 \end{figure}
 
-Other group research will be used as input to the dissertation. Previous, completed, master level research by Parma Chaiyasucheeva provided an elementary classification algorithm based on cardiac metrics\cite{Chaiyasucheeva2012}. Steven Shannon completed a master level thesis relating to fusing accelerometer data with other metrics and classifiers to combat movement artifacts\cite{Shannon2012}. Brendan Putin completed a master level project by creating a smartphone application to deliver psychosocial instruments and store the results in a database [TODO: find citation of putin]. Current work is being performed under my supervision by master level candidates. Patrick DaSilva is working to classify ECG signals based on their components and continue Parma Chaiyasucheeva's work on patient wellness calculation. Alexander Ekholm is researching PPG sensor technologies. Specifically, design, implementation, and validation of a sensor capable of reflective PPG collection at a non-peripheral site, near the heart.  Also, under development, Brian Lauro is working on a minimal cardiac ontology, and BKE.
+Other group research will be used as input to the dissertation. Previous, completed, master level research by Parma Chaiyasucheeva provided an elementary classification algorithm based on cardiac metrics\cite{Chaiyasucheeva2012}. Steven Shannon completed a master level thesis relating to fusing accelerometer data with other metrics and classifiers to combat movement artifacts\cite{Shannon2012}. Brendan Putin completed a master level project by creating a smartphone application to deliver psychosocial instruments and store the results in a database  [TODO: find citation of putin]. Current work is being performed, under supervision, by master level candidates. Patrick DaSilva is working to classify ECG signals based on their components and continue Parma Chaiyasucheeva's work on patient wellness calculation. Alexander Ekholm is researching PPG sensor technologies. Specifically, design, implementation, and validation of a sensor capable of reflective PPG collection at a non-peripheral site, near the heart.  Also, under development, Brian Lauro is working on a minimal cardiac ontology, and BKE.
 
 \begin{figure}
 	\begin{center}
@@ -239,7 +225,7 @@ Other group research will be used as input to the dissertation. Previous, comple
 \iffalse
 \subsection{\Cref{chap:introduction} introduction}
 \label{subsec:Chapter1Introduction}
-In the Introduction chapter, I will discuss the current state of medical care for CHF patients. I will present the relevant statistics about hospitalization and mortality. I will then cover the topic of engaging patients in their own self-care, citing relevant studies and statistics. Then finally indicate my proposed solution.
+In the Introduction chapter, I will discuss the current state of medical care for CHF patients. I will present the relevant statistics about hospitalization and mortality. I will then cover the topic of engaging patients in their own self-care, citing relevant studies and statistics. Then finally indicate the proposed solution.
 \subsection{\Cref{chap:LitReview} Literature review}
 \label{subsec:Chapter2LitReview}
 This section will first cover previous research done in the fields of ECG, \spo2 /PPG, and acceleration sensors. Then a discussion of how to derive synthetic sensor measurements based on acquired ECG, \spo2 /PPG, and acceleration measurements. I will focus on literature with methods of deriving heart rate, blood pressure without an inflatable cuff, and deriving respiration rate without a chest strap. Next, I will present methods for removing noise from the ECG and PPG sensors based on accelerometer data. Finally, the pertinent literature in the medical domain will be reviewed, paying specific attention to the fields of patient education and self-care as well as the psychosocial instruments to be used, the MLHF, DASI, and HFSA.

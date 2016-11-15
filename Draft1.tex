@@ -29,16 +29,16 @@
 
 %%\usepackage{setspace}
 
-
+\usepackage{sectsty}
 
 %use this package for printing hard copies
 %\usepackage[colorlinks,linkcolor=black,citecolor=black]{hyperref}
 
 %use this package for pdf publication
-%\usepackage[colorlinks]{hyperref}
+\usepackage[colorlinks]{hyperref}
 
 %use this package to easily find all links in a pdf
-\usepackage{hyperref}
+%\usepackage{hyperref}
 
 % for source code listings
 % \begin{lstlisting}
@@ -57,13 +57,30 @@
 
 \usepackage[all]{hypcap} % hyperlinks goto top of figures, not the bottom
 %\usepackage{caption} 		% the internet says this is a better way of hyperlinking... not sure why.
-\usepackage[capitalise,noabbrev]{cleveref}		% now \cref yields Figure 1.1 instead of 1.1 alone
+\usepackage[capitalise,noabbrev,nameinlink]{cleveref}		% now \cref yields Figure 1.1 instead of 1.1 alone
 
-\cftsetindents{chapter}{0em}{4em}
-\cftsetindents{section}{0em}{5em}
-\cftsetindents{subsection}{0em}{5em}
-\cftsetindents{subsubsection}{0em}{5em}
-\cftsetindents{paragraph}{0em}{5em}
+\cftsetindents{chapter}{0em}{7em}
+\cftsetindents{section}{0em}{7em}
+\cftsetindents{subsection}{0em}{7em}
+\cftsetindents{subsubsection}{0em}{7em}
+\cftsetindents{paragraph}{0em}{7em}
+
+\renewcommand{\cftchappresnum}{\chaptername\space} %adds Chapter to the TOC
+
+%this adds Appendix to the Table of contents...
+\makeatletter
+\g@addto@macro\appendix{%
+  \addtocontents{toc}{%
+    \protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}%
+  }%
+}
+\makeatother
+
+
+\chapterfont{\centering}
+
+
+\setlength{\emergencystretch}{2pt}
 
 
 \begin{document}
@@ -73,7 +90,7 @@
 \title{Wireless Health Indicator Patch  for Patient \protect\\ Education and Diagnostics (WHIPPED): \protect\\ An Integrated System Approach to Patient Self-Care}
 
 \author{Benjamin Roy Viall}
-\date{January 2017} % The date you'll actually graduate -- must be
+\date{December 2017} % The date you'll actually graduate -- must be
                      % February, May, or September
 \copyrightyear{2016}
 \school {University of Massachusetts Dartmouth} 
@@ -92,7 +109,7 @@
 
 
 \graduatedirector {Hong Liu}
-\chairperson {Anthony Costa}
+\chairperson {Antonio H. Costa}
 \dean [Dean, College of Engineering] {Robert Peck} 
 \provost {Mohammad Karim}
 
@@ -188,9 +205,22 @@
 
 
 \begin{appendices}
-\include{A_Schematic}
-\end{appendices}
+%\appendix
 
+%\crefname{appcha}{Appendix}{Appendices}
+%\crefalias{chapter}{appcha}
+%\renewcommand{\cftchappresnum}{Appendix }
+\include{A_Schematic}
+\chapter{Permission from the IRB}
+
+
+% how to do a single appendix for umassd
+%\chapter*{human use Perimissoin from the IRB}
+%\addcontentsline{toc}{chapter}{Appendix human use Perimissoin from the IRB}
+
+
+\end{appendices}
+\addtocontents{toc}{\vspace{\parskip}}
 % Beginning of back matter
 \backmatter  %% <--- mandatory
 

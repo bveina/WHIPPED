@@ -24,29 +24,29 @@ These standards propose a heavyweight approach to sensor identification and inte
 	\begin{center}
 		\label{fig:WirelessComparison}
 \begin{tabularx}{1\textwidth}{>{\bfseries}p{.23\textwidth}||p{.25\textwidth}|p{.15\textwidth}|p{.25\textwidth}}
-\hline Standard 			& Wi-Fi & Bluetooth & ZigBee \\ \hline
-\hline IEEE Spec. 			& 802.11 a/b/g & 802.15.1  & 802.15.4 \\ 
-\hline Frequency Band 		& 2.4 GHz; 5 GHz & 2.4 GHz & 868/915 MHz\par2.4 GHz \\ 
-\hline Max \par Signal Rate 		& 54 Mb/s & 1 Mb/s & 250 Kb/s \\ 
-\hline Nominal Range 		& 100 m & 10 m & 10 – 100 m  \\ 
-\hline Nominal TX Power 	& 15 – 20 dBm & 0 – 10 dBm & (-25) – 0 dBm \\ 
-\hline Number Of RF Channels & 14 (2.4 GHz) & 79  &  1/10; 16\\ 
-\hline Channel \par Bandwidth 	& 22 MHz & 1 MHz  & 0.3/0.6 MHz; 2 MHz \\ 
-\hline Coexistence Mechanism& Dynamic freq. selection, transmit power control (802.11h) & Adaptive freq.\par hopping & Dynamic freq. \par selection \\ 
-\hline Maxi. nodes & 2007 & 8 & 65000 \\ 
-\hline Encryption 			& RC4 stream cipher (WEP),\par AES block cipher & E0 stream cipher & AES block cipher \par(CTR, counter mode) \\ 
-\hline Authentication 		& WPA2 (802.11i) & Shared secret & CBC-MAC \par(ext. of CCM) \\ 
-\hline Data Protection 		& 32-bit CRC & 16-bit CRC &  16-bit CRC\\ 
+\hline Standard 			& Wi-Fi & Bluetooth & ZigBee  \\\hline
+\hline IEEE Spec. 			& 802.11 a/b/g & 802.15.1  & 802.15.4  \\
+\hline Frequency Band 		& 2.4 GHz; 5 GHz & 2.4 GHz & 868/915 MHz\par2.4 GHz  \\
+\hline Max \par Signal Rate 		& 54 Mb/s & 1 Mb/s & 250 Kb/s \\
+\hline Nominal Range 		& 100 m & 10 m & 10 – 100 m  \\
+\hline Nominal TX Power 	& 15 – 20 dBm & 0 – 10 dBm & (-25) – 0 dBm \\
+\hline Number Of RF Channels & 14 (2.4 GHz) & 79  &  1/10; 16 \\
+\hline Channel \par Bandwidth 	& 22 MHz & 1 MHz  & 0.3/0.6 MHz; 2 MHz \\
+\hline Coexistence Mechanism& Dynamic freq. selection, transmit power control (802.11h) & Adaptive freq.\par hopping & Dynamic freq. \par selection  \\
+\hline Maxi. nodes & 2007 & 8 & 65000 \\
+\hline Encryption 			& RC4 stream cipher (WEP),\par AES block cipher & E0 stream cipher & AES block cipher \par(CTR, counter mode) \\
+\hline Authentication 		& WPA2 (802.11i) & Shared secret & CBC-MAC \par(ext. of CCM) \\
+\hline Data Protection 		& 32-bit CRC & 16-bit CRC &  16-bit CRC \\
 \hline 
 \end{tabularx} 
-		\caption{Comparison table of wireless technologies}
+		\caption{Comparison of wireless technologies}
 	\end{center}
 \end{figure}
 
 
 Collecting, and interpreting, sensor data is only part of the problem statement. A useful device must transmit data for further processing. Several standards and architectures for data transmission were considered. A wired connection to a smartphone was quickly discarded. While it would offer a simple and fast communication to a comparatively more powerful device, it is obtrusive and introduces a hazard to movement that could exert a strain on both devices if the cable became caught on another object. Therefore, several methods of wirelessly transmitting collected data were researched. Many technologies make use of the ISM 2.4 GHz band; Bluetooth, ZigBee and Wi-Fi fall into this category and were examined.  Shannon compares Wi-Fi, Bluetooth, and ZigBee in his master's thesis \cite{Shannon2012}. Wi-Fi offers the highest throughput and range but at the cost of extreme power usage. Bluetooth has the next highest throughput at much more acceptable power consumption. ZigBee offers the most customization and is capable of supporting up to 65000 devices in a single network, however is lacks smartphone communication support.
 
-While ZigBee meets the minimum bandwidth requirement, as shown in \cref{WirelessComparison}, and uses less power, Shannon concludes the lack of smart phone hardware support makes Bluetooth a better option presently. If phones begin supporting the ZigBee protocol a switch could be made, in the future.  ZigBee could be a viable protocol in the future as shown by Peligris; who examines the IEEE802.15.4\cite{IEEE802.15.42011}, the protocol underlying ZigBee \cite{Pelegris2011}.
+While ZigBee meets the minimum bandwidth requirement, as shown in \cref{fig:WirelessComparison}, and uses less power, Shannon concludes the lack of smart phone hardware support makes Bluetooth a better option presently. If phones begin supporting the ZigBee protocol a switch could be made, in the future.  ZigBee could be a viable protocol in the future as shown by Peligris; who examines the IEEE802.15.4\cite{IEEE802.15.42011}, the protocol underlying ZigBee \cite{Pelegris2011}.
 
 Bluetooth is a wireless technology standard for exchanging data over limited distances. It supports many profiles including: hands free profile, a stereo audio profile, and serial port profile. Noueihed et al. compare two profiles for the transmittance of biometric data. The Serial Port Profile (SPP) is compared to the recently released Health Device Profile (HDP). The results of the analysis indicate HDP offers better reliability in some cases of interference, episodic transmission interference, and equal reliability in others, voice type interference \cite{Noueihed2010}. However, hardware support for HDP is currently scarce while support for SPP is nearly universal in Bluetooth modules. Bluetooth SPP is used for the remainder of the dissertation. However, the application shall be designed modularly with the transition to HDP planed when better hardware support is available.
 
@@ -200,7 +200,7 @@ Blood pressure (BP) is a measure of the pressure exerted on the walls of the blo
 	\end{center}
 \end{figure}
 
-Modern techniques for blood pressure calculation utilize a data fusion of the ECG waveform and the PPG to derive pulse wave velocity (PWV), inversely proportional to Pulse Transit time (PTT), to derive BP without the need for an inflatable cuff.  PTT is defined as the time between the detection of the pulse pressure wave in two locations on the body, usually the heart and the finger. Peak detection on the ECG and PPG trace result in two detection points (\cref{fig:PTT_calc}). Subtraction yields the PTT. Pulse transit times for the two heartbeats,shown in \cite{fig:PPT_calc}, are 1.82-1.72=0.10 seconds and 2.76-2.64=0.12 seconds. Using such a synthetic sensor has several advantages, most notably a reduced impact on the user and no moving parts. Additionally, taking BP readings with a cuff can only be performed intermittently \cite{DeMey1995}. New non-invasive techniques allow BP to be recorded for each heartbeat allowing for continuous BP monitoring \cite{Gesche2012}. 
+Modern techniques for blood pressure calculation utilize a data fusion of the ECG waveform and the PPG to derive pulse wave velocity (PWV), inversely proportional to Pulse Transit time (PTT), to derive BP without the need for an inflatable cuff.  PTT is defined as the time between the detection of the pulse pressure wave in two locations on the body, usually the heart and the finger. Peak detection on the ECG and PPG trace result in two detection points (\cref{fig:PTT_calc}). Subtraction yields the PTT. Pulse transit times for the two heartbeats,shown in \cref{fig:PTT_calc}, are 1.82-1.72=0.10 seconds and 2.76-2.64=0.12 seconds. Using such a synthetic sensor has several advantages, most notably a reduced impact on the user and no moving parts. Additionally, taking BP readings with a cuff can only be performed intermittently \cite{DeMey1995}. New non-invasive techniques allow BP to be recorded for each heartbeat allowing for continuous BP monitoring \cite{Gesche2012}. 
 
 Calculating mean BP requires a per user calibration. During the patient's hospitalization, their blood pressure will be monitored. Each time a BP reading is taken the PTT will also be recorded. A regression can be performed since research has shown that PTT is highly correlated to BP \cite{Chan2001}. Once discharged, the calculated regression will be stored in the patient's WHIPPED system. The patient's BP can now be estimated for each heart beat.  
 

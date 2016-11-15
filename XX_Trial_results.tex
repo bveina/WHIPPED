@@ -1,10 +1,11 @@
 \chapter{Trial Results} 
+\label{chap:trialResults}
 %in this section i will first discuss the raw results of the trial, then discuss both the primary results (the raw data) and the secondary results (lessons on how the trial was run)
 
 \section {Limitations of Trial}
 The scope of the exploratory trial was limited after the Dissertation proposal due to timing of applicable grants. Some parts of the proposed design, including detection of PIPs, generation of targeted interventions, and wireless data delivery were reduced as a result, in scale in order to comply with the timing demands enforced by the supporting grants. The project was refocused on collecting physiologic and psychosocial data and post processing that data. The BKE was scrapped as a live updating entity, eliminating the requirement for a medical ontology.
 
-The goal of the trial, was now to build and implement a system for data collection consisting of a non-intrusive sensor apparatus to collect psychometric data and a cellphone application to accumulate psychosocial data. The sensor would need to have its data manually downloaded each week by a visiting clinician. Detailed information about the sensor package can be found in \cref{chap:ProtoTypeBuildTest}.
+The goal of the trial, was now to build and implement a system for data collection consisting of a non-intrusive sensor apparatus to collect psychometric data and a cellphone application to accumulate psychosocial data. The sensor would need to have its data manually downloaded each week by a visiting clinician. Detailed information about the sensor package can be found in \cref{chap:ProtoTypeBuildTest} : \nameref{chap:ProtoTypeBuildTest} .
 
 
 \section{Exploratory Trial Initial Description}
@@ -34,7 +35,7 @@ The patient was instructed to wear the device during the day and to wear the fin
 
 The smartphone application was written in Java by an undergraduate researcher, based on previous masters projects in the MCHM research group (TODO:cite putin, and louro). The application underwent several revisions over the course of the trial. 
 
-The first iteration implemented a different version of one of the tool, using a 1-4 lickert scale, the instrument was supposed to have 0-5 with 0 indicating "I did not have that symptom". It also did not have the self reporting behaviors for COPD patient. Last, there was no alarm feature implemented inside the survey application to remind the patients to participate in the self care instruments.
+The first iteration implemented a different version of one of the psychosocial assessment tools, using a 1-4 lickert scale, the instrument was supposed to have 0-5 with 0 indicating "I did not have that symptom". It also did not have the self reporting behaviors for COPD patient. Last, there was no alarm feature implemented inside the survey application to remind the patients to participate in the self care instruments.
 
 The timing of when the surveys should be administered was a reoccurring problem. Initially the phones clock alarm was used to remind the patients of when the surveys should be taken. This came to a sudden halt when one patient was unable to deactivate the alarm, only snooze it for 15 minutes at a time, for 3 days. The decision was made to remove the alarm feature from the protocol after this patient. Additionally, at the start of the trial, the patients were not allowed to take the survey instruments more than 3 times a week, as indicated by the initial proposal. However, the resulting user experience was suboptimal, the prevailing reaction to being unable to take a survey was the perception the patient had done something wrong, resulting in frustration. A modification was made to allow the surveys to be taken at any time.
 

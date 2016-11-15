@@ -9,13 +9,13 @@ This chapter will cover the Hardware design and unit testing of the Wireless Hea
 \section{Electronic design}
 
 
-The core of my dissertation is the Wireless Health Indicator Patch (WHIP). This device, if properly connected to a patient, records all the needed data to derive the metrics described in \label{Sensor Concepts} and stores this data to an SD card for later retrieval.Additional  functionality is offered via a blue tooth connection. The final device used for the trial is the fifth revision of designs dating back to 2011. Details on previous versions can be found in \Cref{sec:ResearchDoneToDate}. The remainder of this section will focus only on the final prototype.
+The core of the dissertation is the Wireless Health Indicator Patch (WHIP). This device, if properly connected to a patient, records all the needed data to derive the metrics described in \nameref{chap:SensorConcepts} and stores this data to a Secure Digital (SD) card for later retrieval. Additional functionality is offered via a Bluetooth (BT) connection. The final device used for the trial is the fifth revision of designs dating back to 2011. Details on previous versions can be found in \nameref{sec:ResearchDoneToDate}. The remainder of this section will focus on the final prototype.
 
-The WHIP device consists of several modules that communicate across standard communication buses. We discuss each device in turn including the power-module, the Memory-module, the ECG-module, the \spo2-module, the Communication-module, and finally the control-module. Once each module has been fully defined the methods for integration will be covered. Many of the modules have evolved from the first prototype, starting as simple fixed modules and becoming more configurable at the expense of an increased component count and complexity. The final prototype consists of many modules with only a singe chip or device that handles all the details of the module internally, as in the case of the ECG, \spo2, SD card, and Bluetooth modules. The important part of defining each module is to specify the inputs and outputs of each module as well as any protocols used to communicate with the device.
+The WHIP device consists of several modules interacting across a standard communication buses. Each device is discussed in turn including the power-module, the Memory-module, the ECG-module, the \spo2-module, the Communication-module, and finally the control-module. Once each module is fully defined the methods for integration is covered. Many of the modules have evolved from the first prototype, starting as simple fixed modules and becoming more configurable at the expense of an increased component count and complexity.The final prototype consists of many modules with only a singe chip or device handling all the details of the module internally, as in the case of the ECG, \spo2, SD card, and Bluetooth modules. The important part of defining each module is to specify the inputs and outputs of each module as well as any protocols used to communicate with the device.
 
 \subsection {The Schematic Capture}
 
-The following sections discuss different modules that were synthesized for the Whip sensor. These schematics were created in Cadsoft eagleCAD (Eagle) a schematic capture and layout program. Eagle was used to both layout the schematic and PCB. the full schematic is included in 
+The following sections discuss different modules that were synthesized for the Whip sensor. These schematics were created in Cadsoft eagleCAD (Eagle) a schematic capture and layout program. Eagle was used to both layout the schematic and PCB. the full schematic is included in \cref{chap:PCB_Schematics}.
 
 
 \subsection {The Power Module}
@@ -100,6 +100,17 @@ Finally, solder the ECG module to the PCB. Load the ECGcheck firmware and accomp
 \section {Enclosure Design}
 \label{sec:EnclosureDesign}
 Part of the research component of this dissertation was to evaluate methods, and make design choices, to promote the usability of the  proposed technology; specifically to encourage adoption by people over the age of 65. The next step in the integration process was to create an apparatus, that could be easily put on by the patient and provide reliable positioning of the electrodes every time. An important requirement of the physical design was to provide long term wearibility, the device should be worn anytime the user is awake. One exception is any time the device may be exposed to water. Deciding the device not be waterproof for the current trial simplified the design. The first goal of the enclosure, then, was to make it as comfortable as possible while maintaining overall functionality. The apparatus was designed in two parts: the chest strap, and the electronics enclosure.
+
+
+\begin{figure}
+ \begin{center}
+  \label{fig:PCBvsRender}
+  \includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5Assembled.png} 
+  \includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5_prerender.png} 
+  \caption{Populated PCB versus 3d Render}
+ 
+ \end{center}
+\end{figure}
 
 \subsection {Chest Strap}
 Initial testing of the device was performed in a laboratory setting using a sensor board equipped with rubber feet to prevent shorting any exposed traces on the underside of the PCB. A temporary cable was constructed the connected to traditional pre-moistened sticky electrodes. This design was scrapped after areas of irritation began to appear on the engineers after several days of ripping off and reapplying electrodes. It was clear that wet electrodes would not be appropriate for long term use.

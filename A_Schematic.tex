@@ -1,5 +1,8 @@
-\chapter*{PCB Schematics}
-\addcontentsline{toc}{chapter}{ WHIP Schematics }
+\appendix
+\renewcommand{\cftchappresnum}{Appendix }
+\chapter{PCB Schematics}
+%\addcontentsline{toc}{chapter}{ WHIP Schematics }
+\label{chap:PCB_Schematics}
 \begin{figure}
 	\begin{center}
 		\label{fig:FullSchematic_Sheet1}
@@ -32,8 +35,8 @@
 	\end{center}
 \end{figure}
 
-\chapter*{PCB LAYOUT}
-\addcontentsline{toc}{chapter}{ WHIP Layout }
+\chapter{PCB LAYOUT}
+%\addcontentsline{toc}{chapter}{ WHIP Layout }
 \begin{figure}
 \begin{center}
 	\label{fig:FullLayout}
@@ -72,7 +75,7 @@
 
 \begin{figure}
 \begin{center}
-	\label{fig:TOPGerber}
+	\label{fig:PWRGerber}
 	\includegraphics[angle=0,scale=1,width=1\textwidth]{Images/Rev5_PWRGERB.png} 
 	\caption{Gerber Render for Internal Power Layer}
 \end{center}

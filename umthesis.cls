@@ -186,18 +186,18 @@
   \setcounter{count@Chapter}{0}
   }
 
-\renewcommand{\appendix}{
-  \setcounter{chapter}{0}%
-  \setcounter{section}{0}%
-  \renewcommand\@chapapp{\appendixname}%
-  \renewcommand\thechapter{\@Alph\c@chapter}
-  \renewcommand{\toc@section}{Appendix}
-  \ifnum\value{count@Appendix}<2
-    \let\@chapter\@onlyappendix
-  \fi
-  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}%
-  \setcounter{count@Appendix}{0}
-  }
+%\renewcommand{\appendix}{
+%  \setcounter{chapter}{0}%
+%  \setcounter{section}{0}%
+%  \renewcommand\@chapapp{\appendixname}%
+%  \renewcommand\thechapter{\@Alph\c@chapter}
+%  \renewcommand{\toc@section}{Appendix}
+%  \ifnum\value{count@Appendix}<2
+%    \let\@chapter\@onlyappendix
+%  \fi
+%  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}%
+%  \setcounter{count@Appendix}{0}
+%  }
 
 \newcommand{\backmatter}{
   \setcounter{secnumdepth}{5}
@@ -208,23 +208,23 @@
   \normalsize
   }
 
-\def\@onlyappendix[#1]#2{%
-  \refstepcounter{chapter}%
-  \typeout{\@chapapp.}%
-  \addcontentsline{toc}{OnlyAppendix}{\MakeTextUppercase{#1}}%
-  \chaptermark{#1}%
-  \if@twocolumn%
-    \@topnewpage[\@makeonlyappendixhead{#2}]%
-  \else%
-    \@makeonlyappendixhead{#2}%
-    \@afterheading%
-  \fi%
-  \renewcommand{\thesection}{A.\@arabic\c@section}
-  \stepcounter{count@\toc@section}
- }
+%\def\@onlyappendix[#1]#2{%
+%  \refstepcounter{chapter}%
+%  \typeout{\@chapapp.}%
+%  \addcontentsline{toc}{OnlyAppendix}{\MakeTextUppercase{#1}}%
+%  \chaptermark{#1}%
+%  \if@twocolumn%
+%    \@topnewpage[\@makeonlyappendixhead{#2}]%
+%  \else%
+%    \@makeonlyappendixhead{#2}%
+%    \@afterheading%
+%  \fi%
+%  \renewcommand{\thesection}{A.\@arabic\c@section}
+%  \stepcounter{count@\toc@section}
+% }
 
-\def\@makeonlyappendixhead#1{%
-  { \def\thechapter{} \@makechapterhead{#1} } }
+%\def\@makeonlyappendixhead#1{%
+%  { \def\thechapter{} \@makechapterhead{#1} } }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Part related stuff
@@ -305,25 +305,25 @@
 %\tracingpatches
 %\ifpatchable*{\@chapter}{\typeout{Chapter can be patched}}%
 %  {\typeout{Chapter cannot be patched}}
-\patchcmd{\@chapter}%
-  {\numberline{\thechapter}#1}%
-  {\numberline{\thechapter.}\MakeTextUppercase{#1}}%
-  {\typeout{Patching chapter command 1 succeeded}}%
-  {\typeout{Patching chapter command 1 failed}}
-\patchcmd{\@chapter}%
-  {\addcontentsline{toc}{chapter}{#1}}%
-  {\addcontentsline{toc}{\toc@section}{\MakeTextUppercase{#1}}}%
-  {\typeout{Patching chapter command 2 succeeded}}%
-  {\typeout{Patching chapter command 2 failed}}
-\patchcmd{\@chapter}%
-  {\addcontentsline{toc}{chapter}}%
-  {\addcontentsline{toc}{\toc@section}}%
-  {\typeout{Patching chapter command 3 succeeded}}%
-  {\typeout{Patching chapter command 3 failed}}
-\apptocmd{\@chapter}%
-  {\stepcounter{count@\toc@section}}%
-  {\typeout{Appending to chapter command succeeded}}%
-  {\typeout{Appending to chapter command failed}}
+%\patchcmd{\@chapter}%
+%  {\numberline{\thechapter}#1}%
+%  {\numberline{\thechapter.}\MakeTextUppercase{#1}}%
+%  {\typeout{Patching chapter command 1 succeeded}}%
+%  {\typeout{Patching chapter command 1 failed}}
+%\patchcmd{\@chapter}%
+%  {\addcontentsline{toc}{chapter}{#1}}%
+%  {\addcontentsline{toc}{\toc@section}{\MakeTextUppercase{#1}}}%
+%  {\typeout{Patching chapter command 2 succeeded}}%
+%  {\typeout{Patching chapter command 2 failed}}
+%\patchcmd{\@chapter}%
+%  {\addcontentsline{toc}{chapter}}%
+%  {\addcontentsline{toc}{\toc@section}}%
+%  {\typeout{Patching chapter command 3 succeeded}}%
+%  {\typeout{Patching chapter command 3 failed}}
+%\apptocmd{\@chapter}%
+%  {\stepcounter{count@\toc@section}}%
+%  {\typeout{Appending to chapter command succeeded}}%
+%  {\typeout{Appending to chapter command failed}}
 
 \newif\ifrenew@chapter
 \ifdouble@space%
@@ -345,19 +345,19 @@
   }%
 \fi
 
-\renewcommand{\@makechapterhead}[1]{    % Heading for \chapter command
-  \vspace*{30\p@}                       % Space at top of text page.
-  \begin{center}\large\bfseries
-    \ifnum \c@secnumdepth >\m@ne
-      \MakeTextUppercase\@chapapp\ \thechapter % 'CHAPTER' and number.
-      \par\nobreak
-    \fi
-  \addvspace{\topskip}
-  \MakeTextUppercase{#1}
-  \end{center}
-  \par\nobreak                          % TeX penalty to prevent page break.
-  \vskip 24\p@                          % Space between title and text.
-  }
+%\renewcommand{\@makechapterhead}[1]{    % Heading for \chapter command
+%  \vspace*{30\p@}                       % Space at top of text page.
+%  \begin{center}\large\bfseries
+%    \ifnum \c@secnumdepth >\m@ne
+%      \MakeTextUppercase\@chapapp\ \thechapter % 'CHAPTER' and number.
+%      \par\nobreak
+%    \fi
+%  \addvspace{\topskip}
+%  \MakeTextUppercase{#1}
+%  \end{center}
+%  \par\nobreak                          % TeX penalty to prevent page break.
+%  \vskip 24\p@                          % Space between title and text.
+%  }
 
 \let\base@schapter\@schapter
 \def\@schapter#1{
@@ -365,15 +365,15 @@
   \stepcounter{count@\toc@section}
   }
 
-\renewcommand{\@makeschapterhead}[1]{   % Heading for \chapter* command
-  \vspace*{30\p@}                       % Space at top of page.
-  \begin{center}
-    \large\bfseries                     % Title.
-    \MakeTextUppercase{#1}\par
-  \end{center}
-  \nobreak                              % TeX penalty to prevent page break.
-  \vskip 24\p@                          % Space between title and text.
-  }
+%\renewcommand{\@makeschapterhead}[1]{   % Heading for \chapter* command
+%  \vspace*{30\p@}                       % Space at top of page.
+%  \begin{center}
+%    \large\bfseries                     % Title.
+%    \MakeTextUppercase{#1}\par
+%  \end{center}
+%  \nobreak                              % TeX penalty to prevent page break.
+%  \vskip 24\p@                          % Space between title and text.
+%  }
 
 \let\normal@chapter\@chapter %% save the chapter
 
@@ -433,27 +433,27 @@
 \newlength{\umthesis@contentshangindent}
 \setlength{\umthesis@contentshangindent}{1.55em}
 
-\renewcommand{\@dottedtocline}[5]{%
-  \ifnum #1>\c@tocdepth \else
-    \ifnum \thetocindent = #1 \else
-      \def\thetocindent{#1}
-      \ifdouble@space\addvspace{\topskip}\fi
-    \fi
-    \vskip \z@ \@plus.2\p@
-    {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
-     \advance\rightskip by 0pt plus 1fil\relax% ragged-right contents...
-     \parindent #2\relax\@afterindenttrue
-     \interlinepenalty\@M
-     \leavevmode
-     \@tempdima #3\relax
-     \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
-     \hangindent\umthesis@contentshangindent
-     {#4}\nobreak%
-     \leaders\hbox{$\m@th\mkern \@dotsep mu \hbox{.}\mkern \@dotsep mu$}%
-             \hskip3em plus1fill\relax%
-       \normalfont \normalcolor #5%
-     \par}%
-  \fi}
+%\renewcommand{\@dottedtocline}[5]{%
+%  \ifnum #1>\c@tocdepth \else
+%    \ifnum \thetocindent = #1 \else
+%      \def\thetocindent{#1}
+%      \ifdouble@space\addvspace{\topskip}\fi
+%    \fi
+%    \vskip \z@ \@plus.2\p@
+%    {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+%     \advance\rightskip by 0pt plus 1fil\relax% ragged-right contents...
+%     \parindent #2\relax\@afterindenttrue
+%     \interlinepenalty\@M
+%     \leavevmode
+%     \@tempdima #3\relax
+%     \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+%     \hangindent\umthesis@contentshangindent
+%     {#4}\nobreak%
+%     \leaders\hbox{$\m@th\mkern \@dotsep mu \hbox{.}\mkern \@dotsep mu$}%
+%             \hskip3em plus1fill\relax%
+%       \normalfont \normalcolor #5%
+%     \par}%
+%  \fi}
 
 
 \newcommand{\l@FrontMatter}[2]{
@@ -481,7 +481,7 @@
   \if@seenAppendix\else
    % \addvspace{2\baselineskip}
     \parindent\z@ {\bfseries \appendicesname} \par
-    \addvspace{\baselineskip}
+%    \addvspace{\baselineskip}
     \@seenAppendixtrue
   \fi
   \@dottedtocline{0}{0.0em}{1.5em}{ #1}{ #2}

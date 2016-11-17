@@ -3,7 +3,7 @@
 %In the Introduction chapter, I will discuss the current state of medical care for CHF patients. I will present the relevant statistics about hospitalization and mortality. I will then cover the topic of engaging patients in their own self-care, citing relevant studies and statistics. Then finally indicate my proposed solution.
 
 
-\begin{figure}[H]
+\begin{figure}[h]
 
 	\begin{center}
 		\label{fig:WhippedSystem}
@@ -20,17 +20,18 @@ The WHIPPED system is split into three parts: an integrated mobile sensor platfo
 
 The WHIP obtains real-time biometric data and wirelessly transmits the metrics for analysis. Using a combination of non-invasive sensors the gathered data is fused to calculate synthetic sensor measurements traditionally requiring additional hardware, moving parts, or devices implanted into the body. The sensor device is designed for long-term use, approximately 30-60 days.
 
-Furthermore, using a smartphone, psychosocial and symptom data is also collected and transmitted for further analysis. The smartphone is also be responsible for communicating the patient's calculated wellness score, clinician's instructions, as well as generated interventions, designed to correct a downward trend in the patient's wellness.  Based on assessed parameters, the patient can receive a message from the system to engage in a health promoting behavior. If a downward trend is detected an intervention is provided to the patient automatically based on the patient's status, co-morbidities, and other factors to attempt to reverse the trend. Finally, the smartphone can contact emergency services in the event of a cardiac event.
+Furthermore, using a smartphone, psychosocial and symptom data is also collected and transmitted for further analysis. The smartphone is also responsible for communicating the patient's calculated wellness score, clinician's instructions, as well as generated interventions, designed to correct a downward trend in the patient's wellness.  Based on assessed parameters, the patient can receive a message from the system to engage in a health promoting behavior. If a downward trend is detected an intervention is provided to the patient automatically based on the patient's status, co-morbidities, and other factors to attempt to reverse the trend. Finally, the smartphone can contact emergency services in the event of a cardiac event.
 
 The final piece of the implementation, the BKE, computes and tracks the wellness of a patient's heart health over time. The wellness-engine concept is based on prior group research results \cite{Chaiyasucheeva2012} and allows for constant monitoring of a patient's status as well as generating interventions by consulting a modified cardiac ontology also developed by the research group.
 
 Involving the patient in their own self-care can increase their QOL and reduce re-hospitalization. Educating the patient about their illness and care options promotes better decision making when confronted with symptoms.  Self-care is defined as a rational process, involving purposeful choices and behaviors, reflecting knowledge and thought \cite{Riegel2008}. Riegel divides self-care into two concepts, self-care-maintenance and self-care-management.  Self-care-maintenance involves patient monitoring and adherence to a treatment regimen.  In addition, five stages of self-care management are described in \cref{fig:SelfCare}\cite{Riegel2008}. The stages are:
-\begin{itemize}
+
+\begin{enumerate}
 \item  Recognizing and evaluating a status change, 
 \item  Deciding an action is needed, 
 \item  Taking action, 
 \item  Evaluating the effects of the action
-\end{itemize}
+\end{enumerate}
  Allowing remote monitoring of physiologic and symptom data and providing assisted decision support reduce the burden on medical professionals involved in the care of target patients. Using the WHIPPED system, overall, patient care can be improved and costs can be decreased. 
 
 \begin{figure}[h]
@@ -222,18 +223,24 @@ Other group research will be used as input to the dissertation. Previous, comple
 \end{figure}
 
 \section{Description of Dissertation Chapters}
-\iffalse
-\subsection{\Cref{chap:introduction} introduction}
+
+\subsection{\Cref{chap:introduction} \nameref{chap:introduction}}
 \label{subsec:Chapter1Introduction}
 In the Introduction chapter, I will discuss the current state of medical care for CHF patients. I will present the relevant statistics about hospitalization and mortality. I will then cover the topic of engaging patients in their own self-care, citing relevant studies and statistics. Then finally indicate the proposed solution.
-\subsection{\Cref{chap:LitReview} Literature review}
+
+\subsection{\Cref{chap:LitReview} \nameref{chap:LitReview}}
 \label{subsec:Chapter2LitReview}
 This section will first cover previous research done in the fields of ECG, \spo2 /PPG, and acceleration sensors. Then a discussion of how to derive synthetic sensor measurements based on acquired ECG, \spo2 /PPG, and acceleration measurements. I will focus on literature with methods of deriving heart rate, blood pressure without an inflatable cuff, and deriving respiration rate without a chest strap. Next, I will present methods for removing noise from the ECG and PPG sensors based on accelerometer data. Finally, the pertinent literature in the medical domain will be reviewed, paying specific attention to the fields of patient education and self-care as well as the psychosocial instruments to be used, the MLHF, DASI, and HFSA.
 
-\subsection{\Cref{chap:SysDesign} System Design Concepts}
+\subsection{\Cref{chap:trialResults} \nameref{chap:trialResults}}
 \label{subsec:Chapter3SystemDesignConcepts}
 In this chapter, I will detail the design decisions encountered while implementing the WHIPPED end-to-end system. I will discuss concepts in three sections: the sensor suite, the smartphone app, and the BKE.
 
+\subsection{\cref{chap:ProtoTypeBuildTest} \nameref{chap:ProtoTypeBuildTest}}
+
+\subsection{\Cref{chap:SensorConcepts}  \nameref{chap:SensorConcepts}}
+
+\iffalse
 \subsection{\Cref{chap:SensorConcepts} Sensor concepts}
 \label{subsec:Chapter4SensorConcepts}
 In this chapter, I will cover in detail the code and DSP techniques used in the data flow of the sensor designs covering both the analog front end for the real sensors and the software DSP and data fusion techniques for the synthetic sensors.
@@ -245,6 +252,9 @@ In this chapter, I will address various hardware decisions I encountered while d
 \subsection{\Cref{chap:ProtoTypeBuildTest} Integration and Testing}
 \label{subsec:Chapter6IntegrationAndTesting}
 This chapter will detail the process of integrating the three parts of the WHIPPED system together to make an end-to-end application. I will first discuss integrating the smartphone and sensor suite to gather physiometric data. Then discuss the integration of the smartphone and BKE, separate from the sensors, to communicate psychosocial information. Finally, I will discuss the BKE‘s integration of all knowledge from both the sensors, via the smartphone, and the psychosocial data to calculate wellness and provide interventions.
+
+
+
 %
 %\subsection{Chapter 7. Data mining/cardiac ontology}
 %\label{subsec:Chapter7DataMining}

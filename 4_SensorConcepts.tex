@@ -77,12 +77,15 @@ void ECG_begin()
 
 \section{Atmel Software Framework(ASF)}
 The Atmel website clearly sums up the ASF:
-"The Atmel Software framework is a MCU software library providing a large collection of embedded software for Atmel flash MCUs: megaAVR,AVR XMEGA, AVR UC3 and SAM devices.
+
+\begin{quotation}
+The Atmel Software framework is a MCU software library providing a large collection of embedded software for Atmel flash MCUs: megaAVR, AVR XMEGA, AVR UC3 and SAM devices.
 
 It  simplifies the usage of microcontrollers, providing an abstraction to the hardware and high-value middlewares
 ASF is designed to be used for evaluation, prototyping, design and production phases
 ASF is integrated in the Atmel Studio IDE with a graphical user interface or available as standalone for GCC, IAR compilers
-ASF can be downloaded for free" " 
+ASF can be downloaded for free [CitationNeeded]
+\end{quotation} 
 %(todo: put in block quote and reference http://www.atmel.com/tools/avrsoftwareframework.aspx)
 
 The two primary benefits to this project, provided by the ASF are its abstraction layer across different hardware devices, and its collection of embedded libraries.
@@ -91,6 +94,23 @@ Over the course of development several processors were used. All devices were ma
 
 \section{Main State Machine}
 
-The basic state machine of the WHIP firmware was simplistic, but that is not to say it is not robust. Data was pipelined directly from both ECG and \spo2 devices to a double buffered memory location By making use of the DMA channels on the micro controller . Then, another DMA channel wrote the collected data to the SD card. The CPU only intervened once the write-buffer was filled, at which point the buffers were swapped. The only other mode the device can enter is USB mode. Upon connection to USB power data collection is halted and all files are flushed and closed in preparation for download. When USB power is removed, data collection starts again. (TODO: create state diagram image)
+The basic state machine of the WHIP firmware was simplistic, but that is not to say it is not robust. Data was pipelined directly from both ECG and \spo2 devices to a double buffered memory location By making use of the DMA channels on the micro controller . Then, another DMA channel wrote the collected data to the SD card. The CPU only intervened once the write-buffer was filled, at which point the buffers were swapped. The only other mode the device can enter is USB mode. Upon connection to USB power data collection is halted and all files are flushed and closed in preparation for download. When USB power is removed, data collection starts again. 
 
+\begin{figure}
+	\begin{center}
+		\label{fig:flowchart_main}
+		\includegraphics[scale=1,width=0.9\textwidth]{Images/FlowChartMain.pdf} 
+		\caption{Main Function Functional Flowchart}
+	\end{center}
+\end{figure}
+
+\section {Interrupt Service Routines (ISRs)}
+
+\begin{figure}
+	\begin{center}
+		\label{fig:flowchart_ISR}
+		\includegraphics[scale=1,width=0.9\textwidth]{Images/FlowChartISR.pdf} 
+		\caption{ISR Functional Flowchart}
+	\end{center}
+\end{figure}
 

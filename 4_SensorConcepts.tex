@@ -1,7 +1,7 @@
 \chapter{Embedded Software Concepts}
 \label{chap:SensorConcepts}
 %In this chapter, I will cover in detail the code and DSP techniques used in the data flow of the sensor designs covering both the analog front end for the real sensors and the software DSP and data fusion techniques for the synthetic sensors.
-Any embedded design is a combination of both hardware and firmware. The WHIP is no different. The firmware was developed to allow for future expansion and should serve as a starting point, not an end point for development. All firmware was written in the C language. The development environment was Atmel Studio V6.2. The following sections cover the code generated for this firmware in the following groups. First the low level driver for the ECG and \spo2 chips. Then the integration with the Atmel Software Framework and finally the driver code state machine
+Any embedded design is a combination of both hardware and firmware. The WHIP is no different. The firmware was developed to allow for future expansion and should serve as a starting point, not an end point for development. All firmware was written in the C language. The development environment was Atmel Studio V6.2\cite{AtmelStudio}. The following sections cover the code generated for this firmware in the following groups. First the low level driver for the ECG and \spo2 chips; then the integration with the Atmel Software Framework and, finally, the driver code state machine
 
 \begin{figure}
 	\begin{center}
@@ -13,7 +13,7 @@ Any embedded design is a combination of both hardware and firmware. The WHIP is 
 
 \section{Chip Driver Firmware}
 
-Both the AFE4490 \spo2 IC and the ADS1293 ECG IC offered attractive features settable in software, including gain amplifiers and Sample rate. However, these features, while flexible, required a substantial investment in understanding the configuration registers present in both chips. An intermediate C\# program was written to ingest specifications from the data sheet and produce a header file with descriptive \#define statements that could be used to create self-documenting code. Consider \Cref{fig:ADS1293_RLD_CN}, as an example, an excerpt from the ADS1293 data sheet shows a  bit-mapped register, responsible for several functions related to the Right leg drive circuitry of the ADS1293. The code in \cref{fig:ADS1293_Defines} was generated to simplify code generation and increase readability . The use of masking and bit shifting ensures that invalid bits do not unintentionally have side effects; and the descriptive bit names help document the code to communicate meaning. Examining the ADS1293 initialization routine in \Cref{fig:ADS1293_INIT} shows how effective this strategy can be. The use of a well organized array allows for all settings to be seen at a glance. This approach does not eliminate the need for the data sheet while programming, but by using define statements to create readable alternatives to hard coded binary numbers we greatly increase the maintainability of the code base. Both ICs received a similar treatment and a library of basic functionality was written for each chip.
+Both the AFE4490 \spo2 IC and the ADS1293 ECG IC offered attractive features settable in software, including gain amplifiers and sample rate. However, these features, while flexible, required a substantial investment in understanding the configuration registers present in both chips. An intermediate C\# program was written to ingest specifications from the data sheet and produce a header file with descriptive \#define statements that could be used to create self-documenting code. Consider \Cref{fig:ADS1293_RLD_CN}, as an example, an excerpt from the ADS1293 data sheet shows a  bit-mapped register, responsible for several functions related to the right leg drive circuitry(RLD) of the ADS1293. The code in \cref{fig:ADS1293_Defines} was generated to simplify code generation and increase readability. The use of masking and bit shifting ensures that invalid bits do not unintentionally have side effects; and the descriptive bit names help document the code to communicate meaning. Examining the ADS1293 initialization routine in \Cref{fig:ADS1293_INIT} shows how effective this strategy can be. The use of a well organized array allows for all settings to be seen at a glance. This approach does not eliminate the need for the data sheet while programming, but by using define statements to create readable alternatives to hard coded binary numbers we greatly increase the maintainability of the code base. Both ICs received a similar treatment and a library of basic functionality was written for each chip.
 
 \begin{figure}
 	\begin{center}
@@ -84,13 +84,13 @@ The Atmel Software framework is a MCU software library providing a large collect
 It  simplifies the usage of microcontrollers, providing an abstraction to the hardware and high-value middlewares
 ASF is designed to be used for evaluation, prototyping, design and production phases
 ASF is integrated in the Atmel Studio IDE with a graphical user interface or available as standalone for GCC, IAR compilers
-ASF can be downloaded for free [CitationNeeded]
+ASF can be downloaded for free. \cite{AtmelStudio}
 \end{quotation} 
-%(todo: put in block quote and reference http://www.atmel.com/tools/avrsoftwareframework.aspx)
+% http://www.atmel.com/tools/avrsoftwareframework.aspx)
 
 The two primary benefits to this project, provided by the ASF are its abstraction layer across different hardware devices, and its collection of embedded libraries.
 
-Over the course of development several processors were used. All devices were manufactured by Atmel, but spanned different chip families. Early development used the megaAVR series of 8 bit processors, while the final design used the 32 bit UC3 series. The details of accessing the low level configuration registers of any specific hardware were "hidden" from the functional code by utilizing the ASF. The word "hidden" is in quotes because, often the low level code had to be rewritten by the programmer. But, this was well worth the time invested to keep the higher level libraries unchanged. Specifically, the SD card/FAT libraries allowed for a POSIX file interface to simplify sample storage, and the USB libraries made interfacing to a computer simple; allowing the programmer to focus on interfacing with the relevant sensors and not on timing details of the USB specification.
+Over the course of development several processors were used. All devices were manufactured by Atmel, but spanned different chip families. Early development used the megaAVR series of 8 bit processors, while the final design used the 32 bit UC3 series. The details of accessing the low level configuration registers of any specific hardware were "hidden" from the functional code by utilizing the ASF. The word "hidden" is in quotes because, often the low level code had to be rewritten by the programmer. But, this was well worth the time invested to keep the higher level libraries unchanged. Specifically, the SD card/FAT libraries allowed for a POSIX file interface to simplify sample storage, and the USB libraries made interfacing to a computer trivial; allowing the programmer to focus on interfacing with the relevant sensors and not on timing details of the USB specification.
 
 \section{Main State Machine}
 
@@ -105,7 +105,7 @@ The basic state machine of the WHIP firmware was simplistic, but that is not to 
 \end{figure}
 
 \section {Interrupt Service Routines (ISRs)}
-
+Microcontrollers best utilize resources when not polling, using busy loops, waiting for events to occur. Interrupt Service Routines (ISRs) allow for low level tasks to be interrupted in favor of higher priority tasks. The ATUC3 line of microcontrollers offers many Interrupt sources. The two most important, from a WHIP firmware standpoint, are the Data Received interrupts for the AFE4490 \spo2 and the ADS1293 ECG chips. \cref{fig:flowchart_ISR} shows that both interrupts are similar. Both buffer incoming data until the buffer is full. When a buffer is full, a new buffer is swapped into place and the old buffer can be sent to the SD card for storage. The \spo2 interrupt contains one extra feature; a dynamic brightness calibration to prevent saturation of the pleth sensor. Other differences in the \spo2 ISR are not additional features just a reflection of the data delivered by the pleth sensor, two channels of data, and an additional two channels of intensity data.
 \begin{figure}
 	\begin{center}
 		\label{fig:flowchart_ISR}

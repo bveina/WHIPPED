@@ -105,7 +105,7 @@ The treadmill test utilized version two of the breakout board since the first br
 \subsection{Printed Circuit Board (PCB) Layout}
 After all modules had been designed in schematic capture, the design for the PCB began. The physical location of connectors was the driving force in the layout process. Given the board manufacturer in use at the time of production, the physical size of the board was set to 100 mm by 50 mm. The ECG and \spo2 transducer connections as well as the USB and SD card port were required to be on the board perimeter. Each module had its components grouped near each other and were routed to the module level. The modules were then positioned near their final destinations and inter-module routing occurred. the final Layout is shown in \Cref{fig:FullLayout}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{center}
 	\label{fig:FullLayout}
 	\includegraphics[angle=0,scale=1,width=1\textwidth]{Images/rev1D_PCB.pdf} 
@@ -119,13 +119,13 @@ Some modules in the WHIP design required special consideration beyond what could
 \subsection {Final Prototype Construction}
 The second stage of integration occurred on the final WHIP PCB. Unlike production PCB assembly, the first prototype was not assembled all at once. First the power module was soldered together, and tested with a multimeter. This supply must have a load to provide proper regulation, therefore a 10,000-Ohm resistor was bridged across VCC and GND. The power system was validated as working only after adding this load resistor and confirming 3.3 Volts. The charging system was then validated by plugging a partially drained LIPO battery into the board with a USB cable connected to a computer. If the indicator 'LED1' lights, the charging circuit is validated. 
 
-Now that the entire power module is soldered all other tests are prefaced by an additional test. Before reapplying power after any soldering, a multimeter should be used to check for accidental shorts between VCC and GND. Additionally, it is often useful to perform the "finger test" when powering new peripherals. The finger test involves placing a finger on the top of an IC package as you power the PCB. If there is an error in soldering, or wiring, the chip will more than likely heat up, your finger can detect this thermal event and power can be disconnected, hopefully before any damage is done, either to your power supply,your finger, or your new component. These tests will not be mentioned in the descriptions below, but are still performed before power is applied during every test.
+Now that the entire power module is soldered all other tests are prefaced by an additional test. Before reapplying power after any soldering, a multimeter should be used to check for accidental shorts between VCC and GND. Additionally, it is often useful to perform the "finger test" when powering new peripherals. The finger test involves placing a finger on the top of an IC package as you power the PCB. If there is an error in soldering, or wiring, the chip will, more than likely, heat up, your finger can detect this thermal event and power can be disconnected, hopefully before any damage is done, either to your power supply,your finger, or your new component. These tests will not be mentioned in the descriptions below, but are still performed before power is applied during every test.
 
 The communication module was next to be validated, after removing all power, the communication module is added to the PCB. When power was applied, an attempt was made to connect to the module using an android phone. If pairing is successful, an additional test is performed. Opening a serial communication terminal on the phone "+++" is sent across the link if the module responds with "OK" then the Bluetooth module has entered over the air (OTA) configuration mode. Power can now be removed and the control module and Memory Module can be soldered on. 
 
 The remaining tests all involve running parts of a validation firmware. The firmware runs on the microprocessor and exercises each of the other modules and provides an automated readout on the serial port. The JTAG module inside the microprocessor must be running o run the remaining test. This is tested by attaching the JTAG programmer to the board and attempting to read the device ID. if the test fails there is likely a soldering error, such as two or more pins shorted together, or a pin the is not soldered directly to the pad. A multimeter in continuity mode can find these errors quickly. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{center}
 	\label{fig:ECG_Test_Pass}
 	\includegraphics[angle=0,scale=1,width=1\textwidth]{Images/ECG_processingSketch.png} 
@@ -138,9 +138,9 @@ Once firmware can be loaded into the microprocessor, insert an SD card into the 
 Finally, solder the ECG module to the PCB. Load the ECGcheck firmware and accompanying PC side software. Connect the 3 ECG leads to a patient or other signal source. Connect the PC software to the device via the local COM port and hit run. You should see a rolling graph of your ECG similar to \cref{fig:ECG_Test_Pass}. Now, all components should be on the board, and have been validated.
 
 
-Once the first prototype was validated, six boards at a time were populated at once. First solder paste was applied to all boards using a stencil. Then, all components were manually populating. Finally, the boards were soldered in a custom made reflow oven. The results are shown in \cref{fig:reflowedBoards}. Each board was then checked for shorts and reworked as needed.
+Once the first prototype was validated, six boards at a time were populated at once. First solder paste was applied to all boards using a stencil. Then, all components were manually populating. Finally, the boards were soldered in a custom made reflow oven. The results are shown in \cref{fig:ReflowedBoards}. Each board was then checked for shorts and reworked as needed.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{center}
 	\label{fig:ReflowedBoards}
 	\includegraphics[angle=0,scale=1,width=1\textwidth]{Images/BoardsSoldered.png} 
@@ -157,7 +157,7 @@ Part of the research component of this dissertation was to evaluate methods, and
 
 
 \subsection {Chest Strap}
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{center}
 	\label{fig:Electrodes}
 	\includegraphics[angle=0,scale=1,width=.5\textwidth]{Images/Electrodes.png} 
@@ -170,7 +170,7 @@ The next design replaced sticky electrodes with dry contacts held in place by me
 
 After several iterations, that never produced a qualitative approval by testers, off the shelf straps designed for runners, specifically the polar heart rate monitor strap was used. The heart rate sensor hardware made by polar was not used, only the strap. The polar strap provided a comfortable feeling strap that could also support the weight of the sensor board and battery. However, these straps only provided two electrodes. A third electrode was added using the velostat material from the second prototype. The final strap connection is shown in \cref{fig:polar_3rdSnap}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{center}
 	\label{fig:polar_3rdSnap}
 	\includegraphics[angle=0,scale=1,width=.51\textwidth]{Images/Polar_top.png} 
@@ -181,7 +181,7 @@ After several iterations, that never produced a qualitative approval by testers,
 
  
 
-\begin{figure}[h]
+\begin{figure}[ht]
  \begin{center}
   \label{fig:PCBvsRender}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5Assembled.png} 
@@ -201,7 +201,7 @@ First we should discuss how the enclosure was designed. All models were created 
 
 The first enclosure was a simple box designed to hold the unpopulated PCB. Notable features of this first board included retaining clips above the board, rounded corners, integrated standoffs, and a compartment for the battery below the PCB. This was the first 3d printed object made for this project, and was used as a basic shakedown of the 3d printing process shown in . The utility of 3d printing was made immediately clear once the first prototype was printed. The PCB fit snuggly and did not move once seated. Indeed, once it was in it was difficult to get out. The second design change needed was to accommodate the battery. The standoffs were spaced too closely together to fit the battery. Testing this prototype required two standoffs be cut from the plastic model and can be seen on the left side of the enclosure in  \Cref{fig:enclosure1}. This "modify-after-print" approach was invaluable at each stage of the design.
 
-\begin{figure}[h]
+\begin{figure}[ht]
  \begin{center}
   \label{fig:enclosure1}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure1.png} 
@@ -212,7 +212,7 @@ The first enclosure was a simple box designed to hold the unpopulated PCB. Notab
 
 
 The next prototype stage moved the PCB standoffs, added ports for the USB, SD card, \spo2, and ECG connectors. It also smoothed out not only the four vertical edges of the enclosure but rounded all four bottom edges as well. A cover was also printed to completely enclose the electronics. A portion of the cover was designed to prevent warping, but reduce overall plastic use, as a structural precaution. This prototype worked well, allowing relatively easy removal of the PCB while still holding the board tight, however the SD card slot was not large enough to allow a thumb or finger to trigger the ejection mechanism for the card. The cover functioned well, but only after a section of the cover was removed to provide space for the programming header.  A hot knife was used, in each case, to remove plastic until the desired form was achieved, then calipers were used to measure the effected areas and the 3d model updated to reflect the new measurements.
-\begin{figure}[h]
+\begin{figure}[ht]
  \begin{center}
   \label{fig:enclosure2}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure2.png} 
@@ -224,7 +224,7 @@ The next prototype stage moved the PCB standoffs, added ports for the USB, SD ca
 
 It was at this point in the design process that the polar heart rate strap was introduced. The next prototype moved the ECG connection port from the side of the device to the bottom. A small insert was fabricated to fit into the model to allow it to snap directly to the polar strap. This model was printed and again modified to make channels for the wires that would connect from the snaps to the PCB. As shown in \Cref{fig:enclosure3} the enclosure was actually modified twice, the first time the modifications were made while the enclosure was upside down, which brings to mind the old adage "measure twice, cut once". 
 
-\begin{figure}[h]
+\begin{figure}[ht]
  \begin{center}
   \label{fig:enclosure3}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure3.png} 
@@ -235,7 +235,7 @@ It was at this point in the design process that the polar heart rate strap was i
 
 The last enclosure integrates all the lessons learned in the previous designs, adding an extra aperture for the 3rd lead of the ECG. this design was printed multiple times for distribution during the study. The last modification to the enclosure was to put the entire device inside of a fabric pouch. The fabric was deemed more comfortable than the 3d printed plastic. Each fabric pouch was hand sewn and holes for the charging port and ECG leads were cut by hand. A hole for the SD card was not cut in the fabric to prevent accidental ejection during use. The fully constructed Enclosure is shown in \Cref{fig:enclosure4}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
  \begin{center}
   \label{fig:enclosure4}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure4.png} 
@@ -249,20 +249,20 @@ The last enclosure integrates all the lessons learned in the previous designs, a
 The largest drawback to 3d printing each case was the time involved, and the rate of failure. The 3d printer was a new tool at the start of this process. Unfortunately it is not as user friendly as a traditional 2d laser printer. Going from model to printed object is not as simple as hitting "print". An additional step, know as Computer Aided Manufacturing (CAM), is required to turn the 3d model into movement instructions for the printer. This process is extremely flexible, however the flexibility provided by the process also introduces complexity. Additionally, to ensure reliable prints some preparation to the print bed is required. This was not immediately apparent, however once the problem was identified the rate of failure went from four out of five (80 \%) to one in fifty(2\%). A 2\% failure rate may be considered high in bulk manufacturing, but for prototyping, it is acceptable.
 
 
-
-
-\subsection{enclosure future work}
-In future research, it may be possible to speed prototyping time by using subtractive manufacturing techniques. Using acrylic sheets and a laser cutter a similar enclosure design could be fabricated in minutes instead of hours. Future designs may also introduce flexible PCB material that would allow a smaller volume of the overall enclosure. Finally, a curved enclosure design would more closely fit to the patients body increasing comfort. A final Enclosure was fabricated addressing some problems discovered during the experimental trial and some limitations of 3d printing. The enclosure shown in \cref{fig:enclosure5} can be 3d printed without overhangs or support material and does not present a lip on the enclosure cover. Additionally, the cover has been modified to protect the \spo2 connector from torsional forces during use.
-
-
-
-\begin{figure}[h]
+\begin{figure}[ht]
  \begin{center}
   \label{fig:enclosure5}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure5.png} 
   \caption{Enclosure with lessons learned} 
  \end{center}
 \end{figure}
+
+\subsection{Enclosure Future Work}
+In future research, it may be possible to speed prototyping time by using subtractive manufacturing techniques. Using acrylic sheets and a laser cutter a similar enclosure design could be fabricated in minutes instead of hours. Future designs may also introduce flexible PCB material that would allow a smaller volume of the overall enclosure. Finally, a curved enclosure design would more closely fit to the patients body increasing comfort. A final Enclosure was fabricated addressing some problems discovered during the experimental trial and some limitations of 3d printing. The enclosure shown in \cref{fig:enclosure5} can be 3d printed without overhangs or support material and does not present a lip on the enclosure cover. Additionally, the cover has been modified to protect the \spo2 connector from torsional forces during use.
+
+
+
+
 
 
 

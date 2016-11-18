@@ -234,34 +234,16 @@ This section will first cover previous research done in the fields of ECG, \spo2
 
 \subsection{\Cref{chap:trialResults} \nameref{chap:trialResults}}
 \label{subsec:Chapter3SystemDesignConcepts}
-In this chapter, I will detail the design decisions encountered while implementing the WHIPPED end-to-end system. I will discuss concepts in three sections: the sensor suite, the smartphone app, and the BKE.
+In \cref{chap:trialResults} I will discuss the trial protocol, and lessons learned during and after the exploratory trial.
 
 \subsection{\cref{chap:ProtoTypeBuildTest} \nameref{chap:ProtoTypeBuildTest}}
+In \cref{chap:ProtoTypeBuildTest} I will discuss the hardware design decisions and prototype assembly, testing, and validation of the WHIP Sensor platform. I will address various hardware decisions I encountered while designing the senor suite and its communication with the smartphone app. I will also address power usage of the device and any layout related board issues. Finally, I will address the packaging of the device into a wearable sensor.
 
 \subsection{\Cref{chap:SensorConcepts}  \nameref{chap:SensorConcepts}}
+In this chapter, I will cover in detail the code and firmware techniques used in the data flow of the sensor designs covering both the analog front end for the real sensors in the WHIP.
 
-\iffalse
-\subsection{\Cref{chap:SensorConcepts} Sensor concepts}
-\label{subsec:Chapter4SensorConcepts}
-In this chapter, I will cover in detail the code and DSP techniques used in the data flow of the sensor designs covering both the analog front end for the real sensors and the software DSP and data fusion techniques for the synthetic sensors.
-
-\subsection{ Hardware designs}
-\label{subsec:Chapter5HardwareDesigns}
-In this chapter, I will address various hardware decisions I encountered while designing the senor suite and its communication with the smartphone app. I will also address power usage of the device and any layout related board issues. Finally, I will address the packaging of the device into a wearable sensor.
-
-\subsection{\Cref{chap:ProtoTypeBuildTest} Integration and Testing}
-\label{subsec:Chapter6IntegrationAndTesting}
-This chapter will detail the process of integrating the three parts of the WHIPPED system together to make an end-to-end application. I will first discuss integrating the smartphone and sensor suite to gather physiometric data. Then discuss the integration of the smartphone and BKE, separate from the sensors, to communicate psychosocial information. Finally, I will discuss the BKE‘s integration of all knowledge from both the sensors, via the smartphone, and the psychosocial data to calculate wellness and provide interventions.
-
-
-
-%
-%\subsection{Chapter 7. Data mining/cardiac ontology}
-%\label{subsec:Chapter7DataMining}
-%After implementing the WHIPPED system, validation will be performed in two steps. First, basic validation and safety will be performed on healthy, %volunteer members of the research group (who have IRB approval). Then, an experimental nursing study consisting of volunteer CHF patients, who have %received informed consent in accordance with IRB rules.
-
-\subsection{Chapter 8. Conclusions/ Future work}
+\subsection{\Cref{chap:conclusions} \nameref{chap:conclusions}}
 \label{subsec:Chapter8Conclusions}
 Validating my system with an exploratory study is only the first step in a larger design philosophy. I will indicate avenues of improvement for hardware and software focusing on moving to a system on a chip (SoC) design. I will present my conclusions and suggest future steps in the research.
 
-\fi
+

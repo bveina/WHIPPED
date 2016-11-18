@@ -1,0 +1,142 @@
+insert into code2flow.com to generate figures.
+
+
+||main||;
+  board_init();
+  if (!openAndTstamp()) [openError]
+  {
+		error();
+		return;
+	}
+	else[Files Open]
+	
+	//interrupts fire starting HERE
+	Enable_global_interrupt();
+	
+	Forever:
+	\MAINLOOP/;
+	USBtask();	
+	if (collectionStatus) [running]
+	{
+		switch(CheckFlags)
+		{
+		  case newFilesNeeded:
+	  	  newFilesNeeded=false
+		    close(ecgFile,spo2file)
+			  openUniqueECGFile(ECG,SPO2);
+  
+			  if (!openAndTimestamp()) [Error]
+	      {
+		      error();
+		      return
+	      }
+	      else [filesOpen]
+	      break;
+	    
+	    case flushNeeded:
+	      flushNeeded=false
+				flushfiles(ECG,SPO2);
+				break;
+				
+			case ecgNeedsWrite:
+				ecgNeedsWrite=false
+				WriteECG_to_SD();
+				break;
+				
+			case spo2NeedsWrite:
+				spo2NeedsWrite=false
+	  	  WriteSPO2_to_SD();
+	  	  break;
+				
+		}
+		goto HANDLEUSB;
+	}
+	else [halted]
+	{goto HANDLEUSB;}
+		
+	
+	HANDLEUSB:
+	nop;
+	switch(USBStatus)
+	{
+		case usbJustConnected:
+			haltCollection()		
+			close(ecgFile,spo2File);
+			break;
+		case JustDisconnected:
+			newFilesNeeded=true
+			resumeCollection()
+			collectionHalted=false;
+			break;
+		case Disconnected:
+		  <SLEEP>;
+  }
+	nop;  
+	goto Forever;
+
+
+
+--------------------------------------------------------
+
+||openAndTstamp||;
+  openUniqueECGFile(ECG,SPO2);
+  
+	if (eitherFileUnopen) 
+	{
+		openerror();
+		return;
+		
+	}
+	TimestampFiles();
+	sucess();
+	return;
+    
+    
+-------------------------------------------------
+||ISR(ECG_SAMPLE_RX)||;
+{
+	if (DMACOMPLETE and NO_DATA_PENDING)
+	{
+	  DISABLE DMA;
+	}
+	
+	SWAP(ECG_DMA_BUFFERS);
+	
+	//dest,offset,src
+	COPY(Buffer,ptr,Received Data)
+	Update ptr;
+	
+	if (ptr>limit)
+	{
+        SWAP(ECG_DATA_BUFFERS)
+		ecgNeedsWrite=true;
+	}	
+	done;
+	return
+}
+
+----------------------------------------------------
+||ISR(SPO2_SAMPLE_RX)||;
+{
+	if (DMACOMPLETE and NO_DATA_PENDING)
+	{
+	  DISABLE DMA;
+	}
+	
+	SWAP(SPO2_DMA_BUFFERS)
+	COPY(IR_Buff,IRptr,RecievedData_IR)
+	COPY(R_Buff,Rptr,RecievedData_R)
+	COPY(IR_BRIGHTNESS,Rptr)
+	COPY(R_BRIGHTNESS,IR_PTR)
+	UpdatePointers;
+	
+	/Dynamic LED BrightnessAdjustment/;
+		
+	
+  if (ptr>limit)
+  {
+    SWAP(SPO2_DATA_BUFFERS)
+  	spo2NeedsWrite=true;
+	}
+	done
+}

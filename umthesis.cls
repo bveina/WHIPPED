@@ -564,14 +564,14 @@
 %%  Page layout -- as required
 %%
 
-\setlength{\oddsidemargin}{0.5truein}  % binding margin at least 1.5in
-\setlength{\evensidemargin}{0.5truein} % same as odd side
-\setlength{\textwidth}{6.0truein}      % 6in wide typing area
-\setlength{\topmargin}{-0.5truein} % page numbers at top of page 0.5in from top
-\setlength{\headheight}{0.2truein} % room for header
-\setlength{\headsep}{0.3truein}    % header 0.3in from body, body 1in from top
-\setlength{\textheight}{9.0truein} % 9in high typing area
-\setlength{\footskip}{0.5truein}   % footer 0.5in from body, 0.5in from bottom
+%\setlength{\oddsidemargin}{0.5truein}  % binding margin at least 1.5in
+%\setlength{\evensidemargin}{0.5truein} % same as odd side
+%\setlength{\textwidth}{6.0truein}      % 6in wide typing area
+%\setlength{\topmargin}{-0.5truein} % page numbers at top of page 0.5in from top
+%\setlength{\headheight}{0.2truein} % room for header
+%\setlength{\headsep}{0.3truein}    % header 0.3in from body, body 1in from top
+%\setlength{\textheight}{9.0truein} % 9in high typing area
+%\setlength{\footskip}{0.5truein}   % footer 0.5in from body, 0.5in from bottom
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

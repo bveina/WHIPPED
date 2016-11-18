@@ -13,15 +13,15 @@
 \usepackage[table]{xcolor}
 
 % use showframe to check your margins and borders.
-%\usepackage{showframe}
+\usepackage{showframe}
 
-\usepackage[toc,page]{appendix}
+\usepackage[toc,page,title,titletoc]{appendix}
 
 \usepackage{tabularx}
 \usepackage{graphicx}
-\usepackage{caption}
+%\usepackage{caption}
 \usepackage{subcaption}
-%\usepackage{subfigure}
+
 \usepackage{import}
 \usepackage{amsmath}
 
@@ -34,11 +34,18 @@
 
 \usepackage{sectsty}
 
+
+
+%min bottom is 1.0in, i added an 1/8" to keep people happy
+%same with left, min=1.5, i added an 1/8"
+\usepackage[letterpaper,top=1.0in, bottom=1.125in,left=1.675in, right=1.0in, includefoot, includehead] {geometry}
+
 %use this package for printing hard copies
 %\usepackage[colorlinks,linkcolor=black,citecolor=black]{hyperref}
 
 %use this package for pdf publication
 \usepackage[colorlinks]{hyperref}
+\usepackage{calc}
 
 %use this package to easily find all links in a pdf
 %\usepackage{hyperref}
@@ -62,19 +69,25 @@
 %\usepackage{caption} 		% the internet says this is a better way of hyperlinking... not sure why.
 \usepackage[capitalise,noabbrev,nameinlink]{cleveref}		% now \cref yields Figure 1.1 instead of 1.1 alone
 
-\cftsetindents{chapter}{0em}{7em}
-\cftsetindents{section}{0em}{7em}
-\cftsetindents{subsection}{0em}{7em}
-\cftsetindents{subsubsection}{0em}{7em}
-\cftsetindents{paragraph}{0em}{7em}
+\cftsetindents{chapter}{0em}{1em}
+\cftsetindents{section}{1em}{2em}
+\cftsetindents{subsection}{2em}{2em}
+\cftsetindents{subsubsection}{3em}{2em}
+\cftsetindents{paragraph}{0em}{8em}
 
 \renewcommand{\cftchappresnum}{\chaptername\space} %adds Chapter to the TOC
+\setlength{\cftchapnumwidth}{\widthof{\textbf{\chaptername~999~}}}
+\setlength{\cftsecnumwidth}{\widthof{\textbf{~9.9~}}}
+\setlength{\cftsubsecnumwidth}{\widthof{\textbf{~9.9.99~}}}
+\setlength{\cftsubsubsecnumwidth}{\widthof{\textbf{~9.9.99.9~}}}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 
 %this adds Appendix to the Table of contents...
 \makeatletter
 \g@addto@macro\appendix{%
   \addtocontents{toc}{%
-    \protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}%
+    \protect\renewcommand{\protect\cftchappresnum}{}%
+    \setlength{\cftchapnumwidth}{\widthof{\textbf{~9~}}}
   }%
 }
 \makeatother
@@ -93,7 +106,7 @@
 \title{Wireless Health Indicator Patch  for Patient \protect\\ Education and Diagnostics (WHIPPED): \protect\\ An Integrated System Approach to Patient Self-Care}
 
 \author{Benjamin Roy Viall}
-\date{December 2017} % The date you'll actually graduate -- must be
+\date{February 2017} % The date you'll actually graduate -- must be
                      % February, May, or September
 \copyrightyear{2016}
 \school {University of Massachusetts Dartmouth} 
@@ -138,7 +151,7 @@
 %
 \begin{dedication}              % Dedication page
   \begin{center}
-    \emph{To Ken And Laura, who showed, by example, how to be the kind of person I could be proud of.}
+    \emph{Dedicated to Ken And Laura Viall, \\ who showed, by example, \\ how to be the kind of person I could be proud of.}
   \end{center}
 \end{dedication}
 
@@ -146,20 +159,10 @@
 %% Acknowledgements are optional...yeah, right.
 \phantomsection
 \chapter*{Acknowledgments}             % Acknowledgements page
-  Dr. Fortier
+  I would like to acknowledge the following individuals, without whom, this research would not have been possible. Dr. Fortier, my dissertation advisor, mentor, and friend who first recruited me into pursuing a PhD. Dr. Sethares, for her patience and for taking the time to educate me on all matters medical. My committee, whose doors have always been open anytime I needed advice. Gwen Davis who worked with me in creating the smartphone application and continued to support the study long after the funding ran out. Finally, to Professor Phil Viall, who has been my teacher in life, and engineering, for longer than I can remember. 
   
-  Dr. Sethares
+  I would also like to acknowledge the support of the IRB in approving the exploratory study at the core of this dissertation, and the funding of the UMD bridge grant.
   
-  My Committee
-  
-  Gwen
-  
-  Phil
-  
-  IRB/test subjects
-  
-  bridge grant?
-
 
 
 %%% option to show the table of contents with the hyper ref package.
@@ -215,6 +218,7 @@
 %\crefname{appcha}{Appendix}{Appendices}
 %\crefalias{chapter}{appcha}
 %\renewcommand{\cftchappresnum}{Appendix }
+
 \include{A_Schematic}
 \chapter{Permission from the IRB}
 \chapter{CD Pocket with Source Code}
@@ -225,7 +229,7 @@
 
 
 \end{appendices}
-\addtocontents{toc}{\vspace{\parskip}}
+\addtocontents{toc}{\vspace{\parskip}} \vspace{\parskip}
 % Beginning of back matter
 \backmatter  %% <--- mandatory
 

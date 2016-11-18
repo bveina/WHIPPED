@@ -20,10 +20,10 @@
       \doublespacenormalsize
       A \umthesis@typename\ in \par \expandafter{\@degreeTitle} \par
       by \par
-      \uppercase\expandafter{\@author}
+      \expandafter{\@author}
       \vfill
       \begin{center}
-        \copyright\ Copyright by \@author\ \@copyrightyear \par
+        \copyright\ \@copyrightyear\ by \@author \par
         All Rights Reserved
       \end{center}
 	  \vfill      
@@ -32,7 +32,7 @@
       Requirements for the Degree of  \par
 %      \addvspace{\topskip}
 	  \expandafter{\@degree}\par
-	  \expandafter{\@degreeTitle} \par
+%	  \expandafter{\@degreeTitle} \par
       \addvspace{\topskip}
       \@date \par
       \addvspace{\topskip}
@@ -90,7 +90,7 @@
   \def\sigLine {\vfill \rule{0.55\textwidth}{0.5pt} \hskip .15\textwidth \rule{.25\textwidth}{0.5pt}\par}
     \normalsize
     We approve the \lowercase{\umthesis@typename\ }of \@author \par
-    \hskip .7\textwidth Date \par
+    \hskip .7\textwidth Date of Signature \par
     \ifcochairs
       \sigLine 
       \@firstchair \par \@firstchairtitle \par\ \@firstchairjob \par
@@ -131,10 +131,10 @@
     \fi
     
     \sigLine
-    \@graduatedirector \par \umthesis@graddirectortitle \par  Department of \@departmentname \par
+    \@graduatedirector \par \umthesis@graddirectortitle ,  Department of \@departmentname \par
     
     \sigLine
-    \@chairperson \par \umthesis@chairpersontitle \par \@departmentname \par
+    \@chairperson \par \umthesis@chairpersontitle , \@departmentname \par
     
     \sigLine
     \@dean \par \umthesis@deantitle \par
@@ -163,32 +163,33 @@
   \clearpage
   \pagestyle{plain}
   \chapter*{\uppercase\expandafter{\abstractname}}
-  \begin{center}
-    \large
-    \textbf{\uppercase\expandafter{\@title}} \par
+%  \begin{center}
+%    \large
+     \noindent\expandafter{\@title} \par
+     \addvspace{\topskip}
+%    \doublespacenormalsize
+%    \uppercase\expandafter{\@date} \par
+%    \addvspace{\topskip}
+	 \noindent by \expandafter{\@author} \par
+%    \ifbachelorsone\@bachelors\par\fi
+%    \ifbachelorstwo\@secondbachelors\par\fi
+%    \ifbachelorsthree\@thirdbachelors\par\fi
+%    \ifmastersone\@masters\par\fi
+%    \ifmasterstwo\@secondmasters\par\fi
+%    \ifmastersthree\@thirdmasters\par\fi
+%    \ifpriordoctorate\@priordoctorate\par\fi
+%    \if@proposal
+%    \else
+%      \@degreeabbrv, \MakeTextUppercase{\@school} \par
+%    \fi
     \addvspace{\topskip}
-    \doublespacenormalsize
-    \uppercase\expandafter{\@date} \par
-    \addvspace{\topskip}
-    \uppercase\expandafter{\@author} \par
-    \ifbachelorsone\@bachelors\par\fi
-    \ifbachelorstwo\@secondbachelors\par\fi
-    \ifbachelorsthree\@thirdbachelors\par\fi
-    \ifmastersone\@masters\par\fi
-    \ifmasterstwo\@secondmasters\par\fi
-    \ifmastersthree\@thirdmasters\par\fi
-    \ifpriordoctorate\@priordoctorate\par\fi
-    \if@proposal
-    \else
-      \@degreeabbrv, \MakeTextUppercase{\@school} \par
-    \fi
-    \addvspace{\topskip}
-    \ifcochairs
-      Directed by: Professor \@firstchair\ and Professor \@secondchair \par
-    \else
-      Directed by: Professor \@committeechair \par
-    \fi
-  \end{center} \par \addvspace{2\topskip} \indent 
+%    \ifcochairs
+%      Directed by: Professor \@firstchair\ and Professor \@secondchair \par
+%    \else
+%      Directed by: Professor \@committeechair \par
+%    \fi
+%  \end{center} 
+%  \par \addvspace{2\topskip} \indent 
   }
   {\par}
 

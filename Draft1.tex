@@ -13,13 +13,12 @@
 \usepackage[table]{xcolor}
 
 % use showframe to check your margins and borders.
-\usepackage{showframe}
+%\usepackage{showframe}
 
-\usepackage[toc,page,title,titletoc]{appendix}
+\usepackage[page,title,titletoc]{appendix}
 
 \usepackage{tabularx}
 \usepackage{graphicx}
-%\usepackage{caption}
 \usepackage{subcaption}
 
 \usepackage{import}
@@ -40,12 +39,14 @@
 %same with left, min=1.5, i added an 1/8"
 \usepackage[letterpaper,top=1.0in, bottom=1.125in,left=1.675in, right=1.0in, includefoot, includehead] {geometry}
 
+\usepackage{calc}
+
 %use this package for printing hard copies
-%\usepackage[colorlinks,linkcolor=black,citecolor=black]{hyperref}
+\usepackage[colorlinks,linkcolor=black,citecolor=black]{hyperref}
 
 %use this package for pdf publication
-\usepackage[colorlinks]{hyperref}
-\usepackage{calc}
+%\usepackage[colorlinks]{hyperref}
+
 
 %use this package to easily find all links in a pdf
 %\usepackage{hyperref}
@@ -69,11 +70,14 @@
 %\usepackage{caption} 		% the internet says this is a better way of hyperlinking... not sure why.
 \usepackage[capitalise,noabbrev,nameinlink]{cleveref}		% now \cref yields Figure 1.1 instead of 1.1 alone
 
-\cftsetindents{chapter}{0em}{1em}
-\cftsetindents{section}{1em}{2em}
-\cftsetindents{subsection}{2em}{2em}
-\cftsetindents{subsubsection}{3em}{2em}
-\cftsetindents{paragraph}{0em}{8em}
+\cftsetindents{chapter}{0em}{2em}
+\cftsetindents{section}{0em}{2em}
+\cftsetindents{subsection}{0em}{2em}
+\cftsetindents{subsubsection}{0em}{2em}
+\cftsetindents{paragraph}{0em}{2em}
+
+
+\renewcommand{\cftchapaftersnum}{:}
 
 \renewcommand{\cftchappresnum}{\chaptername\space} %adds Chapter to the TOC
 \setlength{\cftchapnumwidth}{\widthof{\textbf{\chaptername~999~}}}
@@ -96,32 +100,32 @@
 \chapterfont{\centering}
 
 
-\setlength{\emergencystretch}{2pt}
+\setlength{\emergencystretch}{4pt}
 
 
 \begin{document}
 
 %%
 %% You must fill in all of these appropriately
-\title{Wireless Health Indicator Patch  for Patient \protect\\ Education and Diagnostics (WHIPPED): \protect\\ An Integrated System Approach to Patient Self-Care}
+\title{Wireless Health Indicator Patch  for Patient Education and Diagnostics (WHIPPED): \protect\\ An Integrated System Approach to Patient Self-Care}
 
 \author{Benjamin Roy Viall}
-\date{February 2017} % The date you'll actually graduate -- must be
-                     % February, May, or September
+\date{January 2017} % The date you'll actually graduate -- must be
+                     % January, May, or September
 \copyrightyear{2016}
 \school {University of Massachusetts Dartmouth} 
 \bachelors{B.Sc.}{University of Massachusetts Dartmouth} % where you got your bachelors
 \masters{M.Sc.}{University of Massachusetts Dartmouth} % where you got your masters
 
 \degree{Doctor of Philosophy}{Ph.D.} % what degree type and abreviation
-\degreeTitle{in Computer Engineering} % what is your degree in
+\degreeTitle{Computer Engineering} % what is your degree in
 
-\committeechair{Paul Fortier}{Professor of Computer Engineering}{Dissertation Advisor}
-\firstreader{Honggang Wang}{Professor of Computer Engineering}{Dissertation Committee}
-\secondreader{Liudong Xing}{Professor of Computer Engineering}{Dissertation Committee}
-\thirdreader{Kristen Sethares}{Professor of Nursing}{Dissertation Committee}
+\committeechair{Paul Fortier}{Professor, Department of Computer Engineering}{Dissertation Advisor}
+\firstreader{Honggang Wang}{Associate Professor, Department of Computer Engineering}{Dissertation Committee}
+\secondreader{Liudong Xing}{Professor, Department of Computer Engineering}{Dissertation Committee}
+\thirdreader{Kristen Sethares}{Professor, Department of Nursing}{Dissertation Committee}
 
-\fourthreader{Janet Prichard}{Professor of Computer Information Systems, Bryant University}{Dissertation Committee}
+\fourthreader{Janet Prichard}{Professor, Department of Computer Information Systems, Bryant University}{Dissertation Committee}
 
 
 \graduatedirector {Hong Liu}
@@ -170,7 +174,7 @@
 \phantomsection
 
 %% this should be removed before submitting to the graduate studies office
-\addcontentsline{toc}{chapter}{\contentsname}
+%\addcontentsline{toc}{chapter}{\contentsname}
 %% this should be removed before submitting to the graduate studies office.
 
 
@@ -213,26 +217,10 @@
 
 
 
-\begin{appendices}
-%\appendix
-%\crefname{appcha}{Appendix}{Appendices}
-%\crefalias{chapter}{appcha}
-%\renewcommand{\cftchappresnum}{Appendix }
 
-\include{A_Schematic}
-\chapter{Permission from the IRB}
-\chapter{CD Pocket with Source Code}
-
-% how to do a single appendix for umassd
-%\chapter*{human use Perimissoin from the IRB}
-%\addcontentsline{toc}{chapter}{Appendix human use Perimissoin from the IRB}
-
-
-\end{appendices}
 \addtocontents{toc}{\vspace{\parskip}} \vspace{\parskip}
 % Beginning of back matter
 \backmatter  %% <--- mandatory
-
 
 
 
@@ -241,5 +229,25 @@
 %\bibliographystyle{umthesis}
 \bibliographystyle{ieeetr}
 \bibliography{Draft1}
+
+
+\begin{appendices}
+%\appendix
+%\crefname{appcha}{Appendix}{Appendices}
+%\crefalias{chapter}{appcha}
+%\renewcommand{\cftchappresnum}{Appendix }
+
+\include{A_Schematic}
+\chapter{Permission from the IRB}
+\chapter*{CD Pocket with Source Code}
+\cftaddtitleline{toc}{chapter}{CD Poclet with Source Code}{Back Cover}
+
+% how to do a single appendix for umassd
+%\chapter*{human use Perimissoin from the IRB}
+%\addcontentsline{toc}{chapter}{Appendix human use Perimissoin from the IRB}
+
+
+\end{appendices}
+
 
 \end{document}

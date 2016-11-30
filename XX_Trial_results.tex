@@ -88,45 +88,70 @@ Each survey was administered one question at a time, the different types of surv
 
 \section{Trial Lessons learned}
 
-\subsection{Lack of Time}
-\paragraph{Back End Processing}
-\paragraph{Testing}
-\paragraph{Documentation}
-\paragraph{Wearable Design}
-\paragraph{Wireless update}
-\paragraph{Live Results}
-\paragraph{no alpha, straight to beta}
+While the WHIP sensor system was the primary focus of the dissertation, the information gathered during the exploratory trial was just was important. Recording what went wrong is just as important as recording the primary data. The primary data collected was the biometric data, consisting of ECG and \spo2, and the psychosocial data, consisting of the DASI and HFSA instruments. 
 
+\subsection{Lack of Time}
+The largest obstacle present during the pre-study period, was time. Due to the urgency of the funding situation, several parts of the system were scaled back.  First, there was not time to integrate live result uploads into the WHIPPED system. Therefore, no back-end processing was performed on the real time data. Also, by not taking advantage of the wireless link between cellphone and WHIP sensor, the trial protocol was modified to include weekly visits to the patients to collect data on SD cards and replace them with empty cards. Additionally, the wireless link was supposed to allow for firmware updates of the WHIP sensor if needed. Removing the wireless link these features were deferred for the exploratory study.
+
+In a traditional design cycle for a product, testing, or validation, may be the last step; but, it is the most important. Most designs go through several stages of testing. Alpha testing usually occurs in a lab setting where environmental factors are carefully controlled. Logical errors can usually be spotted and eliminated, in alpha testing. Beta testing widens the scope of tests, bringing the Device Under Test outside of the lab but controlling the population; limiting the population to participants who are familiar with the technology. Beta testing can be a much longer test procedure. However, to comply with the grant timing requirements. Both the device and the smart phone application were pushed into service without any beta testing. 
+
+Another piece of the design which needed to be rushed was the wearable design. Using the polar heart strap was a decision born of expedience. It was faster to buy off the shelf straps and modify them to fit the needs of the grant. A less polished physical design was the result.
 
 \subsection {Lost data}
-\paragraph {too long between visits}
-\paragraph {bad SDcard adapter}
-\paragraph{excessive SD card handling}
+The primary goal of the WHIPPED system, after adjustments due to grant timing, was data collection. Several lessons were learned during the study. The sensor system was designed to record a theoretical maximum of eight-twelve-hour days. Originally, this was viewed as a comfortable margin of error since a nightly wireless data dump was envisioned at design time. Once the wireless link was removed from the study, a new protocol was put in place, data would be downloaded via the USB interface of the WHIP sensor. Someone would go to each participant each week with a computer and manually download the data.
+
+The USB approach was quickly abandoned, due to speed. The USB hardware interface was only capable of full-speed USB (12 Megabits (Mb)/sec). Given that each 2 hour ECG and \spo2 datafile was approximately 100 MegaBytes (MB), one weeks worth of data would have taken $ 7 \frac{days}{week} * 8 \frac{hours}{day} * 100 \frac{MB}{2 hours} * 12 \frac{Mb}{Second} = 31.1 \frac{minutes}{week}$ to transfer data. In the future, if a microcontroller with a hi-speed USB interface is used, the same transfer would only take $ 7 \frac{days}{week} * 8 \frac{hours}{day} * 100 \frac{MB}{2 hours} * 480 \frac{Mb}{second} = 47 \frac{seconds}{week}$.  
+
+Regardless of future implementations, the end result for the exploratory study, was that the SD cards were exchanged each week. 
+Exchanging SD cards weekly led to a new set of problems. First, the one week limit on data storage was not explained to the study administrators, as a result, some patient data was lost when more than eight days elapsed between visits and the starting data was over written. This was later explained in more detail, and rectified, but the data was irretrievable. 
+
+SD cards proved to be not able to handle the frequent handling and travel the exploratory study required. Two major sources of lost data involved the excess handling of sd cards and handling of the SD card to USB adapter used to download data from the sd card to a computer.
+
+SD card readers require an external interface to transfer data to a computer. Several SD-to-USB converters were purchased for the purposes of the exploratory trial. At some point of during the trial one converter suffered a failure that went undiscovered for several weeks. Data files were transfered but files contained random data. When the same SD card was put into a different reader, the data was valid. To keep things as simple as possible the decision was made to no, longer use sd card adapters to download data, instead data cards would be exchanged for fresh cards and delivered for transfer where the data could be verified. This led to another problem related to the SD cards.
+
+Like most electronic devices sd cards are sensitive to electro-static discharge (ESD). SD cards should be kept in a ESD-safe case when not inserted into a device. During the exploratory study, that was not always the case. 
+As a result, entire sd cards worth of data were corrupted.
+
+In future iterations, if wireless transfer is not available, the SD card protocol should be clearly documented. Additionally, a utility to visualize the data immediately after download would add a confidence factor for the study workers during home visits.
+
+
+%\paragraph {too long between visits}
+%\paragraph {bad SDcard adapter}
+%\paragraph{excessive SD card handling}
 
 \subsection{Lack of documentation}
-\paragraph{cellphone user manual}
-\paragraph{WHIP troubleshooting guide}
-\paragraph{ digital surveys vs soft surveys}
+Lack of time had the additional effect of leaving no time for writing documentation for either the nursing faculty or the patients who would be using the device. All training was done in person. Future studies should have at least:
+\begin{itemize}
+\item a smartphone user manual.
+\item a WHIP troubleshooting guide
+\end{itemize}
 
-\subsection{Communication Problems}
+A manual could take the form of written booklet, on-line video, or both. 
+While the focus of the aforementioned items is on the patient and clinician, the need for manuals for engineers engaged in multidisciplinary work is even more acute. Specifically, when implementing the psychosocial instruments, great care was taken to ensure that data was validated before being inserted into the database. However, the sample space of possible answers was not made clear from the sample form provided. The one-to-five lickert scale could also contain responses such as "does not apply" or fractional values, such as "0.5". This lack of documentation resulted in many patches to the smartphone application, slowing down the trial. In the future it may be useful to have engineers that will be instrumenting similar psychosocial instruments follow on with clinician as they administer the surveys. If it is not possible to accompany clinicians, it may also be beneficial to collect a large dataset of filled in forms. Analysis of collected forms may also avoid confusion.
 
-\subsubsection{patient - nurse communication}
-\paragraph{cellphone usage}
-\paragraph{proper strap placement/usage}
+%\paragraph{cellphone user manual}
+%\paragraph{WHIP troubleshooting guide}
+%\paragraph{ digital surveys vs soft surveys}
 
-\subsubsection{Feature creep}
-\paragraph{COPD - Borg Dispnea}
-\paragraph{modified likert}
-\paragraph{survey alarms}
-\paragraph{strict survey -> anytime survey}
+%\subsection{Communication Problems}
 
-\subsubsection{nurse - engineer communication}
-\paragraph{delay between problem observation and problem reporting}
-\paragraph{no timely feedback on collected data}
+%\subsubsection{patient - nurse communication}
+%\paragraph{cellphone usage}
+%\paragraph{proper strap placement/usage}
+
+%\subsubsection{Feature creep}
+%\paragraph{COPD - Borg Dispnea}
+%\paragraph{modified likert}
+%\paragraph{survey alarms}
+%\paragraph{strict survey -> anytime survey}
+
+%\subsubsection{nurse - engineer communication}
+%\paragraph{delay between problem observation and problem reporting}
+%\paragraph{no timely feedback on collected data}
 
 
-\subsection{Loose protocol adherence}
-\paragraph{ changes in survey protocol, database changes}
-\paragraph{ changes in sensor useage (finger clip)}
-\paragraph{ no calibration measurements}
-\paragraph{ ECG Disconnected}
+%\subsection{Loose protocol adherence}
+%\paragraph{ changes in survey protocol, database changes}
+%\paragraph{ changes in sensor useage (finger clip)}
+%\paragraph{ no calibration measurements}
+%\paragraph{ ECG Disconnected}

@@ -87,9 +87,18 @@
   \thispagestyle{empty}
   \setcounter{page}{2}
 \begin{flushleft}
+
   \def\sigLine {\vfill \rule{0.55\textwidth}{0.5pt} \hskip .15\textwidth \rule{.25\textwidth}{0.5pt}\par}
-    \normalsize
-    We approve the \lowercase{\umthesis@typename\ }of \@author \par
+    
+    %ADJUST FONT based on how many signatures you need
+    
+    \normalsize % maximum size allowed (up to XX sigs)
+    %\small
+    %\footnotesize % good for 9 total signatures?
+    %\scriptsize
+    %\tiny
+    
+    We approve the \MakeLowercase{\umthesis@typename\ }of \@author \par
     \hskip .7\textwidth Date of Signature \par
     \ifcochairs
       \sigLine 
@@ -131,10 +140,10 @@
     \fi
     
     \sigLine
-    \@graduatedirector \par \umthesis@graddirectortitle ,  Department of \@departmentname \par
+    \@graduatedirector \par \umthesis@graddirectortitle \\ \@departmentname \par
     
     \sigLine
-    \@chairperson \par \umthesis@chairpersontitle , \@departmentname \par
+    \@chairperson \par \umthesis@chairpersontitle , Department of \@departmentname \par
     
     \sigLine
     \@dean \par \umthesis@deantitle \par

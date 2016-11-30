@@ -13,7 +13,7 @@
 \usepackage[table]{xcolor}
 
 % use showframe to check your margins and borders.
-%\usepackage{showframe}
+\usepackage{showframe}
 
 \usepackage[page,title,titletoc]{appendix}
 
@@ -42,10 +42,10 @@
 \usepackage{calc}
 
 %use this package for printing hard copies
-\usepackage[colorlinks,linkcolor=black,citecolor=black]{hyperref}
+%\usepackage[colorlinks,linkcolor=black,citecolor=black]{hyperref}
 
 %use this package for pdf publication
-%\usepackage[colorlinks]{hyperref}
+\usepackage[colorlinks]{hyperref}
 
 
 %use this package to easily find all links in a pdf
@@ -125,13 +125,13 @@
 \secondreader{Liudong Xing}{Professor, Department of Computer Engineering}{Dissertation Committee}
 \thirdreader{Kristen Sethares}{Professor, Department of Nursing}{Dissertation Committee}
 
-\fourthreader{Janet Prichard}{Professor, Department of Computer Information Systems, Bryant University}{Dissertation Committee}
+\fourthreader{Janet Prichard}{Professor, Computer Information Systems Bryant University, Rhode Island}{Dissertation Committee}
 
 
 \graduatedirector {Hong Liu}
-\chairperson {Antonio H. Costa}
+\chairperson [Chairperson]{Antonio H. Costa}
 \dean [Dean, College of Engineering] {Robert Peck} 
-\provost {Mohammad Karim}
+\provost {Tesfay Meressi}
 
 %\departmentchair{Dr. Anthony Costa} % Uses "Department Chair" as the title. To
 % use an alternate title, such as "Chair", use \departmentchair[Chair]{Pete Shearer}
@@ -146,23 +146,32 @@
 \maketitle
 \permissionpage
 %%\copyrightpage     %% not required for an M.S. thesis
+%\newgeometry{letterpaper,top=1.0in, bottom=1.125in,left=1.675in, right=1.0in, includehead}
 \signaturepage
+%\restoregeometry
 
 %%
 %% Abstract is MANDATORY. -- Except for MS theses
 \include{Abstract}
 
 %
-\begin{dedication}              % Dedication page
-  \begin{center}
-    \emph{Dedicated to Ken And Laura Viall, \\ who showed, by example, \\ how to be the kind of person I could be proud of.}
-  \end{center}
-\end{dedication}
+%\begin{dedication}              % Dedication page
+%  \begin{center}
+    
+%  \end{center}
+%\end{dedication}
 
 
 %% Acknowledgements are optional...yeah, right.
 \phantomsection
 \chapter*{Acknowledgments}             % Acknowledgements page
+	\begin{center}
+	\emph{Dedicated to Ken And Laura Viall, \\ who showed, by example, \\ how to be the kind of person I could be proud of.}
+	\end{center}
+  
+  \parskip
+  \parskip
+  
   I would like to acknowledge the following individuals, without whom, this research would not have been possible. Dr. Fortier, my dissertation advisor, mentor, and friend who first recruited me into pursuing a PhD. Dr. Sethares, for her patience and for taking the time to educate me on all matters medical. My committee, whose doors have always been open anytime I needed advice. Gwen Davis who worked with me in creating the smartphone application and continued to support the study long after the funding ran out. Finally, to Professor Phil Viall, who has been my teacher in life, and engineering, for longer than I can remember. 
   
   I would also like to acknowledge the support of the IRB in approving the exploratory study at the core of this dissertation, and the funding of the UMD bridge grant.

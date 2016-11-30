@@ -92,11 +92,11 @@
     
     %ADJUST FONT based on how many signatures you need
     
-    \normalsize % maximum size allowed (up to XX sigs)
-    %\small
-    %\footnotesize % good for 9 total signatures?
-    %\scriptsize
-    %\tiny
+    %\normalsize % maximum size allowed (up to XX sigs) (12pt)
+    %\small			% 10.95 pt											
+    \footnotesize % good for 9 total signatures? (10 pt)
+    %\scriptsize %(8 pt)
+    %\tiny		%((6pt)
     
     We approve the \MakeLowercase{\umthesis@typename\ }of \@author \par
     \hskip .7\textwidth Date of Signature \par
@@ -150,10 +150,7 @@
 
     \sigLine
     \@provost \par \umthesis@provosttitle \par
-    
-
   \end{flushleft}
-
   }
 
 %%

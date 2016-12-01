@@ -886,3 +886,99 @@
 \providecommand*{\toclevel@FrontMatter}{0}
 \providecommand*{\toclevel@BackMatter}{0}
 \providecommand*{\toclevel@Chapter}{0}
+
+
+
+\def\sigLine {\vfill\rule{.6\linewidth}{0.5pt}\hspace{.15\linewidth}\rule{.25\linewidth}{0.5pt}\par}
+  
+%to make the Title and Department fit together correctly
+\newcommand{\siglineB}[2]
+{
+	\setbox0\hbox{#1, #2} %
+	\ifdim\wd0>\linewidth
+		#1 \par #2
+	\else
+	  	#1, #2
+	\fi
+  
+}
+  
+
+      % to keep signatures clean
+      \def \SIG#1#2#3#4{
+      	\sigLine
+      	\vspace{1pt}
+      	\begin{minipage}{.8\linewidth}
+        		\raggedright
+        		#1 \par
+        		\siglineB{#2}{#3} \par
+        	  	%\textcolor{red}{#1}   \par
+        	  	%\siglineB{\textcolor{blue}{#2}}{\textcolor{olive}{#3}}  \par
+        	  	#4 \par
+        	\end{minipage}
+      }
+      
+      \def \SIGA#1#2#3{
+            	\sigLine
+            	\vspace{1pt}
+            	\begin{minipage}{.8\linewidth}
+              		\raggedright
+              		#1 \par
+              		\siglineB{#2}{#3} \par
+              	  	%\textcolor{red}{#1}   \par
+              	  	%\siglineB{\textcolor{blue}{#2}}{\textcolor{olive}{#3}}  %\par
+              	\end{minipage}
+            }
+		\def \SIGB#1#2{
+            	\sigLine
+            	\vspace{1pt}
+            	\begin{minipage}{.8\linewidth}
+              		\raggedright
+              		#1 \par
+              		#2 \par
+              	  	%\textcolor{red}{#1}   \par
+              	  	%\textcolor{blue}{#2}  %\par
+              	\end{minipage}
+            }      
+      
+\newcommand{\signaturepage}{
+  \clearpage
+  \thispagestyle{empty}
+  \setcounter{page}{2}
+\begin{flushleft}
+    \iffourth
+     \footnotesize % good for 9 total signatures? (10 pt)
+    \else
+     \normalsize % maximum size allowed (up to XX sigs) (12pt)
+    \fi
+    
+    \parbox{.75\linewidth}{We approve the \MakeLowercase{\umthesis@typename\ }of \@author}Date of Signature \par
+%    \hskip .7\textwidth Date of Signature \par
+    \ifcochairs
+      \SIG{\@firstchair}{\@firstchairtitle}{Department of \@firstchairjob}{Co-\MakeLowercase{\umthesis@typename} Advisor}
+      \SIG{\@secondchair}{\@firstchairtitle}{Department of \@secondchairjob}{Co-\MakeLowercase{\umthesis@typename} Advisor}
+    \else
+      \SIG{\@committeechair}{\@committeechairtitle}{Department of \@committeechairjob}{\umthesis@typename\ Advisor}
+    \fi
+    \SIG{\@firstreader}{\@firstreadertitle}{Department of \@firstreaderjob}{\umthesis@typename\ Committee}
+    \ifsecond
+     \SIG{\@secondreader}{\@secondreadertitle}{Department of \@secondreaderjob}{\umthesis@typename\ Committee}
+    \fi
+    \ifthird
+     \SIG{\@thirdreader}{\@thirdreadertitle}{Department of \@thirdreaderjob}{\umthesis@typename\ Committee}
+    \fi
+    \iffourth
+     \SIG{\@fourthreader}{\@fourthreadertitle}{Department of \@fourthreaderjob}{\umthesis@typename\ Committee}
+    \fi
+    \iffifth
+     \SIG{\@fifthreader}{\@fifthreadertitle}{Department of \@fifthreaderjob}{\umthesis@typename\ Committee}
+    \fi
+    \ifsixth
+     \SIG{\@sixthreader}{\@sixthreadertitle}{Department of \@sixthreaderjob}{\umthesis@typename\ Committee}
+    \fi
+    \SIGA{\@graduatedirector}{\umthesis@graddirectortitle}{Department of \@departmentname}
+    \SIGA{\@chairperson}{\umthesis@chairpersontitle}{Department of \@departmentname}
+    \SIGB{\@dean}{\umthesis@deantitle}
+   	\SIGB{\@provost}{\umthesis@provosttitle}
+  \end{flushleft}
+}

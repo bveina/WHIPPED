@@ -82,76 +82,8 @@
   \rule{0in}{4.2in}
   }
 
-\newcommand{\signaturepage}{
-  \clearpage
-  \thispagestyle{empty}
-  \setcounter{page}{2}
-\begin{flushleft}
 
-  \def\sigLine {\vfill \rule{0.55\textwidth}{0.5pt} \hskip .15\textwidth \rule{.25\textwidth}{0.5pt}\par}
-    
-    %ADJUST FONT based on how many signatures you need
-    
-    %\normalsize % maximum size allowed (up to XX sigs) (12pt)
-    %\small			% 10.95 pt											
-    \footnotesize % good for 9 total signatures? (10 pt)
-    %\scriptsize %(8 pt)
-    %\tiny		%((6pt)
-    
-    We approve the \MakeLowercase{\umthesis@typename\ }of \@author \par
-    \hskip .7\textwidth Date of Signature \par
-    \ifcochairs
-      \sigLine 
-      \@firstchair \par \@firstchairtitle \par\ \@firstchairjob \par
-      \sigLine 
-      \@secondchair \par \@secondchairtitle \par \@secondchairjob \par
 
-    \else
-      \sigLine 
-      \@committeechair \par \@committeechairtitle \par \@committeechairjob
-    \fi
-    
-    \sigLine 
-    \@firstreader \par \@firstreadertitle \par \@firstreaderjob \par
-
-    \ifsecond
-    \sigLine 
-    \@secondreader \par \@secondreadertitle \par \@secondreaderjob \par
-    \fi
-
-    \ifthird
-    \sigLine 
-    \@thirdreader \par \@thirdreadertitle \par \@thirdreaderjob \par
-    \fi
-
-    \iffourth
-    \sigLine 
-    \@fourthreader \par \@fourthreadertitle \par \@fourthreaderjob \par
-    \fi
-
-    \iffifth
-    \sigLine 
-    \@fifthreader \par \@fifthreadertitle \par \@fifthreaderjob \par
-    \fi
-
-    \ifsixth
-    \sigLine 
-    \@sixthreader \par \@sixthreadertitle \par \@sixthreaderjob \par
-    \fi
-    
-    \sigLine
-    \@graduatedirector \par \umthesis@graddirectortitle \\ \@departmentname \par
-    
-    \sigLine
-    \@chairperson \par \umthesis@chairpersontitle , Department of \@departmentname \par
-    
-    \sigLine
-    \@dean \par \umthesis@deantitle \par
-
-    \sigLine
-    \@provost \par \umthesis@provosttitle \par
-  \end{flushleft}
-  }
 
 %%
 %% Added environments

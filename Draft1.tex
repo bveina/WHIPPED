@@ -103,6 +103,12 @@
 \setlength{\emergencystretch}{4pt}
 
 
+
+
+
+
+
+
 \begin{document}
 
 %%
@@ -120,12 +126,14 @@
 \degree{Doctor of Philosophy}{Ph.D.} % what degree type and abreviation
 \degreeTitle{Computer Engineering} % what is your degree in
 
-\committeechair{Paul Fortier}{Professor, Department of Computer Engineering}{Dissertation Advisor}
-\firstreader{Honggang Wang}{Associate Professor, Department of Computer Engineering}{Dissertation Committee}
-\secondreader{Liudong Xing}{Professor, Department of Computer Engineering}{Dissertation Committee}
-\thirdreader{Kristen Sethares}{Professor, Department of Nursing}{Dissertation Committee}
+%\committeechair{Paul Fortier}{Professor, Department of Computer Engineering}{Dissertation Advisor}
+\committeechair{Paul Fortier}{Professor}{Computer Engineering}
 
-\fourthreader{Janet Prichard}{Professor, Computer Information Systems \\ Bryant University, Rhode Island}{Dissertation Committee}
+\firstreader{Honggang Wang}{Associate Professor}{Computer Engineering}
+\secondreader{Liudong Xing}{Professor}{Computer Engineering}
+\thirdreader{Kristen Sethares}{Professor}{Adult Nursing}
+
+\fourthreader{Janet Prichard}{Professor}{Computer Information Systems \linebreak[1] Bryant University, Rhode Island}
 
 
 \graduatedirector {Hong Liu}
@@ -146,9 +154,10 @@
 \maketitle
 \permissionpage
 %%\copyrightpage     %% not required for an M.S. thesis
-\newgeometry{letterpaper,top=1.0in, bottom=1.125in,left=1.675in, right=1.0in}
+\newgeometry{top=1.0in, bottom=1.125in,left=1.675in, right=1.0in}
 \signaturepage
 \restoregeometry
+
 
 %%
 %% Abstract is MANDATORY. -- Except for MS theses
@@ -175,8 +184,6 @@
   I would like to acknowledge the following individuals, without whom, this research would not have been possible. Dr. Fortier, my dissertation advisor, mentor, and friend who first recruited me into pursuing a PhD. Dr. Sethares, for her patience and for taking the time to educate me on all matters medical. My committee, whose doors have always been open anytime I needed advice. Gwen Davis who worked with me in creating the smartphone application and continued to support the study long after the funding ran out. Finally, to Professor Phil Viall, who has been my teacher in life, and engineering, for longer than I can remember. 
   
   I would also like to acknowledge the support of the IRB in approving the exploratory study at the core of this dissertation, and the funding of the UMD bridge grant.
-  
-
 
 %%% option to show the table of contents with the hyper ref package.
 \cleardoublepage
@@ -206,6 +213,7 @@
 
 %pdf bookmarks cant have funny characters so we define alternative forms here.
 \def \spo2{ \texorpdfstring{SpO$_{2}$}{SpO2}}
+
 
 
 %% stuff goes HERE

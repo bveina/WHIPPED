@@ -948,12 +948,14 @@
 \begin{flushleft}
     \iffourth
      \footnotesize % good for 9 total signatures? (10 pt)
+     %\scriptsize %(8pt)
     \else
      \normalsize % maximum size allowed (up to XX sigs) (12pt)
     \fi
     
-    \parbox{.75\linewidth}{We approve the \MakeLowercase{\umthesis@typename\ }of \@author}Date of Signature \par
-%    \hskip .7\textwidth Date of Signature \par
+    \parbox{.75\linewidth}{We approve the \MakeLowercase{\umthesis@typename\ }of \@author} \par
+    %Date of Signature \par
+    \hskip.75\textwidth Date of Signature \par
     \ifcochairs
       \SIG{\@firstchair}{\@firstchairtitle}{Department of \@firstchairjob}{Co-\MakeLowercase{\umthesis@typename} Advisor}
       \SIG{\@secondchair}{\@firstchairtitle}{Department of \@secondchairjob}{Co-\MakeLowercase{\umthesis@typename} Advisor}

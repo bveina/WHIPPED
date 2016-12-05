@@ -1,5 +1,6 @@
 \documentclass{umthesis}   
 
+%\usepackage[style=ieee]{biblatex}
 
 %% umd requirements 
 %% use 11 or 12 pt font
@@ -13,9 +14,9 @@
 \usepackage[table]{xcolor}
 
 % use showframe to check your margins and borders.
-%\usepackage{showframe}
+\usepackage{showframe}
 
-\usepackage[page,title,titletoc]{appendix}
+\usepackage[title,titletoc]{appendix}
 
 \usepackage{tabularx}
 \usepackage{graphicx}
@@ -71,15 +72,16 @@
 \usepackage[capitalise,noabbrev,nameinlink]{cleveref}		% now \cref yields Figure 1.1 instead of 1.1 alone
 
 \cftsetindents{chapter}{0em}{2em}
-\cftsetindents{section}{0em}{2em}
-\cftsetindents{subsection}{0em}{2em}
-\cftsetindents{subsubsection}{0em}{2em}
-\cftsetindents{paragraph}{0em}{2em}
-
+\cftsetindents{section}{1em}{2em}
+\cftsetindents{subsection}{2em}{2em}
+\cftsetindents{subsubsection}{3em}{2em}
+\cftsetindents{paragraph}{4em}{2em}
+\cftsetindents{fig}{0em}{3em}
 
 \renewcommand{\cftchapaftersnum}{:}
 
 \renewcommand{\cftchappresnum}{\chaptername\space} %adds Chapter to the TOC
+\renewcommand{\cftchapfont}{\mdseries}
 \setlength{\cftchapnumwidth}{\widthof{\textbf{\chaptername~999~}}}
 \setlength{\cftsecnumwidth}{\widthof{\textbf{~9.9~}}}
 \setlength{\cftsubsecnumwidth}{\widthof{\textbf{~9.9.99~}}}
@@ -113,7 +115,7 @@
 
 %%
 %% You must fill in all of these appropriately
-\title{Wireless Health Indicator Patch  for Patient Education and Diagnostics (WHIPPED): \protect\\ An Integrated System Approach to Patient Self-Care}
+\title{Wireless Health Indicator Patch  for Patient Education and Diagnostics (WHIPPED): \linebreak[1] An Integrated System Approach to Patient Self-Care}
 
 \author{Benjamin Roy Viall}
 \date{January 2017} % The date you'll actually graduate -- must be
@@ -151,10 +153,15 @@
 
 %% start document with the basic bullshit that people pick over with a fine tooth comb
 \frontmatter
+
+\newgeometry{top=1.5in, bottom=1.5in,left=1.5in, right=1.5in}
 \maketitle
+\restoregeometry
+
+
 \permissionpage
 %%\copyrightpage     %% not required for an M.S. thesis
-\newgeometry{top=1.0in, bottom=.5in,left=1.675in, right=1.0in}
+\newgeometry{top=.75in, bottom=.75in,left=1.675in, right=1.0in}
 \signaturepage
 \restoregeometry
 
@@ -183,14 +190,14 @@
   
   I would like to acknowledge the following individuals, without whom, this research would not have been possible. Dr. Fortier, my dissertation advisor, mentor, and friend who first recruited me into pursuing a PhD. Dr. Sethares, for her patience and for taking the time to educate me on all matters medical. My committee, whose doors have always been open anytime I needed advice. Gwen Davis who worked with me in creating the smartphone application and continued to support the study long after the funding ran out. Finally, to Professor Phil Viall, who has been my teacher in life, and engineering, for longer than I can remember. 
   
-  I would also like to acknowledge the support of the IRB in approving the exploratory study at the core of this dissertation, and the funding of the UMD bridge grant.
+  I would also like to acknowledge the support of the Institutional Research Board (IRB) in approving the exploratory study at the core of this dissertation, and the funding of the University of Massachusetts Dartmouth bridge grant.
 
 %%% option to show the table of contents with the hyper ref package.
 \cleardoublepage
 \phantomsection
 
 %% this should be removed before submitting to the graduate studies office
-%\addcontentsline{toc}{chapter}{\contentsname}
+\addcontentsline{toc}{chapter}{\contentsname}
 %% this should be removed before submitting to the graduate studies office.
 
 
@@ -200,6 +207,7 @@
 \clearpage
 \phantomsection
 \addcontentsline{toc}{chapter}{List Of Figures}
+\chapter{List of Figures}
 \listoffigures                  % List of Figures
 %clearpage
 %\listoftables                   % List of Tables
@@ -244,9 +252,13 @@
 %% A bibliography is required.
 \interlinepenalty=10000  % prevent split bibliography entries
 %\bibliographystyle{umthesis}
-\bibliographystyle{ieeetr}
+% downloaded the latest IEEE style from 
+% http://www.dlsi.ua.es/wemis09/styles/IEEEtran.bst
+\bibliographystyle{myieeetrA}
+%\addcontentsline{toc}{chapter}{Bibliography}
+\chapter{Bib}
 \bibliography{Draft1}
-
+%\printbibliography
 
 \begin{appendices}
 %\appendix
@@ -256,8 +268,14 @@
 
 \include{A_Schematic}
 \chapter{Permission from the IRB}
-\chapter*{CD Pocket with Source Code}
-\cftaddtitleline{toc}{chapter}{CD Poclet with Source Code}{Back Cover}
+Aproovelaetter
+
+DASI SUrvey
+HSFSA 
+
+\chapter*{Source Code:}
+\cftaddtitleline{toc}{chapter}{Source Code}{Back Pocket}
+
 
 % how to do a single appendix for umassd
 %\chapter*{human use Perimissoin from the IRB}

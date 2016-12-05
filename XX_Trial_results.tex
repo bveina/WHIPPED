@@ -16,7 +16,7 @@ Sethares et al. proposed a trial to assess the usefulness of the sensor design c
  \begin{center}
   \label{fig:CarePackage}
   \includegraphics[scale=1,width=0.75\textwidth]{Images/carePackage.png} 
-  \caption{Care package for each participant.} 
+  \caption{Care Package for each Participant.} 
  \end{center}
 \end{figure}
 
@@ -48,11 +48,11 @@ The patient was instructed to wear the device during the day and to wear the fin
  \end{center}
 \end{figure}
 
-\section{The Phone application}
+\section{The Phone Application}
 
 The smartphone application was written in Java by an undergraduate researcher, based on previous masters projects in the MCHM research group \cite{Louro2013,Putin2011}. The application underwent several revisions over the course of the trial. \cref{fig:AndroidSplash} shows the initial screen presented to enrolled patients when they started the app. allowing for weight and dispnea data entry or to trigger a psychosocial survey.
 
-The first iteration implemented a different version of one of the psychosocial assessment tools, using a 1-4 lickert scale, the instrument was supposed to have 0-5 with 0 indicating "I did not have that symptom". It also did not have the self reporting behaviors for COPD patient. Last, there was no alarm feature implemented inside the survey application to remind the patients to participate in the self care instruments.
+The first iteration implemented a different version of one of the psychosocial assessment tools, using a 1-4 lickert scale, the instrument was supposed to have 0-5 with 0 indicating ``I did not have that symptom''. It also did not have the self reporting behaviors for COPD patient. Last, there was no alarm feature implemented inside the survey application to remind the patients to participate in the self care instruments.
 
 \begin{figure}[ht]
 \centering
@@ -86,7 +86,7 @@ Each survey was administered one question at a time, the different types of surv
 
 
 
-\section{Trial Lessons learned}
+\section{Trial Lessons Learned}
 
 While the WHIP sensor system was the primary focus of the dissertation, the information gathered during the exploratory trial was just was important. Recording what went wrong is just as important as recording the primary data. The primary data collected was the biometric data, consisting of ECG and \spo2, and the psychosocial data, consisting of the DASI and HFSA instruments. 
 
@@ -97,7 +97,7 @@ In a traditional design cycle for a product, testing, or validation, may be the 
 
 Another piece of the design which needed to be rushed was the wearable design. Using the polar heart strap was a decision born of expedience. It was faster to buy off the shelf straps and modify them to fit the needs of the grant. A less polished physical design was the result.
 
-\subsection {Lost data}
+\subsection {Lost Data}
 The primary goal of the WHIPPED system, after adjustments due to grant timing, was data collection. Several lessons were learned during the study. The sensor system was designed to record a theoretical maximum of eight-twelve-hour days. Originally, this was viewed as a comfortable margin of error since a nightly wireless data dump was envisioned at design time. Once the wireless link was removed from the study, a new protocol was put in place, data would be downloaded via the USB interface of the WHIP sensor. Someone would go to each participant each week with a computer and manually download the data.
 
 The USB approach was quickly abandoned, due to speed. The USB hardware interface was only capable of full-speed USB (12 Megabits (Mb)/sec). Given that each 2 hour ECG and \spo2 datafile was approximately 100 MegaBytes (MB), one weeks worth of data would have taken $ 7 \frac{days}{week} * 8 \frac{hours}{day} * 100 \frac{MB}{2 hours} * 12 \frac{Mb}{Second} = 31.1 \frac{minutes}{week}$ to transfer data. In the future, if a microcontroller with a hi-speed USB interface is used, the same transfer would only take $ 7 \frac{days}{week} * 8 \frac{hours}{day} * 100 \frac{MB}{2 hours} * 480 \frac{Mb}{second} = 47 \frac{seconds}{week}$.  
@@ -119,7 +119,7 @@ In future iterations, if wireless transfer is not available, the SD card protoco
 %\paragraph {bad SDcard adapter}
 %\paragraph{excessive SD card handling}
 
-\subsection{Lack of documentation}
+\subsection{Lack of Documentation}
 Lack of time had the additional effect of leaving no time for writing documentation for either the nursing faculty or the patients who would be using the device. All training was done in person. Future studies should have at least:
 \begin{itemize}
 \item a smartphone user manual.
@@ -127,7 +127,7 @@ Lack of time had the additional effect of leaving no time for writing documentat
 \end{itemize}
 
 A manual could take the form of written booklet, on-line video, or both. 
-While the focus of the aforementioned items is on the patient and clinician, the need for manuals for engineers engaged in multidisciplinary work is even more acute. Specifically, when implementing the psychosocial instruments, great care was taken to ensure that data was validated before being inserted into the database. However, the sample space of possible answers was not made clear from the sample form provided. The one-to-five lickert scale could also contain responses such as "does not apply" or fractional values, such as "0.5". This lack of documentation resulted in many patches to the smartphone application, slowing down the trial. In the future it may be useful to have engineers that will be instrumenting similar psychosocial instruments follow on with clinician as they administer the surveys. If it is not possible to accompany clinicians, it may also be beneficial to collect a large dataset of filled in forms. Analysis of collected forms may also avoid confusion.
+While the focus of the aforementioned items is on the patient and clinician, the need for manuals for engineers engaged in multidisciplinary work is even more acute. Specifically, when implementing the psychosocial instruments, great care was taken to ensure that data was validated before being inserted into the database. However, the sample space of possible answers was not made clear from the sample form provided. The one-to-five lickert scale could also contain responses such as ``does not apply'' or fractional values, such as ``0.5''. This lack of documentation resulted in many patches to the smartphone application, slowing down the trial. In the future it may be useful to have engineers that will be instrumenting similar psychosocial instruments follow on with clinician as they administer the surveys. If it is not possible to accompany clinicians, it may also be beneficial to collect a large dataset of filled in forms. Analysis of collected forms may also avoid confusion.
 
 %\paragraph{cellphone user manual}
 %\paragraph{WHIP troubleshooting guide}

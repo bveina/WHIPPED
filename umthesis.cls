@@ -871,14 +871,15 @@
 %%
 %% Fix the bibliography
 
-\AtBeginDocument{%
-  \let\base@thebibliography\thebibliography%
-  \let\endbase@thebibliography\endthebibliography%
+%\AtBeginDocument{%
+%  \let\base@thebibliography\thebibliography%
+%  \let\endbase@thebibliography\endthebibliography%
   %
-  \renewenvironment{thebibliography}[1]{%
-    \begin{base@thebibliography}{#1}%
-      \addcontentsline{toc}{\toc@section}{\MakeTextUppercase{\bibname}}%
-    }{\end{base@thebibliography}}}
+%  \renewenvironment{thebibliography}[1]{%
+%    \begin{base@thebibliography}{#1}%
+%      \addcontentsline{toc}{kind}{title}
+%      \addcontentsline{toc}{\toc@section}{\bibname}%
+%    }{\end{base@thebibliography}}}
 
 \newcommand{\doublespace}{\doublespacenormalsize}
 
@@ -983,4 +984,33 @@
     \SIGB{\@dean}{\umthesis@deantitle}
    	\SIGB{\@provost}{\umthesis@provosttitle}
   \end{flushleft}
+}
+
+
+
+\newcommand{\permissionpage}{
+\clearpage
+\thispagestyle{empty}
+\null
+\vfill
+\noindent Copyright 2015 by \@author. All rights reserved. This material may not be duplicated by any means without the express written permission of the author. \par \null \par
+
+\noindent I grant the  \@school\ the non-exclusive right of making a single copy on a not-for-profit basis to replace the University's circulating copy if it is lost or destroyed.
+
+% \noindent I grant the \@school \  the non-exclusive right to use the work for the purpose of making single copies of the work available to the public on a not-for profit basis if the University's circulating copy is lost or destroyed. \par
+
+  \newlength{\brvguide}
+  \settowidth{\brvguide}{\rule{0.55\textwidth}{0.5pt}}
+
+
+  \begin{flushright}
+    \normalsize
+    \vskip 0.7in
+    \rule{0.55\textwidth}{0.5pt} \par
+    \parbox[t]{\brvguide}{\@author}
+    \vskip 0.35in
+    \parbox[t]{\brvguide}{Date \hrulefill}
+    \vskip 2.0in
+  \end{flushright}
+\vfill
 }

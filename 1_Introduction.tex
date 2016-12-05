@@ -46,14 +46,14 @@ With alerts to notify clinicians of an imminent event (an emergency) or a downwa
 
 The dissertation will address the design, implementation, and testing of the WHIPPED Systems'  three parts: the WHIP sensor, the cellphone application, and the Back-end Knowledge Engine. The dissertation will also discuss the exploratory study, conducted by Dr. Sethares and its role in validating the WHIPPED System.
 
-\section{Importance of topic}
+\section{Importance of Topic}
 \label{sec:importanceOfTopic}
 
 \begin{figure}
 	\begin{center}
 		\label{fig:DaysofCare}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/DaysOfCare.png} 
-		\caption{Number of days of inpatient hospital care by major diagnosis U.S., 1990-2009 }
+		\caption{Number of Days of Inpatient Hospital Care by Major Diagnosis U.S., 1990-2009 }
 	\end{center}
 \end{figure}
 
@@ -64,7 +64,7 @@ Mussilino, working for the National Institutes of Health, compiled statistical d
 	\begin{center}
 		\label{fig:SurvivalRates}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/SurvivalRate.jpg} 
-		\caption{Survival Rates Of Patients Who Engage In Self Care Versus Those That Do Not.}
+		\caption{Survival Rates of Patients who Engage in Self Care Versus Those That Do Not}
 	\end{center}
 \end{figure}
 
@@ -82,7 +82,7 @@ According to Mussolino, Cardiovascular diseases were the leading cause of hospit
 	\begin{center}
 		\label{fig:CVDCost}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/CostOfCVD.jpg} 
-		\caption{Economic Cost of Cardiovascular, Lung, and Blood diseases U.S., 2008 }
+		\caption{Economic Cost of Cardiovascular, Lung, and Blood Diseases U.S., 2008 }
 	\end{center}
 \end{figure}
 
@@ -128,7 +128,7 @@ Patients will be able to view their wellness, ECG, \spo2, respiration, and heart
 
 The BKE will make use of a minimal cardiac ontology with co-morbidity information to assess a patient's status. The wellness metric will be based on the collected biometric readings as well as the psychosocial instruments correlated with the medical ontology to calculate the patient's overall wellness. We will also track the patient's wellness over time, and, if a decreasing trend is detected in the patient's wellness score, provide possible interventions to the user to reverse the downward trend. Finally, in severe cases we can provide an alert to a medical professional indicating immediate care is needed.
 
-Having defined the requirements and operation of the system, focus can now switch to realization. The natural first choice is to construct a sensor platform to collect ECG and PPG readings. The "\nameref{sec:ResearchDoneToDate}" section shows significant progress in data collection has been achieved. While building the sensor suite, work also began on several smartphone applications. Early applications were responsible for displaying collected data in real time in order to validate the sensor designs. Work can begin on the design of the BKE, after sensor suite validation. The BKE is partitioned into four design tasks. 
+Having defined the requirements and operation of the system, focus can now switch to realization. The natural first choice is to construct a sensor platform to collect ECG and PPG readings. The ``\nameref{sec:ResearchDoneToDate}'' section shows significant progress in data collection has been achieved. While building the sensor suite, work also began on several smartphone applications. Early applications were responsible for displaying collected data in real time in order to validate the sensor designs. Work can begin on the design of the BKE, after sensor suite validation. The BKE is partitioned into four design tasks. 
 \begin{itemize}
 \item First a minimal EHR was designed and implemented. Identification of co-morbidities and demographic data storage are the primary goals of the initial EHR.
 \item The second task will be to expand the EHR to support real-time biometric data and periodic psychosocial data. 
@@ -138,16 +138,16 @@ Having defined the requirements and operation of the system, focus can now switc
 These four tasks will not be completed atomically. Part of building and validating a database is providing test data. The other parts of the system, the smartphone and WHIP, can be integrated with each BKE task. A smartphone app allowing “registration” can be written, after designing a minimal EHR , with the intention of integration into the final smartphone application. Once the EHR is expanded to support the sensor and psychosocial data, integrating the three parts of the system together can begin. Firmware for the sensor can be written, designed to transfer the data to the smartphone.  The smartphone will have a service to relay the sensor data to the BKE. The smartphone will also be able to administer psychosocial instruments. 
 A secondary smartphone application can be written, geared towards a clinicians use, to monitor the data coming from the sensor suite. Once the data transfer to the BKE is tested and verified the task of wellness calculation and intervention analysis can begin. Validation of the back-end computations is accomplished using simulated patient data input into the database. Patient simulations will seek to test the wellness calculations validity. The smartphone app will be augmented to receive data from the BKE and deliver the wellness calculation to the patient simulation. The BKE will also be presented with simulated patients who have decreasing wellness scores and will be tested to see what types of interventions are provided. The emergency feature of the system can be implemented and tested without the BKE; designed to call an urgent care center if a cardiac event, such as a heart attack, is detected. If the sensor suite detects such an event, it should send an alert to the smartphone. The phone can then place a call and automatically deliver information such as location, type of event detected, and patient information to the operator. The phone can then connect the operator to the patient if they are conscious, to allow further information to be communicated. During testing of the emergency response feature another number can be substituted for 911. Then a simulated event can be input into the system to test if the event is detected and the phone call placed. Once the functionality of these devices has been verified, an exploratory research study is proposed to validate the system with real world participants.
 
-\section{Limitations and key assumptions}
+\section{Limitations and Key Assumptions}
 \label{sec:LimitationsAndKeyAssumptions}
 The WHIPPED system could be expanded to many domains. However, we bound the research in several areas. When we move to real world patients, we will seek between ten and twenty participants for an experimental study, not a clinical trial. A study allows us to select patients who will most benefit from the system, specifically patients over sixty-five who have had one or more cardiac events. We are further limiting ourselves in the area of design to consider non-invasive methods of data collection. While there have been long-term implantable devices developed [54], these are not suitable for the dissertation's purposes. Creating a system having the smallest possible impact on the day-to-day activities of the patient is significant goal of the research. Therefore, any device which connects to a patient, must be in a small form factor. If the device is to be removable, it must not require any special knowledge to re-affix the device.  Furthermore, the device should be designed with long-term use in mind. Since the device must be portable, battery power is needed. Battery power further implies the device must be low power.
 
-\section{Contributions to knowledge}
+\section{Contributions to Knowledge}
 \label{sec:ContributionsToKnowledge}
 Due to the interdisciplinary nature of this dissertation, contributions can be split into two areas: the contributions to the medical domain and the contributions to the engineering domain. The medical domain can benefit by using the WHIPPED system to test the hypothesis that engaging patients in their own self-care can lead to a better QOL and reduce hospitalization. During the exploratory study, tests will be performed based on patients who use the traditional care method (the control), patients using only the psychosocial instruments, and patients who have the sensors and psychosocial instruments. We can also access if patients will effectively use the system to facilitate their self-care.
 For the engineering domain, we will develop new and novel techniques for data fusion and knowledge acquisition supporting numerous future applications (e.g. future soldier systems, athlete training). We will design implement and validate an end-to-end system that integrates synthetic sensors, wireless communication, and the calculation of a wellness measure, using an EHR and BKE into an all-inclusive system. We will provide a medical solution to engage patients in their own self-care cheaply with little impact on the user. The WHIPPED solution can reduce health-care costs and increase QOL. 
 
-\section{Research Done To Date}
+\section{Research Done to Date}
 \label{sec:ResearchDoneToDate}
 In preparation for the main research component of the dissertation, some preliminary work in the fields of bio-sensing has already been performed . The first step was to get up to speed on the research group's status. During the 2009-2010 school years, a senior design group was tasked with building an analog front end to capture an ECG signal. Also, during the 2009-2010 school years, master's candidate Osama Aljaroudi designed an analog front-end excitation and conditioning circuit for a \spo2/PPG circuit. A device with both circuits was designed and fabricated on a four-layer PCB board and shown in \cref{fig:PCB_alpha}. Unfortunately, because of the inexperience with the tools the board suffered from many problems. These were eventually rectified with “green wire fixes”. A great deal was learned from the initial foray into fabrication.
 
@@ -155,7 +155,7 @@ In preparation for the main research component of the dissertation, some prelimi
 	\begin{center}
 		\label{fig:PCB_alpha}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/PCB_Alpha.jpg} 
-		\caption{Analog front-end alpha board.}
+		\caption{Analog Front-end Alpha Board.}
 	\end{center}
 \end{figure}
 
@@ -165,7 +165,7 @@ The next revision of the hardware was personally undertaken by me in the spring 
 	\begin{center}
 		\label{fig:PCB_analog_beta}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/PCB_AnalogBeta.JPG} 
-		\caption{Beta Analog board}
+		\caption{Beta Analog Board}
 	\end{center}
 \end{figure}
 
@@ -208,7 +208,7 @@ However, the application note presents an alternative, shown in \cref{fig:sigmaD
 	\begin{center}
 		\label{fig:SAR_topology}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/SAR_topology.png} 
-		\caption{Typical ECG acquisition system }
+		\caption{Typical ECG Acquisition System }
 	\end{center}
 \end{figure}
 
@@ -218,7 +218,7 @@ Other group research will be used as input to the dissertation. Previous, comple
 	\begin{center}
 		\label{fig:sigmaDelta_topology}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/sigmaDelta_topology_simultanious.png} 
-		\caption{ECG approach using $\Sigma\Delta $ ADC}
+		\caption{ECG Approach using $\Sigma\Delta $ ADC}
 	\end{center}
 \end{figure}
 

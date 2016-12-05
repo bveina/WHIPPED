@@ -42,7 +42,7 @@ These standards propose a heavyweight approach to sensor identification and inte
 \hline Data Protection 		& 32-bit CRC & 16-bit CRC &  16-bit CRC \\
 \hline 
 \end{tabularx} 
-		\caption{Comparison of wireless technologies}
+		\caption{Comparison of Wireless Technologies}
 	\end{center}
 \end{figure}
 
@@ -80,7 +80,7 @@ We are using a partial health ontology focused on chronic cardiac patients in th
 	\begin{center}
 		
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/20second.pdf} 
-		\caption{Twenty Second Captured Trace of WHIPPED Version2 ECG and SpO2 waveforms}
+		\caption{Twenty Second Captured Trace of WHIPPED Version2 ECG and SpO2 Waveforms}
 		\label{fig:20SecondEcg}
 	\end{center}
 \end{figure}
@@ -96,13 +96,15 @@ Some metrics, such as: ECG, O2-Saturation (\spo2), Blood pressure(BP), pulse rat
 \label{subsubsec:Electrocardiogram}
 Electrocardiography (ECG) is used to measure the electrical activity of the heart. Clinicians are able to detect abnormalities such as tachycardia, bradycardia, and atrial and ventricular fibrillation among others by monitoring a patient's ECG . Traditional techniques measure the potential of between 2-12 electrodes, or leads affixed to a patient. These signals have very small potentials between them and require an analog front end to produce readings, which can be easily digitized. Numerous techniques for acquiring an ECG signal have been presented in the literature \cite{Kim2011,Yan2011,Faggion2011,Secerbegovic2011}.  When considering a compact sensor device, the number of leads is a prime concern. Therefore, many two and three lead device designs were considered. Two leads are the minimum required to detect potential voltage across the heart. The third lead is used to inject a small current back into the patient as active noise cancellation. The three-lead technique is used in current reference designs \cite{TI2006} . Another novel approach detected a patient's ECG from a distance using two aluminum discs \cite{Belgacem2011}. However, detecting an ECG, from a distance, applies only to immobile patients. Variations in the distance to the patient yielded unpredictable results, which precludes it from use in ambulatory patients and in mobile home-care patients. 
 
-Capturing an ECG signal is the first step in assessing patient health. A healthy ECG signal will demonstrate several peaks and valleys for each heartbeat. Each of these Principally Important Points (PIPs) represents an action happening in the heart. The PIPs are labeled PQRST. The P wave represents depolarization of the upper part of the heart, called the atria. A normal maximum P wave duration is ~100 mS. The time between the beginning of the P wave and the peak of the R wave represents the time required for an electrical impulse to depolarize the atria and reach the electrical conduction system of the lower part of the heart, called the ventricle. The normal P-R interval in a healthy adult is 120 mS to 200 mS. Together the QRS PIPs are called the "QRS complex" and they represent ventricular depolarization. Finally, the T wave represents ventricular re-polarization. The time between the Q and T waves, the Q-T interval, represents the time when the heart is unable to be depolarized \cite{Khorovets2000}. Deviations from these accepted norms represent a problem with the normal sinus rhythm. Additional processing of the raw ECG waveform can identify these abnormalities.
+Capturing an ECG signal is the first step in assessing patient health. A healthy ECG signal will demonstrate several peaks and valleys for each heartbeat. Each of these Principally Important Points (PIPs) represents an action happening in the heart. The PIPs are labeled PQRST. The P wave represents depolarization of the upper part of the heart, called the atria. A normal maximum P wave duration is ~100 mS. The time between the beginning of the P wave and the peak of the R wave represents the time required for an electrical impulse to depolarize the atria and reach the electrical conduction system of the lower part of the heart, called the ventricle. The normal P-R interval in a healthy adult is 120 mS to 200 mS. Together the QRS PIPs are called the ``QRS complex'' and they represent ventricular depolarization. Finally, the T wave represents ventricular re-polarization. The time between the Q and T waves, the Q-T interval, represents the time when the heart is unable to be depolarized \cite{Khorovets2000}. Deviations from these accepted norms represent a problem with the normal sinus rhythm. Additional processing of the raw ECG waveform can identify these abnormalities.
 
-The dissertation's research, does not seek to revolutionize the acquisition of the ECG waveform. Rather, it seeks a preexisting robust method, using a minimum of leads and components. Based on the results indicated in the literature surveyed, the dissertation will more closely follow a two-lead approach. The analog front-end design, uses minimal gain and filtering components opting instead to use a high accuracy Analog to Digital Converter (ADC) and minimal gain. The proposed approach simplifies the system design and allows for sufficient resolution to detect small artifacts in the signal and preserve the baseline drift for the synthetic sensor measurements. A more detailed approach to ECG capture can be found in "\cref{sec:ResearchDoneToDate}"
+The dissertation's research, does not seek to revolutionize the acquisition of the ECG waveform. Rather, it seeks a preexisting robust method, using a minimum of leads and components. Based on the results indicated in the literature surveyed, the dissertation will more closely follow a two-lead approach. The analog front-end design, uses minimal gain and filtering components opting instead to use a high accuracy Analog to Digital Converter (ADC) and minimal gain. The proposed approach simplifies the system design and allows for sufficient resolution to detect small artifacts in the signal and preserve the baseline drift for the synthetic sensor measurements. A more detailed approach to ECG capture can be found in ``\cref{sec:ResearchDoneToDate}''
 
 
 
-\subsubsection[Photoplethysmograph(PPG)]{Photoplethysmograph (PPG)/ Oxygen Saturation (\spo2)}
+%\subsubsection[Photoplethysmograph(PPG)]{Photoplethysmograph (PPG)/ Oxygen Saturation (\spo2)}
+\subsubsection{Photoplethysmograph (PPG)/ Oxygen Saturation (\spo2)}
+
 \label{subsubsec:Photoplethysmograph}
 The second transducer researched is used in measuring patient oxygen saturation (\spo2). The respiratory system of a human body takes in oxygen from the air into the lungs where oxygen is extracted. The absorbed oxygen is transferred to the blood cells for distribution to the rest of the body. Depending on the health of a patient, the level of oxygen in the blood at any moment can vary. \spo2 is a percentage of oxygenated blood cells versus non-oxygenated blood cells. The \spo2 metric does not identify the number of oxygenated cells; only the ratio of oxygen carrying cells (HbO$_2$) to the non-oxygen carrying cells (Hb). The absorption spectra of the two types of cells are different as shown in \cref{fig:Hemoglobin}\cite{Prahl1998} can be used to identify the ratio. Two waveforms are acquired by exposing the body to two different wavelengths, 660 nm (Red) and 940 nm (Infrared), and measuring either the transmittance or reflectance of the patient. These signals can then be used for additional processing. Pulse rate, \spo2, and respiration rate all require the PPG waveform \cite{Scully2012,Kraitl2011}.  Some research has suggested it is possible to measure blood perfusion based on a PPG however, this approach has only been tested on babies \cite{Noor2011}.
 
@@ -111,7 +113,7 @@ The second transducer researched is used in measuring patient oxygen saturation 
 	\begin{center}
 		\label{fig:Hemoglobin}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/hemoglobin.pdf} 
-		\caption{Absorption Spectra of HbO2 (dashed) vs. Hb (Solid) }
+		\caption{Absorption Spectra of HbO2 (Dashed) vs. Hb (Solid) }
 	\end{center}
 \end{figure}
 
@@ -145,7 +147,7 @@ We conclude, based on available literature, extracting knowledge from the WHIP, 
 	\begin{center}
 		\label{fig:HR69}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/HR69.pdf} 
-		\caption{Sample Trace of ECG waveform with Heart Rate = 69}
+		\caption{Sample Trace of ECG Waveform with Heart Rate = 69}
 	\end{center}
 \end{figure}
 
@@ -168,7 +170,7 @@ The first and simplest synthetic sensor to construct, given the real transducers
 	\begin{center}
 		\label{fig:PulseRateCalc}
 		$\frac{23 R-waves}{20 seconds}*\frac{60 seconds}{1 minute}=69 \frac{beats}{minute}$
-		\caption{Basic Pulse rate calculation}
+		\caption{Basic Pulse Rate Calculation}
 	\end{center}
 \end{figure}
 
@@ -178,19 +180,19 @@ However, it is also possible to calculate the pulse rate on the R-R interval as 
 	\begin{center}
 		\label{fig:RR_PulseRateCalc}
 		$\frac{1 beat}{T_{R-R} seconds}*\frac{60 seconds}{1 minute}=\frac{beats}{minute}$
-		\caption{Heart Rate calculation from R-R interval}
+		\caption{Heart Rate Calculation From R-R Interval}
 	\end{center}
 \end{figure}
 
 The heart rate of a patient can be a primary indicator of heart health. If a patient's heart rate is elevated it can be an indication of tachycardia, barring other factors discussed in \nameref{sec:DataFusion}. The heart rate is a principal input into the wellness metric calculation.
 
-\subsection{Blood pressure}
+\subsection{Blood Pressure}
 \label{subsec:BloodPressure}
 \begin{figure}
 	\begin{center}
 		\label{fig:BP_cuff}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/BPCuff.png} 
-		\caption{Commercially available blood pressure meter with auto-inflating cuff}
+		\caption{Commercially Available Blood Pressure Meter With Auto-inflating Cuff}
 	\end{center}
 \end{figure}
 
@@ -200,7 +202,7 @@ Blood pressure (BP) is a measure of the pressure exerted on the walls of the blo
 	\begin{center}
 		\label{fig:PTT_calc}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/PTT_Calculation.png} 
-		\caption{Example calculation of Pulse Transit Time $ \Delta X $(PTT)}
+		\caption{Example Calculation of Pulse Transit Time $ \Delta X $(PTT)}
 	\end{center}
 \end{figure}
 
@@ -218,7 +220,7 @@ Further research has shown how to calculate SBP and DBP from a calibration measu
 		$DBP=\frac{1}{3}*SBP_{0} + \frac{2}{3}DBP_{0} + A*ln(\frac{PTT_{w_{0}}}{PTT_{w}})l-\frac{SBP_{0} - DBP_{0}}{3}*\frac{{PTT_{w_{0}}}^{2}}{{PTT_{w}}^{2}}$
 		
 		$SBP=DBP+(SBP_{0}-DBP_{0})*\frac{{PTT_{w_{0}}}^2}{{PTT_{w}}^2}$
-		\caption{Blood pressure calculations, given pulse transit time }
+		\caption{Blood Pressure Calculations, Given Pulse Transit Time }
 	\end{center}
 \end{figure}
 

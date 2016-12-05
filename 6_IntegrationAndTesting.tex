@@ -6,7 +6,7 @@
 
 This chapter covers the Hardware design and unit testing of the Wireless Health indicator patch (WHIP) and its initial construction. The different modules of the final prototype are outlined and their overall integration discussed, Procedures for testing the functionality of the design in a laboratory environment are discussed. Next, the physical design of the sensor apparatus is covered.
 
-\section{Electronic design}
+\section{Electronic Design}
 
 
 The core of the dissertation is the Wireless Health Indicator Patch (WHIP). This device, if properly connected to a patient, records all the needed data to derive the metrics described in \nameref{chap:SensorConcepts} and stores this data to a Secure Digital (SD) card for later retrieval. Additional functionality is offered via a Bluetooth (BT) connection. The final device used for the trial is the fifth revision of designs dating back to 2011. Details on previous versions can be found in \nameref{sec:ResearchDoneToDate}. The remainder of this section focuses on the final prototype.
@@ -21,7 +21,7 @@ The following sections discuss different modules that were synthesized for the W
 	\begin{center}
 		\label{fig:Rev5_power}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/Rev5_PowerSch.png} 
-		\caption{Power supply and charging circuit for Whip Sensor}
+		\caption{Power Supply and Charging Circuit for Whip Sensor}
 	\end{center}
 \end{figure}
 
@@ -36,7 +36,7 @@ The power and charging design was featured on every WHIP prototype starting with
 	\begin{center}
 		\label{fig:Rev5_SDCARD}
 		\includegraphics[scale=1,width=0.5\textwidth]{Images/Rev5_SDCARD.png} 
-		\caption{Memory Circuit connections for Whip Sensor}
+		\caption{Memory Circuit Connections for Whip Sensor}
 	\end{center}
 \end{figure}
 The Memory module is responsible for saving all patient biometric data. The device chosen was a micro SD card. The first revision of the WHIP board included a full sized SD card was as a trial of the technology. A micro SD card was used in the final prototype to reduce device size. The interface, shown in \cref{fig:Rev5_SDCARD}, remains the same regardless of card configuration. SD cards can communicate using the Serial Peripheral interface (SPI). SPI is a de facto standard, no standards body maintains the specification of SPI. SPI uses 4 wires to provide a full duplex synchronous communication channel. The memory module for the WHIP is actually the SD card, the only other part of the module is the card socket. All read and write logic is handled by the circuitry on the card. Offloading the flash algorithms to an sd card greatly simplifies the board design. However, SD cards are not 5 Volt tolerant this was part of the reason the power module provides 3.3V. The SPI bus for the memory module allows the control module to use a full FAT32 file system on the SD card using only the SPI interface.
@@ -48,19 +48,19 @@ In the Eagle the SD card device was created as a custom component and footprint.
 	\begin{center}
 		\label{fig:Rev5_ECG}
 		\includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5_ECG.png} 
-		\caption{ECG connections for Whip Sensor}
+		\caption{ECG Connections for Whip Sensor}
 	\end{center}
 \end{figure}
 
 The previous WHIP prototypes made use of instrumentation amplifiers and op amps. Designs had begun to allow for adjustable gain via digitally controlled potentiometers in the feedback circuit. However, as designs were progressing a monolithic IC was released that provided all the features required in a single IC package, the ADS1293.\cite{ADS1293} This ECG front-end provides a full analog solution with software adjustable gain for up to 5 leads with Right Leg Drive (RLD). The data interface is SPI compatible and fully interrupt driven with programmable data rates. The module does require its own crystal to operate correctly. ECG lead connectors were the only other module component. ECG connectors were chosen to interface with traditional hospital leads, but were ultimately removed in favor of the snap on solution discussed in \Cref{sec:EnclosureDesign}. Hospital leads were used heavily during prototyping and validation only. Software setup of th ECG module is provided in detail in \nameref{chap:SensorConcepts}, but results in an initial configuration by the control module at power up and then provides an interrupt driven stream of data to the control module until signaled to halt.
 
-\subsubsection{The \spo2 module}
+\subsubsection{The \spo2 Module}
 
 \begin{figure}
 	\begin{center}
 		\label{fig:Rev5_SPO2}
-		\includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5_SPO2.png} 
-		\caption{\spo2 connections for Whip Sensor}
+		\includegraphics[scale=1,width=\textwidth]{Images/Rev5_SPO2.png} 
+		\caption{\spo2 Connections for Whip Sensor}
 	\end{center}
 \end{figure}
 Similar to the ECG module the discrete component implementation of the \spo2 module was replaced with a monolithic device, the AFE4490.\cite{AFE4490} The AFE4490 handles the signal multiplexing of both Red and IR LEDs, and allows software programmable gain, also over an SPI data bus. Also, like the ECG module IC the AFE4490 requires its own crystal. The last thing to mention about the \spo2 module shown in \cref{fig:Rev5_SPO2}, is the connector. The first analog PCB featured a through-hole DB9 connector was used to interface with the finger clip sensor, in subsequent designs a surface mount component was used instead. This introduced an unexpected point of failure when combined with the final PCBs and is addressed in \nameref{sec:EnclosureDesign}. The \spo2 module is provided an initial configuration by the control module at power-up and the provides and interrupt driven stream of data to the control module until told to halt.
@@ -70,7 +70,7 @@ Similar to the ECG module the discrete component implementation of the \spo2 mod
 	\begin{center}
 		\label{fig:Rev5_BT}
 		\includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5_BT.png} 
-		\caption{Bluetooth Serial Communication connections for Whip Sensor}
+		\caption{Bluetooth Serial Communication Connections for Whip Sensor}
 	\end{center}
 \end{figure}
 The communication module implements a black box full duplex asynchronous serial connection with another device over Blue tooth. this modules design was validated in revision one and has remained unchanged since that time. 
@@ -86,7 +86,7 @@ The control module is the main brain of the WHIP. The Atmel AT32UC3B0512 provide
 		\label{fig:Breakouts}
 		\includegraphics[scale=1,width=0.45\textwidth]{Images/ECGBreakout.png} 
 		\includegraphics[scale=1,width=0.45\textwidth]{Images/SPO2Breakout.png} 		
-		\caption{Populated Breakout Boards for ECG and \spo2 devices}
+		\caption{Populated Breakout Boards for ECG and \spo2 Devices}
 	\end{center}
 \end{figure}
 
@@ -97,7 +97,7 @@ The treadmill test utilized version two of the breakout board since the first br
 	\begin{center}
 		\label{fig:Breakout Test}
 		\includegraphics[scale=1,width=0.45\textwidth]{Images/BreadBoardTest.png} 		
-		\caption{Test Rig For ECG and \spo2 Breakout Board showing real-time ECG trace}
+		\caption{Test Rig for ECG and \spo2 Breakout Board Showing Real-time ECG Trace}
 	\end{center}
 \end{figure}
 
@@ -108,8 +108,8 @@ After all modules had been designed in schematic capture, the design for the PCB
 \begin{figure}[ht]
 \begin{center}
 	\label{fig:FullLayout}
-	\includegraphics[angle=0,scale=1,width=1\textwidth]{Images/rev1D_PCB.pdf} 
-	\caption{Full Layout Top and Bottom}
+	\includegraphics[angle=0,scale=1,width=1\textwidth]{Images/rev1D_PCB_cropped.pdf} 
+	\caption{Full PCB Layout Top and Bottom}
 \end{center}
 \end{figure}
 
@@ -119,9 +119,9 @@ Some modules in the WHIP design required special consideration beyond what could
 \subsection {Final Prototype Construction}
 The second stage of integration occurred on the final WHIP PCB. Unlike production PCB assembly, the first prototype was not assembled all at once. First the power module was soldered together, and tested with a multimeter. This supply must have a load to provide proper regulation, therefore a 10,000-Ohm resistor was bridged across VCC and GND. The power system was validated as working only after adding this load resistor and confirming 3.3 Volts. The charging system was then validated by plugging a partially drained LIPO battery into the board with a USB cable connected to a computer. If the indicator 'LED1' lights, the charging circuit is validated. 
 
-Now that the entire power module is soldered all other tests are prefaced by an additional test. Before reapplying power after any soldering, a multimeter should be used to check for accidental shorts between VCC and GND. Additionally, it is often useful to perform the "finger test" when powering new peripherals. The finger test involves placing a finger on the top of an IC package as you power the PCB. If there is an error in soldering, or wiring, the chip will, more than likely, heat up, your finger can detect this thermal event and power can be disconnected, hopefully before any damage is done, either to your power supply,your finger, or your new component. These tests will not be mentioned in the descriptions below, but are still performed before power is applied during every test.
+Now that the entire power module is soldered all other tests are prefaced by an additional test. Before reapplying power after any soldering, a multimeter should be used to check for accidental shorts between VCC and GND. Additionally, it is often useful to perform the ``finger test'' when powering new peripherals. The finger test involves placing a finger on the top of an IC package as you power the PCB. If there is an error in soldering, or wiring, the chip will, more than likely, heat up, your finger can detect this thermal event and power can be disconnected, hopefully before any damage is done, either to your power supply,your finger, or your new component. These tests will not be mentioned in the descriptions below, but are still performed before power is applied during every test.
 
-The communication module was next to be validated, after removing all power, the communication module is added to the PCB. When power was applied, an attempt was made to connect to the module using an android phone. If pairing is successful, an additional test is performed. Opening a serial communication terminal on the phone "+++" is sent across the link if the module responds with "OK" then the Bluetooth module has entered over the air (OTA) configuration mode. Power can now be removed and the control module and Memory Module can be soldered on. 
+The communication module was next to be validated, after removing all power, the communication module is added to the PCB. When power was applied, an attempt was made to connect to the module using an android phone. If pairing is successful, an additional test is performed. Opening a serial communication terminal on the phone ``+++'' is sent across the link if the module responds with ``OK'' then the Bluetooth module has entered over the air (OTA) configuration mode. Power can now be removed and the control module and Memory Module can be soldered on. 
 
 The remaining tests all involve running parts of a validation firmware. The firmware runs on the microprocessor and exercises each of the other modules and provides an automated readout on the serial port. The JTAG module inside the microprocessor must be running o run the remaining test. This is tested by attaching the JTAG programmer to the board and attempting to read the device ID. if the test fails there is likely a soldering error, such as two or more pins shorted together, or a pin the is not soldered directly to the pad. A multimeter in continuity mode can find these errors quickly. 
 
@@ -129,7 +129,7 @@ The remaining tests all involve running parts of a validation firmware. The firm
 \begin{center}
 	\label{fig:ECG_Test_Pass}
 	\includegraphics[angle=0,scale=1,width=1\textwidth]{Images/ECG_processingSketch.png} 
-	\caption{Successful test of 'ECGcheck' firmware}
+	\caption{Successful Test of `ECGcheck' Firmware}
 \end{center}
 \end{figure}
 
@@ -144,7 +144,7 @@ Once the first prototype was validated, six boards at a time were populated at o
 \begin{center}
 	\label{fig:ReflowedBoards}
 	\includegraphics[angle=0,scale=1,width=1\textwidth]{Images/BoardsSoldered.png} 
-	\caption{Fully populated boards, just out of the reflow oven}
+	\caption{Fully Populated Boards, Just Out of the Reflow Oven}
 \end{center}
 \end{figure}
 
@@ -161,7 +161,7 @@ Part of the research component of this dissertation was to evaluate methods, and
 \begin{center}
 	\label{fig:Electrodes}
 	\includegraphics[angle=0,scale=1,width=.5\textwidth]{Images/Electrodes.png} 
-	\caption{Sticky Electrodes, top and bottom}
+	\caption{Sticky Electrodes, Top and Bottom}
 \end{center}
 \end{figure}
 Initial testing of the device was performed in a laboratory setting using a sensor board equipped with rubber feet to prevent shorting any exposed traces on the underside of the PCB. A temporary cable was constructed the connected to traditional pre-moistened sticky electrodes shown in \cref{fig:Electrodes}. This design was scrapped after areas of irritation began to appear on the engineers after several days of ripping off and reapplying electrodes. It was clear that wet electrodes would not be appropriate for long term use.
@@ -175,7 +175,7 @@ After several iterations, that never produced a qualitative approval by testers,
 	\label{fig:polar_3rdSnap}
 	\includegraphics[angle=0,scale=1,width=.51\textwidth]{Images/Polar_top.png} 
 	\includegraphics[angle=0,scale=1,width=.51\textwidth]{Images/Polar_bottom.png}
-	\caption{Third Electrode, Sewn using conductive thread and fabric}
+	\caption{Third Electrode, Sewn Using Conductive Thread and Fabric}
 \end{center}
 \end{figure}
 
@@ -186,12 +186,12 @@ After several iterations, that never produced a qualitative approval by testers,
   \label{fig:PCBvsRender}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5Assembled.png} 
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5_prerender.png} 
-  \caption{Populated PCB versus 3d Render}
+  \caption{Populated PCB Versus 3D Render}
  
  \end{center}
 \end{figure}
 
-\subsection {3d printed enclosure}
+\subsection {3D Printed Enclosure}
 The electronics enclosure served several purposes, first protecting all sensitive components from external damage. Second, providing clear access to ports of interest, including: charging port, sd card, ECG, and \spo2 ports. Lastly, keeping all components of the design enclosed together physically. 
 
 All enclosure designs were 3d printed. 3d printing takes a digital 3d model and creates a physical object, either out of an extruded material such as plastic or wood, a process known as Fused Deposition Modeling (FDM), or by repeatedly adding a thin layer of small particles,or resin, and using a laser to selectively melt those particles to the component underneath (SLS). Both methods are common in prototyping and each has its own advantages that are not the focus of this dissertation. A Lulzbot Taz4 \cite{LULZBOT} was used to create the models used in this dissertation. The Taz4 is a FDM type machine, all models were created out of Acrylonitrile butadiene styrene (ABS) plastic. ABS was chosen for its high strength properties. 3d printing the enclosures allowed us to rapidly change the design, sometimes several times a day, and get immediate physical feedback on the design. There is no clear number of how many prototype stages were used in the design as a result. However, the following paragraphs will explain the design decisions made,from first prototype, to final prototype enclosure.
@@ -199,13 +199,13 @@ All enclosure designs were 3d printed. 3d printing takes a digital 3d model and 
 
 First we should discuss how the enclosure was designed. All models were created using SketchUp\cite{Sketchup}. The choice of modeling software stemmed from the existing PCB work-flow. EagleCad, the PCB design software used to make the sensor PCB, allows custom scripts or User Language Programs (ULPs) to automate tasks or augment features of the program, one available ULP allows an export of the board directly into SketchUp. The basic export only provides a 3d model of the PCB without any components on it. however, if a 3d model of each component type is available, a fully populated PCB is imported into SketchUp. A fully populated PCB model was used, not just for enclosure design, but also for checking the clearances between components before the board was fabricated. Substantial effort was put into creating 3d models of components based on the mechanical drawings from the component data-sheets. As shown in \Cref{fig:PCBvsRender} the fully populated board is well represented by the 3d model. Using a generated 3d model allowed the designer to provide tight tolerances for the overall enclosure design. 
 
-The first enclosure was a simple box designed to hold the unpopulated PCB. Notable features of this first board included retaining clips above the board, rounded corners, integrated standoffs, and a compartment for the battery below the PCB. This was the first 3d printed object made for this project, and was used as a basic shakedown of the 3d printing process shown in . The utility of 3d printing was made immediately clear once the first prototype was printed. The PCB fit snuggly and did not move once seated. Indeed, once it was in it was difficult to get out. The second design change needed was to accommodate the battery. The standoffs were spaced too closely together to fit the battery. Testing this prototype required two standoffs be cut from the plastic model and can be seen on the left side of the enclosure in  \Cref{fig:enclosure1}. This "modify-after-print" approach was invaluable at each stage of the design.
+The first enclosure was a simple box designed to hold the unpopulated PCB. Notable features of this first board included retaining clips above the board, rounded corners, integrated standoffs, and a compartment for the battery below the PCB. This was the first 3d printed object made for this project, and was used as a basic shakedown of the 3d printing process shown in. The utility of 3d printing was made immediately clear once the first prototype was printed. The PCB fit snuggly and did not move once seated. Indeed, once it was in it was difficult to get out. The second design change needed was to accommodate the battery. The standoffs were spaced too closely together to fit the battery. Testing this prototype required two standoffs be cut from the plastic model and can be seen on the left side of the enclosure in  \Cref{fig:enclosure1}. This ``modify-after-print'' approach was invaluable at each stage of the design.
 
 \begin{figure}[ht]
  \begin{center}
   \label{fig:enclosure1}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure1.png} 
-  \caption{Enclosure Rev1, with cut tabs}
+  \caption{Enclosure Rev 1, with Cut Tabs}
  
  \end{center}
 \end{figure}
@@ -216,19 +216,19 @@ The next prototype stage moved the PCB standoffs, added ports for the USB, SD ca
  \begin{center}
   \label{fig:enclosure2}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure2.png} 
-  \caption{Enclosure Rev2, with enlarged SD slot}
+  \caption{Enclosure Rev 2, with Enlarged SD Slot}
  
  \end{center}
 \end{figure}
 
 
-It was at this point in the design process that the polar heart rate strap was introduced. The next prototype moved the ECG connection port from the side of the device to the bottom. A small insert was fabricated to fit into the model to allow it to snap directly to the polar strap. This model was printed and again modified to make channels for the wires that would connect from the snaps to the PCB. As shown in \Cref{fig:enclosure3} the enclosure was actually modified twice, the first time the modifications were made while the enclosure was upside down, which brings to mind the old adage "measure twice, cut once". 
+It was at this point in the design process that the polar heart rate strap was introduced. The next prototype moved the ECG connection port from the side of the device to the bottom. A small insert was fabricated to fit into the model to allow it to snap directly to the polar strap. This model was printed and again modified to make channels for the wires that would connect from the snaps to the PCB. As shown in \Cref{fig:enclosure3} the enclosure was actually modified twice, the first time the modifications were made while the enclosure was upside down, which brings to mind the old adage ``measure twice, cut once''. 
 
 \begin{figure}[ht]
  \begin{center}
   \label{fig:enclosure3}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure3.png} 
-  \caption{Enclosure Rev3, with wire Management Trenches} 
+  \caption{Enclosure Rev 3, with Wire Management Trenches} 
  \end{center}
 \end{figure}
 
@@ -243,17 +243,17 @@ The last enclosure integrates all the lessons learned in the previous designs, a
  \end{center}
 \end{figure}
 
-\subsection{enclosure conclusions}
+\subsection{Enclosure Conclusions}
 3d printing was used to great effect in the enclosure design. The ability to modify a physical prototype provided the flexibility to just try design concepts on a whim. Since cost and risk are usually proportional in a design environment the extreme low cost of 3d printing, approximately two dollars and two hours per enclosure, provided a large amount of freedom to try out many designs before settling on a final implementation. Additionally, the ability to modify each prototype to add features allowed for instant feedback on each 3d model. 
 
-The largest drawback to 3d printing each case was the time involved, and the rate of failure. The 3d printer was a new tool at the start of this process. Unfortunately it is not as user friendly as a traditional 2d laser printer. Going from model to printed object is not as simple as hitting "print". An additional step, know as Computer Aided Manufacturing (CAM), is required to turn the 3d model into movement instructions for the printer. This process is extremely flexible, however the flexibility provided by the process also introduces complexity. Additionally, to ensure reliable prints some preparation to the print bed is required. This was not immediately apparent, however once the problem was identified the rate of failure went from four out of five (80 \%) to one in fifty(2\%). A 2\% failure rate may be considered high in bulk manufacturing, but for prototyping, it is acceptable.
+The largest drawback to 3d printing each case was the time involved, and the rate of failure. The 3d printer was a new tool at the start of this process. Unfortunately it is not as user friendly as a traditional 2d laser printer. Going from model to printed object is not as simple as hitting ``print''. An additional step, know as Computer Aided Manufacturing (CAM), is required to turn the 3d model into movement instructions for the printer. This process is extremely flexible, however the flexibility provided by the process also introduces complexity. Additionally, to ensure reliable prints some preparation to the print bed is required. This was not immediately apparent, however once the problem was identified the rate of failure went from four out of five (80\%) to one in fifty (2\%). A 2\% failure rate may be considered high in bulk manufacturing, but for prototyping, it is acceptable.
 
 
 \begin{figure}[ht]
  \begin{center}
   \label{fig:enclosure5}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure5.png} 
-  \caption{Enclosure with lessons learned} 
+  \caption{Enclosure with Lessons Learned} 
  \end{center}
 \end{figure}
 

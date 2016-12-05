@@ -6,8 +6,8 @@ Any embedded design is a combination of both hardware and firmware. The WHIP is 
 \begin{figure}
 	\begin{center}
 		\label{fig:ADS1293_RLD_CN}
-		\includegraphics[scale=1,width=0.9\textwidth]{Images/ADS1293_RLD_CN.png} 
-		\caption{Excerpt from the ADS1293 Data sheet describing the RLD CN register}
+		\includegraphics[scale=1,width=0.9\textwidth]{Images/ADS1293_RLD_CN_modified.png} 
+		\caption{Excerpt from ADS1293 Data Sheet Describing the RLD CN Register}
 	\end{center}
 \end{figure}
 
@@ -31,7 +31,7 @@ Both the AFE4490 \spo2 IC and the ADS1293 ECG IC offered attractive features set
 #define SHDN_RLD _BV(3)
 #define SELRLD(n) (((n)&7)<<0)
 \end{lstlisting}
-		\caption{Self Documenting Define Statements for ADS1293 "ADS1293.h"}
+		\caption{Self Documenting Define Statements for ADS1293 ``ADS1293.h''}
 	\end{center}
 \end{figure}
 
@@ -69,7 +69,7 @@ void ECG_begin()
   }
 }
 \end{lstlisting}
-		\caption{Initialization code for ADS1293 "ADS1293.c"}
+		\caption{Initialization code for ADS1293 ``ADS1293.c''}
 	\end{center}
 \end{figure}
 
@@ -90,7 +90,7 @@ ASF can be downloaded for free. \cite{AtmelStudio}
 
 The two primary benefits to this project, provided by the ASF are its abstraction layer across different hardware devices, and its collection of embedded libraries.
 
-Over the course of development several processors were used. All devices were manufactured by Atmel, but spanned different chip families. Early development used the megaAVR series of 8 bit processors, while the final design used the 32 bit UC3 series. The details of accessing the low level configuration registers of any specific hardware were "hidden" from the functional code by utilizing the ASF. The word "hidden" is in quotes because, often the low level code had to be rewritten by the programmer. But, this was well worth the time invested to keep the higher level libraries unchanged. Specifically, the SD card/FAT libraries allowed for a POSIX file interface to simplify sample storage, and the USB libraries made interfacing to a computer trivial; allowing the programmer to focus on interfacing with the relevant sensors and not on timing details of the USB specification.
+Over the course of development several processors were used. All devices were manufactured by Atmel, but spanned different chip families. Early development used the megaAVR series of 8 bit processors, while the final design used the 32 bit UC3 series. The details of accessing the low level configuration registers of any specific hardware were ``hidden'' from the functional code by utilizing the ASF. The word ``hidden'' is in quotes because, often the low level code had to be rewritten by the programmer. But, this was well worth the time invested to keep the higher level libraries unchanged. Specifically, the SD card/FAT libraries allowed for a POSIX file interface to simplify sample storage, and the USB libraries made interfacing to a computer trivial; allowing the programmer to focus on interfacing with the relevant sensors and not on timing details of the USB specification.
 
 \section{Main State Machine}
 

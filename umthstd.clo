@@ -17,19 +17,15 @@
 	  \normalsize
       A \umthesis@typename\ in \linebreak[4]       \expandafter{\@degreeTitle} \linebreak[4] by \linebreak[4]      \expandafter{\@author}
       \vfill
-      \begin{center}
-        \copyright\ \@copyrightyear\ by \@author \par
-      \end{center}
+      \copyright\ \@copyrightyear\ by \@author 
 	  \vfill      
       \normalsize
-      Submitted in Partial Fulfillment of the \par
-      Requirements for the Degree of  \par
-%      \addvspace{\topskip}
+      Submitted in Partial Fulfillment of the \linebreak[4]
+      Requirements for the Degree of  \linebreak[4]
 	  \expandafter{\@degree}\par
-%	  \expandafter{\@degreeTitle} \par
-      \addvspace{\topskip}
+
       \vfill
-      \@date %      \addvspace{\topskip}
+      \@date
     \end{center}
   \end{titlepage}%
   \setcounter{footnote}{0}%      % Footnotes start at zero again.
@@ -73,33 +69,10 @@
   \clearpage
   \pagestyle{plain}
   \chapter*{\uppercase\expandafter{\abstractname}}
-%  \begin{center}
-%    \large
      \noindent\expandafter{\@title} \par
      \addvspace{\topskip}
-%    \doublespacenormalsize
-%    \uppercase\expandafter{\@date} \par
-%    \addvspace{\topskip}
 	 \noindent by \expandafter{\@author} \par
-%    \ifbachelorsone\@bachelors\par\fi
-%    \ifbachelorstwo\@secondbachelors\par\fi
-%    \ifbachelorsthree\@thirdbachelors\par\fi
-%    \ifmastersone\@masters\par\fi
-%    \ifmasterstwo\@secondmasters\par\fi
-%    \ifmastersthree\@thirdmasters\par\fi
-%    \ifpriordoctorate\@priordoctorate\par\fi
-%    \if@proposal
-%    \else
-%      \@degreeabbrv, \MakeTextUppercase{\@school} \par
-%    \fi
     \addvspace{\topskip}
-%    \ifcochairs
-%      Directed by: Professor \@firstchair\ and Professor \@secondchair \par
-%    \else
-%      Directed by: Professor \@committeechair \par
-%    \fi
-%  \end{center} 
-%  \par \addvspace{2\topskip} \indent 
   }
   {\par}
 

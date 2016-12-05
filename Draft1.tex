@@ -1,6 +1,6 @@
 \documentclass{umthesis}   
 
-%\usepackage[style=ieee]{biblatex}
+
 
 %% umd requirements 
 %% use 11 or 12 pt font
@@ -13,8 +13,6 @@
 %% other margings == 1 inch
 \usepackage[table]{xcolor}
 
-% use showframe to check your margins and borders.
-\usepackage{showframe}
 
 \usepackage[title,titletoc]{appendix}
 
@@ -30,10 +28,11 @@
 % %manual placement of figures via[h]
 \usepackage{float}
 
-%%\usepackage{setspace}
 
 \usepackage{sectsty}
 
+%used to include documents in the apendix (IRB approval)
+\usepackage{pdfpages}
 
 
 %min bottom is 1.0in, i added an 1/8" to keep people happy
@@ -42,15 +41,21 @@
 
 \usepackage{calc}
 
+
+% use showframe to check your margins and borders.
+%\usepackage{showframe}
+
+
+
 %use this package for printing hard copies
-%\usepackage[colorlinks,linkcolor=black,citecolor=black]{hyperref}
+\usepackage[colorlinks,allcolors=black,]{hyperref}
 
 %use this package for pdf publication
-\usepackage[colorlinks]{hyperref}
-
-
+%\usepackage[colorlinks]{hyperref}
 %use this package to easily find all links in a pdf
 %\usepackage{hyperref}
+
+
 
 % for source code listings
 % \begin{lstlisting}
@@ -82,11 +87,12 @@
 
 \renewcommand{\cftchappresnum}{\chaptername\space} %adds Chapter to the TOC
 \renewcommand{\cftchapfont}{\mdseries}
+\renewcommand{\cftchappagefont}{\mdseries}
 \setlength{\cftchapnumwidth}{\widthof{\textbf{\chaptername~999~}}}
 \setlength{\cftsecnumwidth}{\widthof{\textbf{~9.9~}}}
 \setlength{\cftsubsecnumwidth}{\widthof{\textbf{~9.9.99~}}}
 \setlength{\cftsubsubsecnumwidth}{\widthof{\textbf{~9.9.99.9~}}}
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+%\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 
 %this adds Appendix to the Table of contents...
 \makeatletter
@@ -197,7 +203,7 @@
 \phantomsection
 
 %% this should be removed before submitting to the graduate studies office
-\addcontentsline{toc}{chapter}{\contentsname}
+%\addcontentsline{toc}{chapter}{\contentsname}
 %% this should be removed before submitting to the graduate studies office.
 
 
@@ -207,7 +213,7 @@
 \clearpage
 \phantomsection
 \addcontentsline{toc}{chapter}{List Of Figures}
-\chapter{List of Figures}
+%\chapter{List of Figures}
 \listoffigures                  % List of Figures
 %clearpage
 %\listoftables                   % List of Tables
@@ -255,8 +261,8 @@
 % downloaded the latest IEEE style from 
 % http://www.dlsi.ua.es/wemis09/styles/IEEEtran.bst
 \bibliographystyle{myieeetrA}
-%\addcontentsline{toc}{chapter}{Bibliography}
-\chapter{Bib}
+\addcontentsline{toc}{chapter}{Bibliography}
+%\chapter{Bib}
 \bibliography{Draft1}
 %\printbibliography
 
@@ -267,13 +273,17 @@
 %\renewcommand{\cftchappresnum}{Appendix }
 
 \include{A_Schematic}
-\chapter{Permission from the IRB}
-Aproovelaetter
-
-DASI SUrvey
-HSFSA 
+\chapter {Institutional Reserch Board (IRB) Material}
+\section{Permission from the IRB}
+%had to mess with scale and offsett a zillion times to get it to fit in the margins
+\includepdf[pages={1-},scale=.9,offset= 0.1in -0.5in]{Images/IRB_Form.pdf}
+\section{Duke Activity Status Index Worksheet}
+\includepdf[scale=.8]{Images/DASI_form.pdf}
+\section{Heart Failure Somatic Awareness Worksheet}
+\includepdf[pages={1-},scale=0.8,landscape,offset= 0.4in -0.65in]{Images/HFSA_Form.pdf}
 
 \chapter*{Source Code:}
+\cftsetpnumwidth{2in}
 \cftaddtitleline{toc}{chapter}{Source Code}{Back Pocket}
 
 

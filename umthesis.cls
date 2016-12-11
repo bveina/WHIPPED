@@ -743,67 +743,7 @@
   \setcounter{tocdepth}{3}
 \fi
 
-\ifdouble@space
-\renewcommand{\section}{
-  \@startsection{section}{1}{\z@}
-                {4.5ex \@plus 1ex \@minus .2ex}
-                {0.001ex \@plus .2ex}
-                {\normalfont\doublespacelarge\bfseries}}
 
-\renewcommand{\subsection}{
-  \@startsection{subsection}{2}{\z@}%
-                {3.25ex \@plus 1ex \@minus .2ex}%
-                {0.001ex \@plus .2ex}%
-                {\normalfont\doublespacenormalsize\bfseries}}
-
-\renewcommand{\subsubsection}{
-  \@startsection{subsubsection}{3}{\z@}%
-                {3.25ex \@plus 1ex \@minus .2ex}%
-                {0.001ex \@plus .2ex}%
-                {\normalfont\doublespacenormalsize\bfseries}}
-
-\renewcommand{\paragraph}{
-  \@startsection{paragraph}{4}{\z@}%
-                {2.5ex \@plus 1ex \@minus.2ex}%
-                {-1em}%
-                {\normalfont\normalsize\bfseries}}
-
-\renewcommand{\subparagraph}{
-  \@startsection{subparagraph}{5}{\parindent}%
-                {0.0ex \@plus 1ex \@minus .2ex}%
-                {-1em}%
-                {\normalfont\normalsize\bfseries}}
-\else\ifnicer@draft\else
-\renewcommand{\section}{
-  \@startsection{section}{1}{\z@}
-                {3.5ex \@plus 1ex \@minus .2ex}
-                {2.3ex \@plus .2ex}
-                {\normalfont\large\bfseries}}
-
-\renewcommand{\subsection}{
-  \@startsection{subsection}{2}{\z@}%
-                {3.25ex \@plus 1ex \@minus .2ex}%
-                {1.5ex \@plus .2ex}%
-                {\normalfont\normalsize\bfseries}}
-
-\renewcommand{\subsubsection}{
-  \@startsection{subsubsection}{3}{\z@}%
-                {3.25ex \@plus 1ex \@minus .2ex}%
-                {1.5ex \@plus .2ex}%
-                {\normalfont\normalsize\bfseries}}
-
-\renewcommand{\paragraph}{
-  \@startsection{paragraph}{4}{\z@}%
-                {3.25ex \@plus1ex \@minus.2ex}%
-                {-1em}%
-                {\normalfont\normalsize\bfseries}}
-
-\renewcommand{\subparagraph}{
-  \@startsection{subparagraph}{5}{\parindent}%
-                {3.25ex \@plus1ex \@minus .2ex}%
-                {-1em}%
-                {\normalfont\normalsize\bfseries}}
-\fi\fi
 %%
 %% Fix captions
 %%
@@ -868,18 +808,7 @@
   {\typeout{Patching footnotetext succeeded}}%
   {\typeout{Patching footnotetext failed}}
 
-%%
-%% Fix the bibliography
 
-%\AtBeginDocument{%
-%  \let\base@thebibliography\thebibliography%
-%  \let\endbase@thebibliography\endthebibliography%
-  %
-%  \renewenvironment{thebibliography}[1]{%
-%    \begin{base@thebibliography}{#1}%
-%      \addcontentsline{toc}{kind}{title}
-%      \addcontentsline{toc}{\toc@section}{\bibname}%
-%    }{\end{base@thebibliography}}}
 
 \newcommand{\doublespace}{\doublespacenormalsize}
 
@@ -993,7 +922,7 @@
 \thispagestyle{empty}
 \null
 \vfill
-\noindent Copyright 2015 by \@author. All rights reserved. This material may not be duplicated by any means without the express written permission of the author. \par \null \par
+\noindent Copyright \@copyrightyear\ by \@author. All rights reserved. This material may not be duplicated by any means without the express written permission of the author. \par \null \par
 
 \noindent I grant the  \@school\ the non-exclusive right of making a single copy on a not-for-profit basis to replace the University's circulating copy if it is lost or destroyed.
 

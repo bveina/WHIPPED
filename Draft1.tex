@@ -11,10 +11,15 @@
 %% no new heading on the bottom of a page unless there is room for at least two lines following the heading
 %% left margin >= 1.5 inches
 %% other margings == 1 inch
+
+
 \usepackage[table]{xcolor}
+
+\usepackage{titlesec} % included to typset the appendicies vertically centered
 
 
 \usepackage[title,titletoc]{appendix}
+%\usepackage{appendix}
 
 \usepackage{tabularx}
 \usepackage{graphicx}
@@ -43,7 +48,7 @@
 
 
 % use showframe to check your margins and borders.
-%\usepackage{showframe}
+\usepackage{showframe}
 
 
 
@@ -54,8 +59,6 @@
 %\usepackage[colorlinks]{hyperref}
 %use this package to easily find all links in a pdf
 %\usepackage{hyperref}
-
-
 
 % for source code listings
 % \begin{lstlisting}
@@ -73,8 +76,9 @@
 }
 
 \usepackage[all]{hypcap} % hyperlinks goto top of figures, not the bottom
-%\usepackage{caption} 		% the internet says this is a better way of hyperlinking... not sure why.
 \usepackage[capitalise,noabbrev,nameinlink]{cleveref}		% now \cref yields Figure 1.1 instead of 1.1 alone
+
+
 
 \cftsetindents{chapter}{0em}{2em}
 \cftsetindents{section}{1em}{2em}
@@ -85,16 +89,16 @@
 
 \renewcommand{\cftchapaftersnum}{:}
 
-\renewcommand{\cftchappresnum}{\chaptername\space} %adds Chapter to the TOC
+\renewcommand{\cftchappresnum}{\chaptername\space} %adds 'Chapter ' to the TOC
 \renewcommand{\cftchapfont}{\mdseries}
 \renewcommand{\cftchappagefont}{\mdseries}
 \setlength{\cftchapnumwidth}{\widthof{\textbf{\chaptername~999~}}}
 \setlength{\cftsecnumwidth}{\widthof{\textbf{~9.9~}}}
 \setlength{\cftsubsecnumwidth}{\widthof{\textbf{~9.9.99~}}}
 \setlength{\cftsubsubsecnumwidth}{\widthof{\textbf{~9.9.99.9~}}}
-%\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+%\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % chapters dont get dot leaders
 
-%this adds Appendix to the Table of contents...
+%this adds the word Appendix to the Table of contents entries
 \makeatletter
 \g@addto@macro\appendix{%
   \addtocontents{toc}{%
@@ -112,7 +116,32 @@
 
 
 
+\newcommand{\apendixStyle}{
+\titleformat{\chapter} %command
+[display] %shape
+{\bfseries\huge} % fromat
+{\vfill\centering\chaptertitlename\ \thechapter} %label
+{2pt} %sep
+{
+\centering 
+} %beforecode
+[
+\vfill
+\clearpage
+] %aftercode
 
+\titleformat{\section} %command
+[hang] %shape
+{\bfseries\large} % fromat
+{\chaptertitlename\ \thesection} %label
+{2pt} %sep
+{
+} %beforecode
+[
+] %aftercode
+\titlespacing*{\chapter}{0pt}{0in}{0in}
+\titlespacing*{\section}{0pt}{0in}{0in}
+}
 
 
 
@@ -126,7 +155,7 @@
 \author{Benjamin Roy Viall}
 \date{January 2017} % The date you'll actually graduate -- must be
                      % January, May, or September
-\copyrightyear{2016}
+\copyrightyear{2017}
 \school {University of Massachusetts Dartmouth} 
 \bachelors{B.Sc.}{University of Massachusetts Dartmouth} % where you got your bachelors
 \masters{M.Sc.}{University of Massachusetts Dartmouth} % where you got your masters
@@ -167,7 +196,7 @@
 
 \permissionpage
 %%\copyrightpage     %% not required for an M.S. thesis
-\newgeometry{top=.75in, bottom=.75in,left=1.675in, right=1.0in}
+\newgeometry{top=1in, bottom=1in,left=1.675in, right=1.0in}
 \signaturepage
 \restoregeometry
 
@@ -212,7 +241,7 @@
 \tableofcontents				 % table of contents
 \clearpage
 \phantomsection
-\addcontentsline{toc}{chapter}{List Of Figures}
+\addcontentsline{toc}{chapter}{List of Figures}
 %\chapter{List of Figures}
 \listoffigures                  % List of Figures
 %clearpage
@@ -221,13 +250,13 @@
 
 
 %% Time for the body of the dissertation
-\mainmatter   %% <-- This line is mandatory
+\mainmatter   %% <-- This line is mandatory for the umd thesis class
 
 
 
 %pdf bookmarks cant have funny characters so we define alternative forms here.
 \def \spo2{ \texorpdfstring{SpO$_{2}$}{SpO2}}
-
+\def \nospacespo2{\texorpdfstring{SpO$_{2}$}{SpO2}}
 
 
 %% stuff goes HERE
@@ -237,12 +266,9 @@
 
 \include{1_Introduction}
 \include{2_LitReview}
-%%\include{5_HardwareDesigns}
-%%\include{3_SystemDesign}
 \include{XX_Trial_results}
 \include{6_IntegrationAndTesting}
 \include{4_SensorConcepts}
-% %\include{7_Datamining_CardiacOntology}
 \include{8_Conclusions}
 
 
@@ -260,37 +286,45 @@
 %\bibliographystyle{umthesis}
 % downloaded the latest IEEE style from 
 % http://www.dlsi.ua.es/wemis09/styles/IEEEtran.bst
+% and put it in the project directory. called it myieeetrA.bst
 \bibliographystyle{myieeetrA}
 \addcontentsline{toc}{chapter}{Bibliography}
 %\chapter{Bib}
 \bibliography{Draft1}
-%\printbibliography
+
 
 \begin{appendices}
-%\appendix
-%\crefname{appcha}{Appendix}{Appendices}
-%\crefalias{chapter}{appcha}
-%\renewcommand{\cftchappresnum}{Appendix }
-
+%patch the apendix header thing to center shit % % % % % % % % % % % %
+\apendixStyle
+% End patch of apendix % % % % % % % % % % % % % % % % % % % % % % % % %
 \include{A_Schematic}
-\chapter {Institutional Reserch Board (IRB) Material}
-\section{Permission from the IRB}
+
+\chapter {Institutional Research Board (IRB) Material}
+\section{Permission Letter}
+\fbox{\includegraphics[trim= 0mm 20mm 0mm 20mm,clip,page=1,width=\textwidth]{Images/IRB_Form.pdf}}
 %had to mess with scale and offsett a zillion times to get it to fit in the margins
-\includepdf[pages={1-},scale=.9,offset= 0.1in -0.5in]{Images/IRB_Form.pdf}
-\section{Duke Activity Status Index Worksheet}
-\includepdf[scale=.8]{Images/DASI_form.pdf}
-\section{Heart Failure Somatic Awareness Worksheet}
-\includepdf[pages={1-},scale=0.8,landscape,offset= 0.4in -0.65in]{Images/HFSA_Form.pdf}
-
-\chapter*{Source Code:}
-\cftsetpnumwidth{2in}
-\cftaddtitleline{toc}{chapter}{Source Code}{Back Pocket}
+\includepdf[offset= .3in 0in, frame,trim= 0mm 20mm 0mm 20mm,clip, pages={2-5},width=\textwidth]{Images/IRB_Form.pdf}
+\includepdf[offset= .3in 0in,frame,trim= 0mm 35mm 0mm 20mm,clip, pages={6-},width=\textwidth]{Images/IRB_Form.pdf}
 
 
-% how to do a single appendix for umassd
-%\chapter*{human use Perimissoin from the IRB}
-%\addcontentsline{toc}{chapter}{Appendix human use Perimissoin from the IRB}
+\section{Duke Activity Status Index} 
+\fbox{\includegraphics[page=1,width=.95\textwidth]{Images/DASI_form.pdf}}
 
+\section{Heart Failure Somatic Awareness Scale}
+\fbox{\includegraphics[page=1,angle=90,width=.95\textwidth]{Images/HFSA_Form.pdf}}
+
+\noindent Continued on Next Page
+
+\section*{Heart Failure Somatic Awareness Scale (cont.)}
+\noindent\fbox{\includegraphics[page=2,angle=90,width=.95\textwidth]{Images/HFSA_Form.pdf}}
+
+\noindent Continued on next Page
+
+\section*{Heart Failure Somatic Awareness Scale (cont.)}
+\noindent\fbox{\includegraphics[,page=3,angle=90,width=.95\textwidth]{Images/HFSA_Form.pdf}}
+
+%\cftaddtitleline{toc}{chapter}{Source Code}{Back Pocket}
+\chapter{Source Code: CD Back Pocket}
 
 \end{appendices}
 

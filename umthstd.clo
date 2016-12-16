@@ -68,7 +68,7 @@
 \renewenvironment{abstract}{
   \clearpage
   \pagestyle{plain}
-  \chapter*{\uppercase\expandafter{\abstractname}}
+  \chapter*{\centerline{\expandafter{\abstractname}}}
      \noindent\expandafter{\@title} \par
      \addvspace{\topskip}
 	 \noindent by \expandafter{\@author} \par

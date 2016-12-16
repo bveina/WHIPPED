@@ -34,10 +34,10 @@
 \usepackage{float}
 
 
-\usepackage{sectsty}
+%\usepackage{sectsty} % needed to center the abstract...(there should be a better way)
 
 %used to include documents in the apendix (IRB approval)
-\usepackage{pdfpages}
+%\usepackage{pdfpages} %removed since stuff like this counts as oversized matter and cant use this.
 
 
 %min bottom is 1.0in, i added an 1/8" to keep people happy
@@ -80,6 +80,9 @@
 
 
 
+
+% customize table of contents % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
 \cftsetindents{chapter}{0em}{2em}
 \cftsetindents{section}{1em}{2em}
 \cftsetindents{subsection}{2em}{2em}
@@ -88,28 +91,49 @@
 \cftsetindents{fig}{0em}{3em}
 
 \renewcommand{\cftchapaftersnum}{:}
-
-\renewcommand{\cftchappresnum}{\chaptername\space} %adds 'Chapter ' to the TOC
+%\makeatletter
+%\renewcommand{\cftchappresnum}{\@chapapp\space} %adds 'Chapter ' to the TOC
+%\makeatother
 \renewcommand{\cftchapfont}{\mdseries}
 \renewcommand{\cftchappagefont}{\mdseries}
-\setlength{\cftchapnumwidth}{\widthof{\textbf{\chaptername~999~}}}
-\setlength{\cftsecnumwidth}{\widthof{\textbf{~9.9~}}}
-\setlength{\cftsubsecnumwidth}{\widthof{\textbf{~9.9.99~}}}
-\setlength{\cftsubsubsecnumwidth}{\widthof{\textbf{~9.9.99.9~}}}
+\setlength{\cftchapnumwidth}{\widthof{\chaptername~999~}}
+\setlength{\cftsecnumwidth}{\widthof{~9.9~}}
+\setlength{\cftsubsecnumwidth}{\widthof{~9.9.99~}}
+\setlength{\cftsubsubsecnumwidth}{\widthof{~9.9.99.9~}}
 %\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % chapters dont get dot leaders
+\renewcommand{\cftchappresnum}{\chaptername\space}
+%\setlength{\cftchapnumwidth}{\widthof{\textbf{~999~}}}
 
-%this adds the word Appendix to the Table of contents entries
+\renewcommand{\appendixname}{Appendix}
+
 \makeatletter
 \g@addto@macro\appendix{%
   \addtocontents{toc}{%
     \protect\renewcommand{\protect\cftchappresnum}{}%
-    \setlength{\cftchapnumwidth}{\widthof{\textbf{~9~}}}
+  	\protect\setlength{\cftchapnumwidth}{\widthof{\textbf{~999~}}}
+  \protect\cftsetindents{chapter}{0em}{2em}  	
   }%
+
 }
-\makeatother
+%\makeatother
+%this adds the word Appendix to the Table of contents entries
+%\makeatletter
+%\g@addto@macro\appendix{%
+%  \addtocontents{toc}{%
+    %\protect\renewcommand{\protect\cftchappresnum}{Appendix\ }%
+    %\setlength{\cftchapnumwidth}{\widthof{\textbf{Appendix~9~}}}
+    %\protect\renewcommand{\protect\cftsecpresnum}{Appendix\ }
+    %\setlength{\cftsecnumwidth}{\widthof{\textbf{Appendix~9.9~}}}
+%  }%
+%  \titleformat{\section} {\Large\bfseries}{HELLO \thesection}{1em}{}
+
+%}
+%\makeatother
+
+% end TOC customizing % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 
-\chapterfont{\centering}
+%\chapterfont{\centering} % % for abstract
 
 
 \setlength{\emergencystretch}{4pt}
@@ -130,21 +154,18 @@
 \clearpage
 ] %aftercode
 
-\titleformat{\section} %command
-[hang] %shape
-{\bfseries\large} % fromat
-{\chaptertitlename\ \thesection} %label
-{2pt} %sep
-{
-} %beforecode
-[
-] %aftercode
 \titlespacing*{\chapter}{0pt}{0in}{0in}
-\titlespacing*{\section}{0pt}{0in}{0in}
+
+
+
+
 }
 
 
-
+\newcommand{\apendixSecStyle}{
+\titleformat{\section}
+{\normalfont\Large\bfseries}{Appendix \thesection}{1em}{}
+}
 
 \begin{document}
 
@@ -215,7 +236,7 @@
 
 %% Acknowledgements are optional...yeah, right.
 \phantomsection
-\chapter*{Acknowledgments}             % Acknowledgements page
+\chapter*{\centerline{Acknowledgments}}             % Acknowledgements page
 	\begin{center}
 	\emph{Dedicated to Ken And Laura Viall, \\ who showed, by example, \\ how to be the kind of person I could be proud of.}
 	\end{center}
@@ -293,38 +314,19 @@
 \bibliography{Draft1}
 
 
+
 \begin{appendices}
+
+
+%\appendix
+\renewcommand{\cftchappresnum}{Appendix }
+%\renewcommand{\cftchappresnum}{Appendix }
+%\renewcommand{\cftsecpresnum}{Appendix }
 %patch the apendix header thing to center shit % % % % % % % % % % % %
-\apendixStyle
+%\apendixStyle
+%\apendixSecStyle
 % End patch of apendix % % % % % % % % % % % % % % % % % % % % % % % % %
 \include{A_Schematic}
-
-\chapter {Institutional Research Board (IRB) Material}
-\section{Permission Letter}
-\fbox{\includegraphics[trim= 0mm 20mm 0mm 20mm,clip,page=1,width=\textwidth]{Images/IRB_Form.pdf}}
-%had to mess with scale and offsett a zillion times to get it to fit in the margins
-\includepdf[offset= .3in 0in, frame,trim= 0mm 20mm 0mm 20mm,clip, pages={2-5},width=\textwidth]{Images/IRB_Form.pdf}
-\includepdf[offset= .3in 0in,frame,trim= 0mm 35mm 0mm 20mm,clip, pages={6-},width=\textwidth]{Images/IRB_Form.pdf}
-
-
-\section{Duke Activity Status Index} 
-\fbox{\includegraphics[page=1,width=.95\textwidth]{Images/DASI_form.pdf}}
-
-\section{Heart Failure Somatic Awareness Scale}
-\fbox{\includegraphics[page=1,angle=90,width=.95\textwidth]{Images/HFSA_Form.pdf}}
-
-\noindent Continued on Next Page
-
-\section*{Heart Failure Somatic Awareness Scale (cont.)}
-\noindent\fbox{\includegraphics[page=2,angle=90,width=.95\textwidth]{Images/HFSA_Form.pdf}}
-
-\noindent Continued on next Page
-
-\section*{Heart Failure Somatic Awareness Scale (cont.)}
-\noindent\fbox{\includegraphics[,page=3,angle=90,width=.95\textwidth]{Images/HFSA_Form.pdf}}
-
-%\cftaddtitleline{toc}{chapter}{Source Code}{Back Pocket}
-\chapter{Source Code: CD Back Pocket}
 
 \end{appendices}
 

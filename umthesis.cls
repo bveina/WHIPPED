@@ -150,7 +150,7 @@
 
 \newcounter{count@FrontMatter}
 \newcounter{count@Chapter}
-\newcounter{count@Appendix}
+%\newcounter{count@Appendix}
 \newcounter{count@BackMatter}
 
 \AtEndDocument{%
@@ -158,8 +158,8 @@
     {\arabic{count@FrontMatter}}}%
   \immediate\write\@mainaux{\string\setcounter{count@Chapter}%
     {\arabic{count@Chapter}}}%
-  \immediate\write\@mainaux{\string\setcounter{count@Appendix}%
-    {\arabic{count@Appendix}}}%
+%  \immediate\write\@mainaux{\string\setcounter{count@Appendix}%
+%    {\arabic{count@Appendix}}}%
   \immediate\write\@mainaux{\string\setcounter{count@BackMatter}%
     {\arabic{count@BackMatter}}}%
   }
@@ -201,9 +201,9 @@
 
 \newcommand{\backmatter}{
   \setcounter{secnumdepth}{5}
-  \renewcommand{\@chapapp}{\chaptername}
+%  \renewcommand{\@chapapp}{\chaptername}
   \renewcommand{\toc@section}{BackMatter}
-  \let\@chapter\normal@chapter
+%  \let\@chapter\normal@chapter
   \setcounter{count@BackMatter}{0}
   \normalsize
   }
@@ -230,58 +230,58 @@
 %% Part related stuff
 
 %% redefine @part to change toc entries
-\renewcommand*\l@part[2]{%
-  \ifnum \c@tocdepth >-2\relax
-    \addpenalty{-\@highpenalty}%
-    %\addvspace{2.25em \@plus\p@}%
-    \setlength\@tempdima{3em}%
-    \begingroup
-      \parindent \z@ \rightskip \@pnumwidth
-      \parfillskip -\@pnumwidth
-      \leavevmode \hspace*{\fill}\par
-      \centering {\large\bfseries #1}\par
-      \leavevmode \hspace*{\fill} \par
-       \nobreak
-         \global\@nobreaktrue
-         \everypar{\global\@nobreakfalse\everypar{}}%
-    \endgroup
-  \fi}
+%\renewcommand*\l@part[2]{%
+%  \ifnum \c@tocdepth >-2\relax
+%    \addpenalty{-\@highpenalty}%
+%    %\addvspace{2.25em \@plus\p@}%
+%    \setlength\@tempdima{3em}%
+%    \begingroup
+%      \parindent \z@ \rightskip \@pnumwidth
+%      \parfillskip -\@pnumwidth
+%      \leavevmode \hspace*{\fill}\par
+%      \centering {\large\bfseries #1}\par
+%      \leavevmode \hspace*{\fill} \par
+%       \nobreak
+%         \global\@nobreaktrue
+%         \everypar{\global\@nobreakfalse\everypar{}}%
+%    \endgroup
+%  \fi}
 
-\def\@part[#1]#2{%
-    \ifnum \c@secnumdepth >-2\relax
-      \refstepcounter{part}%
-      \addcontentsline{toc}{part}{{\MakeUppercase{\partname\nobreakspace\thepart {:}}}\hspace{1em}{\MakeUppercase{#1}}}%
-    \else
-      \centering{part}{#1}%
-    \fi
-    \markboth{}{}%
-    {\thispagestyle{empty}
-     \centering
-     \interlinepenalty \@M
-     \normalfont
-     \ifnum \c@secnumdepth >-2\relax
-       \huge\bfseries {\MakeUppercase{\partname}}\nobreakspace\thepart : \nobreakspace{\MakeUppercase{#2}}
-       \par
-       \vskip 20\p@
-     \fi
-     }
-     %\Huge \bfseries {\MakeUppercase{#2}}\par}%
-    \@endpart}
+%\def\@part[#1]#2{%
+%    \ifnum \c@secnumdepth >-2\relax
+%      \refstepcounter{part}%
+%      \addcontentsline{toc}{part}{{\MakeUppercase{\partname\nobreakspace\thepart {:}}}\hspace{1em}{\MakeUppercase{#1}}}%
+%    \else
+%      \centering{part}{#1}%
+%    \fi
+%    \markboth{}{}%
+%    {\thispagestyle{empty}
+%     \centering
+%     \interlinepenalty \@M
+%     \normalfont
+%     \ifnum \c@secnumdepth >-2\relax
+%       \huge\bfseries {\MakeUppercase{\partname}}\nobreakspace\thepart : \nobreakspace{\MakeUppercase{#2}}
+%       \par
+%       \vskip 20\p@
+%     \fi
+%     }
+%    %\Huge \bfseries {\MakeUppercase{#2}}\par}%
+%   \@endpart}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Chapter/Appendix related stuff
 
-\newcommand{\unnumberedchapter}[2][]{
-  \def\@tempa{#1}
-  \def\@tempb{}
-  \ifx\@tempa\@tempb
-    \def\@tempc{#2}
-  \else
-    \def\@tempc{#1}
-  \fi
-  \chapter*{#2}
-  \addcontentsline{toc}{\toc@section}{\MakeTextUppercase{\@tempc}}
-}
+%\newcommand{\unnumberedchapter}[2][]{
+%  \def\@tempa{#1}
+%  \def\@tempb{}
+%  \ifx\@tempa\@tempb
+%    \def\@tempc{#2}
+%  \else
+%    \def\@tempc{#1}
+%  \fi
+%  \chapter*{#2}
+%  \addcontentsline{toc}{\toc@section}{\MakeTextUppercase{\@tempc}}
+%}
 
 % Patch \@chapter to change TOC entries.  The original code appears to:
 %  (1) replace '\numberline{\thechapter}#1' with
@@ -325,25 +325,25 @@
 %  {\typeout{Appending to chapter command succeeded}}%
 %  {\typeout{Appending to chapter command failed}}
 
-\newif\ifrenew@chapter
-\ifdouble@space%
-  \renew@chaptertrue%
-\else%
-  \ifnicer@draft%
-    \renew@chapterfalse%
-  \else%
-    \renew@chaptertrue%
-  \fi%
-\fi
-\ifrenew@chapter%
-  \renewcommand\chapter{%
-    \if@openright\cleardoublepage\else\clearpage\fi%
-    \thispagestyle{plain}%
-    \@afterindenttrue%
-    \global\@topnum\z@%
-    \secdef\@chapter\@schapter%
-  }%
-\fi
+%\newif\ifrenew@chapter
+%\ifdouble@space%
+%  \renew@chaptertrue%
+%\else%
+%  \ifnicer@draft%
+%    \renew@chapterfalse%
+%  \else%
+%    \renew@chaptertrue%
+%  \fi%
+%\fi
+%\ifrenew@chapter%
+%  \renewcommand\chapter{%
+%    \if@openright\cleardoublepage\else\clearpage\fi%
+%    \thispagestyle{plain}%
+%    \@afterindenttrue%
+%    \global\@topnum\z@%
+%    \secdef\@chapter\@schapter%
+%  }%
+%\fi
 
 %\renewcommand{\@makechapterhead}[1]{    % Heading for \chapter command
 %  \vspace*{30\p@}                       % Space at top of text page.
@@ -359,11 +359,11 @@
 %  \vskip 24\p@                          % Space between title and text.
 %  }
 
-\let\base@schapter\@schapter
-\def\@schapter#1{
-  \base@schapter{#1}
-  \stepcounter{count@\toc@section}
-  }
+%\let\base@schapter\@schapter
+%\def\@schapter#1{
+%  \base@schapter{#1}
+%  \stepcounter{count@\toc@section}
+%  }
 
 %\renewcommand{\@makeschapterhead}[1]{   % Heading for \chapter* command
 %  \vspace*{30\p@}                       % Space at top of page.
@@ -375,7 +375,7 @@
 %  \vskip 24\p@                          % Space between title and text.
 %  }
 
-\let\normal@chapter\@chapter %% save the chapter
+%\let\normal@chapter\@chapter %% save the chapter
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -462,38 +462,38 @@
   \@dottedtocline{1}{0.0em}{1.5em}{ #1}{#2}
   }
 
-\newcommand{\l@Chapter}[2]{
-  \addpenalty{-\@highpenalty}
+%\newcommand{\l@Chapter}[2]{
+%  \addpenalty{-\@highpenalty}
   %\addvspace{\baselineskip}
   %\if@seenChapter\else
   %  \addvspace{2\baselineskip}
   %  \parindent\z@ {\bfseries \MakeTextUppercase{\chaptername}} \par
   %  \addvspace{\baselineskip}
-    \@seenChaptertrue
+%    \@seenChaptertrue
   %\fi
-  \@dottedtocline{0}{0.0em}{1.5em}{Chapter #1}{#2}
-  }
+%  \@dottedtocline{0}{0.0em}{1.5em}{Chapter #1}{#2}
+%  }
 
 \newcommand{\appendicesname}{APPENDICES}
 
-\newcommand{\l@Appendix}[2]{
-  \addpenalty{-\@highpenalty}
-  \if@seenAppendix\else
+%\newcommand{\l@Appendix}[2]{
+%  \addpenalty{-\@highpenalty}
+%  \if@seenAppendix\else
    % \addvspace{2\baselineskip}
-    \parindent\z@ {\bfseries \appendicesname} \par
+%    \parindent\z@ {\bfseries \appendicesname} \par
 %    \addvspace{\baselineskip}
-    \@seenAppendixtrue
-  \fi
-  \@dottedtocline{0}{0.0em}{1.5em}{ #1}{ #2}
-  }
+%    \@seenAppendixtrue
+%  \fi
+%  \@dottedtocline{0}{0.0em}{1.5em}{ #1}{ #2}
+%  }
 
-\newcommand{\l@OnlyAppendix}[2]{
-  \addpenalty{-\@highpenalty}
+%\newcommand{\l@OnlyAppendix}[2]{
+%  \addpenalty{-\@highpenalty}
   %\addvspace{2\baselineskip}
-  \parindent\z@
-  \@dottedtocline{0}{0.0em}{1.5em}{\bfseries
-    \MakeTextUppercase{\appendixname}: #1}{\bfseries #2}
-  }
+%  \parindent\z@
+%  \@dottedtocline{0}{0.0em}{1.5em}{\bfseries
+%    \MakeTextUppercase{\appendixname}: #1}{\bfseries #2}
+%  }
 
 \newcommand{\l@BackMatter}[2]{
   \addpenalty{-\@highpenalty}

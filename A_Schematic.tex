@@ -1,5 +1,10 @@
 \appendix
 \renewcommand{\cftchappresnum}{Appendix }
+\apendixStyle
+\apendixSecStyle
+
+
+
 \chapter{PCB Schematics}
 %\addcontentsline{toc}{chapter}{ WHIP Schematics }
 % cropped pdfs with http://croppdf.com/
@@ -37,7 +42,9 @@
 \end{figure}
 
 \chapter{PCB Layout}
-%\addcontentsline{toc}{chapter}{ WHIP Layout }
+
+
+% %\addcontentsline{toc}{chapter}{ WHIP Layout }
 \label{chap:PCB_LAYOUT}
 
 \begin{figure}
@@ -74,3 +81,71 @@
 	\caption{Gerber Render for Internal Power Layer}
 \end{center}
 \end{figure}
+
+
+\newcommand{\putOversized}[7]{
+\ifnum1=#6\relax
+	\raggedright\noindent\bfseries\Large Appendix \ref{#1} (Cont.) \par
+\fi
+	\raggedright\fbox{\includegraphics[ #5,page=#3,width=#7]{#2}}
+	
+\ifnum1=#4\relax
+	\normalfont\normalsize \parbox{#7}{\raggedleft(cont. on next page)} \par
+\fi
+\raggedright\clearpage
+}
+
+\chapter {Institutional Research Board (IRB) Material}
+\section{Permission Letter}
+\label{sec:permissionLetter}
+\setlength{\fboxsep}{0pt}
+
+%\fbox{\includegraphics[trim= 0mm 20mm 0mm 16mm,clip,page=1,width=\textwidth]{Images/IRB_Form.pdf}}
+%\OversizeContinued
+
+														%       L   B    R   T   
+\putOversized{sec:permissionLetter}{Images/IRB_Form.pdf}{1}{1}{trim = 0mm 25mm 0mm 16mm,clip}{0}{\textwidth}
+\putOversized{sec:permissionLetter}{Images/IRB_Form.pdf}{2}{1}{trim = 0mm 20mm 0mm 16mm,clip}{1}{\textwidth}
+\putOversized{sec:permissionLetter}{Images/IRB_Form.pdf}{3}{1}{trim = 0mm 20mm 0mm 16mm,clip}{1}{\textwidth}
+\putOversized{sec:permissionLetter}{Images/IRB_Form.pdf}{4}{1}{trim = 0mm 20mm 0mm 16mm,clip}{1}{\textwidth}
+\putOversized{sec:permissionLetter}{Images/IRB_Form.pdf}{5}{1}{trim = 0mm 20mm 0mm 16mm,clip}{1}{\textwidth}
+\putOversized{sec:permissionLetter}{Images/IRB_Form.pdf}{6}{1}{trim = 8mm 35mm 8mm 20mm,clip}{1}{\textwidth}
+\putOversized{sec:permissionLetter}{Images/IRB_Form.pdf}{7}{1}{trim = 8mm 35mm 8mm 20mm,clip}{1}{\textwidth}
+\putOversized{sec:permissionLetter}{Images/IRB_Form.pdf}{8}{0}{trim = 8mm 35mm 8mm 20mm,clip}{1}{\textwidth}
+%\putOversized{sec:permissionLetter}{Images/IRB_Form.pdf}{9}{0}{0mm 35mm 0mm 20mm}
+%\fbox{\includegraphics[trim= 0mm 20mm 0mm 16mm,clip,page=1,width=\textwidth]{Images/IRB_Form.pdf}}
+%\OversizeContinued
+
+%\bfseries\Large\Cref{sec:permissionLetter} (Cont.) \\\vspace{2pt}
+%\fbox{\includegraphics[trim= 0mm 20mm 0mm 20mm,clip,page=2,width=\textwidth]{Images/IRB_Form.pdf}}
+%
+%\fbox{\includegraphics[trim= 0mm 20mm 0mm 20mm,clip,page=3,width=\textwidth]{Images/IRB_Form.pdf}}
+
+%\fbox{\includegraphics[trim= 0mm 20mm 0mm 20mm,clip,page=4,width=\textwidth]{Images/IRB_Form.pdf}}
+
+%\fbox{\includegraphics[trim= 0mm 20mm 0mm 20mm,clip,page=5,width=\textwidth]{Images/IRB_Form.pdf}}
+
+%\includepdf[offset= .3in 0in,frame,trim= 0mm 35mm 0mm 20mm,clip, pages={6-},width=\textwidth]{Images/IRB_Form.pdf}
+
+
+\section{Duke Activity Status Index} 
+\fbox{\includegraphics[page=1,width=.95\textwidth]{Images/DASI_form.pdf}}
+
+\section{Heart Failure Somatic Awareness Scale}
+\label{sec:HFSAscale}
+\putOversized{sec:HFSAscale}{Images/HFSA_Form.pdf}{1}{1}{angle=90}{0}{.9\textwidth}
+\putOversized{sec:HFSAscale}{Images/HFSA_Form.pdf}{2}{1}{angle=90}{1}{.9\textwidth}
+\putOversized{sec:HFSAscale}{Images/HFSA_Form.pdf}{3}{0}{angle=90}{1}{.9\textwidth}
+%\fbox{\includegraphics[page=1,angle=90,width=.95\textwidth]{Images/HFSA_Form.pdf}}
+%\noindent Continued on Next Page
+
+%\section*{Heart Failure Somatic Awareness Scale (cont.)}
+%\noindent\fbox{\includegraphics[page=2,angle=90,width=.95\textwidth]{Images/HFSA_Form.pdf}}
+
+%\noindent Continued on next Page
+
+%\section*{Heart Failure Somatic Awareness Scale (cont.)}
+%\noindent\fbox{\includegraphics[,page=3,angle=90,width=.95\textwidth]{Images/HFSA_Form.pdf}}
+
+%\cftaddtitleline{toc}{chapter}{Source Code}{Back Pocket}
+\chapter{Source Code: CD Back Pocket}

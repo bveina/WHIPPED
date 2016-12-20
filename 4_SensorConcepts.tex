@@ -5,9 +5,9 @@ Any embedded design is a combination of both hardware and firmware. The WHIP is 
 
 \begin{figure}
 	\begin{center}
-		\label{fig:ADS1293_RLD_CN}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/ADS1293_RLD_CN_modified.png} 
 		\caption{Excerpt from ADS1293 Data Sheet Describing the RLD CN Register}
+		\label{fig:ADS1293_RLD_CN}
 	\end{center}
 \end{figure}
 
@@ -17,7 +17,6 @@ Both the AFE4490 \spo2 IC and the ADS1293 ECG IC offered attractive features set
 
 \begin{figure}
 	\begin{center}
-		\label{fig:ADS1293_Defines}
 \begin{lstlisting}[frame=single]
 //RLD_CN
 #define ADS1293_RLD_CN  0x0C
@@ -32,13 +31,13 @@ Both the AFE4490 \spo2 IC and the ADS1293 ECG IC offered attractive features set
 #define SELRLD(n) (((n)&7)<<0)
 \end{lstlisting}
 		\caption{Self Documenting Define Statements for ADS1293 ``ADS1293.h''}
+		\label{fig:ADS1293_Defines}
 	\end{center}
 \end{figure}
 
 
 \begin{figure}
 	\begin{center}
-		\label{fig:ADS1293_INIT}
 \begin{lstlisting}[frame=single,morekeywords={ECG_INIT_DATA}]
 ECG_INIT_DATA ads1293Defaults[] = {
 {ADS1293_FLEX_CH1_CN, POS(IN4)|NEG(IN5)}, 
@@ -70,6 +69,7 @@ void ECG_begin()
 }
 \end{lstlisting}
 		\caption{Initialization Code for ADS1293 ``ADS1293.c''}
+		\label{fig:ADS1293_INIT}
 	\end{center}
 \end{figure}
 
@@ -98,9 +98,9 @@ The basic state machine of the WHIP firmware was simplistic, but that is not to 
 
 \begin{figure}
 	\begin{center}
-		\label{fig:flowchart_main}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/FlowChartMain.pdf} 
 		\caption{Main Function, Functional Flowchart}
+		\label{fig:flowchart_main}
 	\end{center}
 \end{figure}
 
@@ -108,9 +108,9 @@ The basic state machine of the WHIP firmware was simplistic, but that is not to 
 Microcontrollers best utilize resources when not polling, using busy loops, waiting for events to occur. Interrupt Service Routines (ISRs) allow for low level tasks to be interrupted in favor of higher priority tasks. The ATUC3 line of microcontrollers offers many Interrupt sources. The two most important, from a WHIP firmware standpoint, are the Data Received interrupts for the AFE4490 \spo2 and the ADS1293 ECG chips. \cref{fig:flowchart_ISR} shows that both interrupts are similar. Both buffer incoming data until the buffer is full. When a buffer is full, a new buffer is swapped into place and the old buffer can be sent to the SD card for storage. The \spo2 interrupt contains one extra feature; a dynamic brightness calibration to prevent saturation of the pleth sensor. Other differences in the \spo2 ISR are not additional features just a reflection of the data delivered by the pleth sensor, two channels of data, and an additional two channels of intensity data.
 \begin{figure}
 	\begin{center}
-		\label{fig:flowchart_ISR}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/FlowChartISR.pdf} 
 		\caption{ISR Functional Flowchart}
+		\label{fig:flowchart_ISR}
 	\end{center}
 \end{figure}
 

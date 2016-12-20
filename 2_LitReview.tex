@@ -25,7 +25,7 @@ These standards propose a heavyweight approach to sensor identification and inte
 
 \begin{figure}
 	\begin{center}
-		\label{fig:WirelessComparison}
+
 \begin{tabularx}{1\textwidth}{>{\bfseries}p{.23\textwidth}||p{.25\textwidth}|p{.15\textwidth}|p{.25\textwidth}}
 \hline Standard 			& Wi-Fi & Bluetooth & ZigBee  \\\hline
 \hline IEEE Spec. 			& 802.11 a/b/g & 802.15.1  & 802.15.4  \\
@@ -43,6 +43,7 @@ These standards propose a heavyweight approach to sensor identification and inte
 \hline 
 \end{tabularx} 
 		\caption{Comparison of Wireless Technologies}
+		\label{fig:WirelessComparison}
 	\end{center}
 \end{figure}
 
@@ -111,9 +112,9 @@ The second transducer researched is used in measuring patient oxygen saturation 
 
 \begin{figure}
 	\begin{center}
-		\label{fig:Hemoglobin}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/hemoglobin.pdf} 
 		\caption{Absorption Spectra of HbO2 (Dashed) vs. Hb (Solid) }
+		\label{fig:Hemoglobin}
 	\end{center}
 \end{figure}
 
@@ -145,9 +146,9 @@ We conclude, based on available literature, extracting knowledge from the WHIP, 
 
 \begin{figure}
 	\begin{center}
-		\label{fig:HR69}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/HR69.pdf} 
 		\caption{Sample Trace of ECG Waveform with Heart Rate = 69}
+		\label{fig:HR69}
 	\end{center}
 \end{figure}
 
@@ -157,9 +158,9 @@ By analyzing the two primary sensors, additional sensor data can be derived.  Th
 
 \begin{figure}
 	\begin{center}
-		\label{fig:SyntheticSensor}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/syntheticSensor.pdf} 
 		\caption{Synthetic Sensor Concepts for the Medical Domain}
+		\label{fig:SyntheticSensor}
 	\end{center}
 \end{figure}
 
@@ -168,9 +169,9 @@ By analyzing the two primary sensors, additional sensor data can be derived.  Th
 The first and simplest synthetic sensor to construct, given the real transducers, is a pulse rate sensor. A combination of signal processing techniques are used to identify the QRS complex of an ECG signal, to derive the pulse rate  \cite{Chaitanya2011}. The number of QRS complexes per minute is the derived measurement of pulse rate, in beats per minute \cite{Scully2012}. Examining \cref{fig:20SecondEcg} shows a twenty-second ECG trace. \cref{fig:PulseRateCalc} shows the calculations necessary to determine heart rate.
 \begin{figure}
 	\begin{center}
-		\label{fig:PulseRateCalc}
 		$\frac{23 R-waves}{20 seconds}*\frac{60 seconds}{1 minute}=69 \frac{beats}{minute}$
 		\caption{Basic Pulse Rate Calculation}
+		\label{fig:PulseRateCalc}
 	\end{center}
 \end{figure}
 
@@ -178,9 +179,9 @@ However, it is also possible to calculate the pulse rate on the R-R interval as 
 
 \begin{figure}
 	\begin{center}
-		\label{fig:RR_PulseRateCalc}
 		$\frac{1 beat}{T_{R-R} seconds}*\frac{60 seconds}{1 minute}=\frac{beats}{minute}$
 		\caption{Heart Rate Calculation from R-R Interval}
+		\label{fig:RR_PulseRateCalc}
 	\end{center}
 \end{figure}
 
@@ -190,9 +191,13 @@ The heart rate of a patient can be a primary indicator of heart health. If a pat
 \label{subsec:BloodPressure}
 \begin{figure}
 	\begin{center}
-		\label{fig:BP_cuff}
-		\includegraphics[scale=1,width=0.9\textwidth]{Images/BPCuff.png} 
+		\includegraphics[scale=1,width=0.9\textwidth]{Images/BP_monitor_CClicence.jpg} \\
+		Flickr user Tunstall Telehealthcare \\
+		(https://en.wikipedia.org/wiki/File:Telehealth\_-\_Blood\_Pressure\_Monitor.jpg)\\
+		``Telehealth - Blood Pressure Monitor'', \\
+		https://creativecommons.org/licenses/by/2.0/legalcode\\
 		\caption{Commercially Available Blood Pressure Meter with Auto-inflating Cuff}
+		\label{fig:BP_cuff}
 	\end{center}
 \end{figure}
 
@@ -200,9 +205,8 @@ Blood pressure (BP) is a measure of the pressure exerted on the walls of the blo
 
 \begin{figure}
 	\begin{center}
+		\includegraphics[scale=1,width=0.9\textwidth]{Images/PTT_Calculation.png}\caption{Example Calculation of Pulse Transit Time $ \Delta X $(PTT)}
 		\label{fig:PTT_calc}
-		\includegraphics[scale=1,width=0.9\textwidth]{Images/PTT_Calculation.png} 
-		\caption{Example Calculation of Pulse Transit Time $ \Delta X $(PTT)}
 	\end{center}
 \end{figure}
 
@@ -214,13 +218,11 @@ Further research has shown how to calculate SBP and DBP from a calibration measu
 
 \begin{figure}
 	\begin{center}
-
-		\label{fig:BPCalc}
-		
 		$DBP=\frac{1}{3}*SBP_{0} + \frac{2}{3}DBP_{0} + A*ln(\frac{PTT_{w_{0}}}{PTT_{w}})l-\frac{SBP_{0} - DBP_{0}}{3}*\frac{{PTT_{w_{0}}}^{2}}{{PTT_{w}}^{2}}$
 		
 		$SBP=DBP+(SBP_{0}-DBP_{0})*\frac{{PTT_{w_{0}}}^2}{{PTT_{w}}^2}$
 		\caption{Blood Pressure Calculations, Given Pulse Transit Time }
+		\label{fig:BPCalc}
 	\end{center}
 \end{figure}
 

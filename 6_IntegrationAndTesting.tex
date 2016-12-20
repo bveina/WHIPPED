@@ -19,9 +19,9 @@ The following sections discuss different modules that were synthesized for the W
 \subsubsection {The Power Module}
 \begin{figure}
 	\begin{center}
-		\label{fig:Rev5_power}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/Rev5_PowerSch.png} 
 		\caption{Power Supply and Charging Circuit for Whip Sensor}
+		\label{fig:Rev5_power}
 	\end{center}
 \end{figure}
 
@@ -34,9 +34,9 @@ The power and charging design was featured on every WHIP prototype starting with
 \subsubsection {The Memory Module}
 \begin{figure}
 	\begin{center}
-		\label{fig:Rev5_SDCARD}
 		\includegraphics[scale=1,width=0.5\textwidth]{Images/Rev5_SDCARD.png} 
 		\caption{Memory Circuit Connections for Whip Sensor}
+		\label{fig:Rev5_SDCARD}
 	\end{center}
 \end{figure}
 The Memory module is responsible for saving all patient biometric data. The device chosen was a micro SD card. The first revision of the WHIP board included a full sized SD card was as a trial of the technology. A micro SD card was used in the final prototype to reduce device size. The interface, shown in \cref{fig:Rev5_SDCARD}, remains the same regardless of card configuration. SD cards can communicate using the Serial Peripheral interface (SPI). SPI is a de facto standard, no standards body maintains the specification of SPI. SPI uses 4 wires to provide a full duplex synchronous communication channel. The memory module for the WHIP is actually the SD card, the only other part of the module is the card socket. All read and write logic is handled by the circuitry on the card. Offloading the flash algorithms to an sd card greatly simplifies the board design. However, SD cards are not 5 Volt tolerant this was part of the reason the power module provides 3.3V. The SPI bus for the memory module allows the control module to use a full FAT32 file system on the SD card using only the SPI interface.
@@ -46,9 +46,9 @@ In the Eagle the SD card device was created as a custom component and footprint.
 \subsubsection{The ECG Module}
 \begin{figure}
 	\begin{center}
-		\label{fig:Rev5_ECG}
 		\includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5_ECG.png} 
 		\caption{ECG Connections for Whip Sensor}
+		\label{fig:Rev5_ECG}
 	\end{center}
 \end{figure}
 
@@ -58,9 +58,9 @@ The previous WHIP prototypes made use of instrumentation amplifiers and op amps.
 
 \begin{figure}
 	\begin{center}
-		\label{fig:Rev5_SPO2}
 		\includegraphics[scale=1,width=\textwidth]{Images/Rev5_SPO2.png} 
 		\caption{\spo2 Connections for Whip Sensor}
+		\label{fig:Rev5_SPO2}
 	\end{center}
 \end{figure}
 Similar to the ECG module the discrete component implementation of the \spo2 module was replaced with a monolithic device, the AFE4490.\cite{AFE4490} The AFE4490 handles the signal multiplexing of both Red and IR LEDs, and allows software programmable gain, also over an SPI data bus. Also, like the ECG module IC the AFE4490 requires its own crystal. The last thing to mention about the \spo2 module shown in \cref{fig:Rev5_SPO2}, is the connector. The first analog PCB featured a through-hole DB9 connector was used to interface with the finger clip sensor, in subsequent designs a surface mount component was used instead. This introduced an unexpected point of failure when combined with the final PCBs and is addressed in \nameref{sec:EnclosureDesign}. The \spo2 module is provided an initial configuration by the control module at power-up and the provides and interrupt driven stream of data to the control module until told to halt.
@@ -68,9 +68,9 @@ Similar to the ECG module the discrete component implementation of the \spo2 mod
 \subsubsection{The Communication Module}
 \begin{figure}
 	\begin{center}
-		\label{fig:Rev5_BT}
 		\includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5_BT.png} 
 		\caption{Bluetooth Serial Communication Connections for Whip Sensor}
+		\label{fig:Rev5_BT}
 	\end{center}
 \end{figure}
 The communication module implements a black box full duplex asynchronous serial connection with another device over Blue tooth. this modules design was validated in revision one and has remained unchanged since that time. 
@@ -83,10 +83,10 @@ The control module is the main brain of the WHIP. The Atmel AT32UC3B0512 provide
 
 \begin{figure};
 	\begin{center}
-		\label{fig:Breakouts}
 		\includegraphics[scale=1,width=0.45\textwidth]{Images/ECGBreakout.png} 
 		\includegraphics[scale=1,width=0.45\textwidth]{Images/SPO2Breakout.png} 		
 		\caption{Populated Breakout Boards for ECG and \spo2 Devices}
+		\label{fig:Breakouts}
 	\end{center}
 \end{figure}
 
@@ -95,9 +95,9 @@ The treadmill test utilized version two of the breakout board since the first br
 
 \begin{figure};
 	\begin{center}
-		\label{fig:Breakout Test}
 		\includegraphics[scale=1,width=0.45\textwidth]{Images/BreadBoardTest.png} 		
 		\caption{Test Rig for ECG and \spo2 Breakout Board Showing Real-time ECG Trace}
+		\label{fig:Breakout Test}
 	\end{center}
 \end{figure}
 
@@ -107,9 +107,9 @@ After all modules had been designed in schematic capture, the design for the PCB
 
 \begin{figure}[ht]
 \begin{center}
-	\label{fig:FullLayout}
 	\includegraphics[angle=0,scale=1,width=1\textwidth]{Images/rev1D_PCB_cropped.pdf} 
 	\caption{Full PCB Layout Top and Bottom}
+	\label{fig:FullLayout}
 \end{center}
 \end{figure}
 
@@ -127,9 +127,9 @@ The remaining tests all involve running parts of a validation firmware. The firm
 
 \begin{figure}[ht]
 \begin{center}
-	\label{fig:ECG_Test_Pass}
 	\includegraphics[angle=0,scale=1,width=1\textwidth]{Images/ECG_processingSketch.png} 
 	\caption{Successful Test of `ECGcheck' Firmware}
+	\label{fig:ECG_Test_Pass}
 \end{center}
 \end{figure}
 
@@ -142,9 +142,9 @@ Once the first prototype was validated, six boards at a time were populated at o
 
 \begin{figure}[ht]
 \begin{center}
-	\label{fig:ReflowedBoards}
 	\includegraphics[angle=0,scale=1,width=1\textwidth]{Images/BoardsSoldered.png} 
 	\caption{Fully Populated Boards, Just Out of the Reflow Oven}
+	\label{fig:ReflowedBoards}
 \end{center}
 \end{figure}
 
@@ -159,9 +159,9 @@ Part of the research component of this dissertation was to evaluate methods, and
 \subsection {Chest Strap}
 \begin{figure}[ht]
 \begin{center}
-	\label{fig:Electrodes}
 	\includegraphics[angle=0,scale=1,width=.5\textwidth]{Images/Electrodes.png} 
 	\caption{Sticky Electrodes, Top and Bottom}
+	\label{fig:Electrodes}
 \end{center}
 \end{figure}
 Initial testing of the device was performed in a laboratory setting using a sensor board equipped with rubber feet to prevent shorting any exposed traces on the underside of the PCB. A temporary cable was constructed the connected to traditional pre-moistened sticky electrodes shown in \cref{fig:Electrodes}. This design was scrapped after areas of irritation began to appear on the engineers after several days of ripping off and reapplying electrodes. It was clear that wet electrodes would not be appropriate for long term use.
@@ -172,10 +172,10 @@ After several iterations, that never produced a qualitative approval by testers,
 
 \begin{figure}[ht]
 \begin{center}
-	\label{fig:polar_3rdSnap}
 	\includegraphics[angle=0,scale=1,width=.51\textwidth]{Images/Polar_top.png} 
 	\includegraphics[angle=0,scale=1,width=.51\textwidth]{Images/Polar_bottom.png}
 	\caption{Third Electrode, Sewn using Conductive Thread and Fabric}
+	\label{fig:polar_3rdSnap}
 \end{center}
 \end{figure}
 
@@ -183,11 +183,10 @@ After several iterations, that never produced a qualitative approval by testers,
 
 \begin{figure}[ht]
  \begin{center}
-  \label{fig:PCBvsRender}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5Assembled.png} 
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Rev5_prerender.png} 
   \caption{Populated PCB vs 3D Render}
- 
+  \label{fig:PCBvsRender}
  \end{center}
 \end{figure}
 
@@ -203,10 +202,9 @@ The first enclosure was a simple box designed to hold the unpopulated PCB. Notab
 
 \begin{figure}[ht]
  \begin{center}
-  \label{fig:enclosure1}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure1.png} 
   \caption{Enclosure Rev 1, with Cut Tabs}
- 
+  \label{fig:enclosure1}
  \end{center}
 \end{figure}
 
@@ -214,10 +212,9 @@ The first enclosure was a simple box designed to hold the unpopulated PCB. Notab
 The next prototype stage moved the PCB standoffs, added ports for the USB, SD card, \spo2, and ECG connectors. It also smoothed out not only the four vertical edges of the enclosure but rounded all four bottom edges as well. A cover was also printed to completely enclose the electronics. A portion of the cover was designed to prevent warping, but reduce overall plastic use, as a structural precaution. This prototype worked well, allowing relatively easy removal of the PCB while still holding the board tight, however the SD card slot was not large enough to allow a thumb or finger to trigger the ejection mechanism for the card. The cover functioned well, but only after a section of the cover was removed to provide space for the programming header.  A hot knife was used, in each case, to remove plastic until the desired form was achieved, then calipers were used to measure the effected areas and the 3d model updated to reflect the new measurements.
 \begin{figure}[ht]
  \begin{center}
-  \label{fig:enclosure2}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure2.png} 
   \caption{Enclosure Rev 2, with Enlarged SD Slot}
- 
+  \label{fig:enclosure2}
  \end{center}
 \end{figure}
 
@@ -226,9 +223,9 @@ It was at this point in the design process that the polar heart rate strap was i
 
 \begin{figure}[ht]
  \begin{center}
-  \label{fig:enclosure3}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure3.png} 
   \caption{Enclosure Rev 3, with Wire Management Trenches} 
+  \label{fig:enclosure3}
  \end{center}
 \end{figure}
 
@@ -237,9 +234,9 @@ The last enclosure integrates all the lessons learned in the previous designs, a
 
 \begin{figure}[ht]
  \begin{center}
-  \label{fig:enclosure4}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure4.png} 
   \caption{Production Enclosure, with PCB and Battery} 
+  \label{fig:enclosure4}
  \end{center}
 \end{figure}
 
@@ -251,9 +248,9 @@ The largest drawback to 3d printing each case was the time involved, and the rat
 
 \begin{figure}[ht]
  \begin{center}
-  \label{fig:enclosure5}
   \includegraphics[scale=1,width=0.8\textwidth]{Images/Enclosure5.png} 
   \caption{Enclosure with Lessons Learned} 
+  \label{fig:enclosure5}
  \end{center}
 \end{figure}
 

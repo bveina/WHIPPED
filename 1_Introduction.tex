@@ -6,9 +6,10 @@
 \begin{figure}[ht]
 
 	\begin{center}
-		\label{fig:WhippedSystem}
+
 		\includegraphics[scale=1,width=0.8  \textwidth]{Images/SystemConcept1.pdf} 
 		\caption{WHIPPED System Design}
+		\label{fig:WhippedSystem}
 	\end{center}
 \end{figure}
 
@@ -36,9 +37,10 @@ Involving the patient in their own self-care can increase their QOL and reduce r
 
 \begin{figure}[ht]
 	\begin{center}
-		\label{fig:SelfCare}
+		
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/SelfCare_cropped.pdf} 
 		\caption{Theory of HF Self-Care }
+		\label{fig:SelfCare}
 	\end{center}
 \end{figure}
 
@@ -51,9 +53,10 @@ The dissertation will address the design, implementation, and testing of the WHI
 
 \begin{figure}
 	\begin{center}
-		\label{fig:DaysofCare}
+
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/DaysOfCare.png} 
 		\caption{Number of Days of Inpatient Hospital Care by Major Diagnosis U.S., 1990-2009 }
+		\label{fig:DaysofCare}
 	\end{center}
 \end{figure}
 
@@ -65,6 +68,7 @@ Mussilino, working for the National Institutes of Health, compiled statistical d
 		\label{fig:SurvivalRates}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/SurvivalRate.jpg} 
 		\caption{Survival Rates of Patients who Engage in Self Care vs. Those That Do Not}
+		\label{fig:SurvivalRates}
 	\end{center}
 \end{figure}
 
@@ -80,9 +84,28 @@ According to Mussolino, Cardiovascular diseases were the leading cause of hospit
 
 \begin{figure}
 	\begin{center}
-		\label{fig:CVDCost}
-		\includegraphics[scale=1,width=0.9\textwidth]{Images/CostOfCVD.jpg} 
+		%\includegraphics[scale=1,width=0.9\textwidth]{Images/CostOfCVD.jpg} 
+
+
+\begin{tabular}{lrrr}
+          \null     & \multicolumn{3}{c}{Dollars (Billions)}                                                 \\ \cline{2-4}
+Disease        & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{Direct} & \multicolumn{1}{c}{Mortality} \\ \hline
+
+Total CVD      & 297.7                     & 179.3                      & 118.4                         \\
+\hspace{4pt} Heart disease  & 190.3                     & 95.6                       & 94.7                          \\
+\hspace{4pt} Stroke         & 34.3                      & 18.8                       & 15.5                          \\
+\hspace{4pt} Hypertension   & 50.6                      & 47.4                       & 3.2                           \\
+\hspace{4pt} Other CVD      & 22.5                      & 17.5                       & 5.0                           \\
+Hyperlipidemia & 39.8                      & 38.6                       & 1.2                           \\
+COPD/asthma    & 68.0                      & 53.7                       & 14.3                          \\
+Pneumonia      & 20.4                      & 14.0                       & 6.4                           \\
+Anemias        & 5.9                       & 4.7                        & 1.2                           \\
+               &                           &                            &                              
+\end{tabular}
+
 		\caption{Economic Cost of Cardiovascular, Lung, and Blood Diseases U.S., 2008 }
+		\label{fig:CVDCost}
+				
 	\end{center}
 \end{figure}
 
@@ -153,9 +176,10 @@ In preparation for the main research component of the dissertation, some prelimi
 
 \begin{figure}
 	\begin{center}
-		\label{fig:PCB_alpha}
+		
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/PCB_Alpha.jpg} 
 		\caption{Analog Front-end Alpha Board.}
+		\label{fig:PCB_alpha}
 	\end{center}
 \end{figure}
 
@@ -163,9 +187,10 @@ The next revision of the hardware was personally undertaken by me in the spring 
 
 \begin{figure}
 	\begin{center}
-		\label{fig:PCB_analog_beta}
+		
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/PCB_AnalogBeta.JPG} 
 		\caption{Beta Analog Board}
+		\label{fig:PCB_analog_beta}
 	\end{center}
 \end{figure}
 
@@ -173,10 +198,11 @@ To interact with the analog front-end board a controller PCB was manufactured in
 
 \begin{figure}
 	\begin{center}
-		\label{fig:PCB_digital_beta}
+
 		\includegraphics[scale=1,width=.45\textwidth]{Images/PCB_DigBetaA.jpg}
 		\includegraphics[scale=1,width=.45\textwidth]{Images/PCB_DigBetaB.jpg}  
 		\caption{Beta Control Board}
+		\label{fig:PCB_digital_beta}
 	\end{center}
 \end{figure}
 
@@ -184,9 +210,9 @@ To clarify the different parts of the design the hardware device was referred to
 
 \begin{figure}
 	\begin{center}
-		\label{fig:PCB_Rev1}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/PCB_Rev1.jpg} 
 		\caption{MCHM PCB Rev 1}
+		\label{fig:PCB_Rev1}
 	\end{center}
 \end{figure}
 
@@ -195,9 +221,9 @@ Currently we are working on new designs for both ECG and \spo2 analog front-end 
 
 \begin{figure}
 	\begin{center}
-		\label{fig:PCB_Rev3}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/PCB_Rev3.jpg} 
 		\caption{MCHM PCB Rev 3}
+		\label{fig:PCB_Rev3}
 	\end{center}
 \end{figure}
 
@@ -206,19 +232,20 @@ However, the application note presents an alternative, shown in \cref{fig:sigmaD
 
 \begin{figure}
 	\begin{center}
-		\label{fig:SAR_topology}
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/SAR_topology.png} 
 		\caption{Typical ECG Acquisition System }
-	\end{center}
+		\label{fig:SAR_topology}
+		\end{center}
 \end{figure}
 
 Other group research will be used as input to the dissertation. Previous, completed, master level research by Parma Chaiyasucheeva provided an elementary classification algorithm based on cardiac metrics\cite{Chaiyasucheeva2012}. Steven Shannon completed a master level thesis relating to fusing accelerometer data with other metrics and classifiers to combat movement artifacts\cite{Shannon2012}. Brendan Putin completed a master level project by creating a smartphone application to deliver psychosocial instruments and store the results in a database  \cite{Putin2011,Louro2013} Current work is being performed, under supervision, by master level candidates. Patrick DaSilva is working to classify ECG signals based on their components and continue Parma Chaiyasucheeva's work on patient wellness calculation. Alexander Ekholm is researching PPG sensor technologies. Specifically, design, implementation, and validation of a sensor capable of reflective PPG collection at a non-peripheral site, near the heart.  Also, under development, Brian Lauro is working on a minimal cardiac ontology, and BKE.
 
 \begin{figure}
 	\begin{center}
-		\label{fig:sigmaDelta_topology}
+
 		\includegraphics[scale=1,width=0.9\textwidth]{Images/sigmaDelta_topology_simultanious.png} 
 		\caption{ECG Approach using $\Sigma\Delta $ ADC}
+		\label{fig:sigmaDelta_topology}
 	\end{center}
 \end{figure}
 

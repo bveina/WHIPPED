@@ -166,7 +166,7 @@ By analyzing the two primary sensors, additional sensor data can be derived.  Th
 
 \subsection{Pulse Rate}
 \label{subsec:PulseRate}
-The first and simplest synthetic sensor to construct, given the real transducers, is a pulse rate sensor. A combination of signal processing techniques are used to identify the QRS complex of an ECG signal, to derive the pulse rate  \cite{Chaitanya2011}. The number of QRS complexes per minute is the derived measurement of pulse rate, in beats per minute \cite{Scully2012}. Examining \cref{fig:20SecondEcg} shows a twenty-second ECG trace. \cref{fig:PulseRateCalc} shows the calculations necessary to determine heart rate.
+The first and simplest synthetic sensor to construct, given the real transducers, is a pulse rate sensor. A combination of signal processing techniques are used to identify the QRS complex of an ECG signal, to derive the pulse rate  \cite{Chaitanya2011}. The number of QRS complexes per minute is the derived measurement of pulse rate, in beats per minute \cite{Scully2012}. Examining \cref{fig:HR69} shows a twenty-second ECG trace. \cref{fig:PulseRateCalc} shows the calculations necessary to determine heart rate.
 \begin{figure}
 	\begin{center}
 		$\frac{23 R-waves}{20 seconds}*\frac{60 seconds}{1 minute}=69 \frac{beats}{minute}$
@@ -205,7 +205,8 @@ Blood pressure (BP) is a measure of the pressure exerted on the walls of the blo
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[scale=1,width=0.9\textwidth]{Images/PTT_Calculation.png}\caption{Example Calculation of Pulse Transit Time $ \Delta X $(PTT)}
+		\includegraphics[scale=1,width=0.9\textwidth]{Images/PTT_Calculation.png}
+		\caption{Example Calculation of Pulse Transit Time $ \Delta X $(PTT)}
 		\label{fig:PTT_calc}
 	\end{center}
 \end{figure}

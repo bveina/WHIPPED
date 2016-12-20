@@ -94,7 +94,7 @@ Over the course of development several processors were used. All devices were ma
 
 \section{Main State Machine}
 
-The basic state machine of the WHIP firmware was simplistic, but that is not to say it is not robust. Data was pipelined directly from both ECG and \spo2 devices to a double buffered memory location By making use of the DMA channels on the micro controller . Then, another DMA channel wrote the collected data to the SD card. The CPU only intervened once the write-buffer was filled, at which point the buffers were swapped. The only other mode the device can enter is USB mode. Upon connection to USB power data collection is halted and all files are flushed and closed in preparation for download. When USB power is removed, data collection starts again. 
+The basic state machine of the WHIP firmware, shown in \cref{fig:flowchart_main}, was simplistic, but robust. Data was pipelined directly from both ECG and \spo2 devices to a double buffered memory location By making use of the DMA channels on the micro controller . Then, another DMA channel wrote the collected data to the SD card. The CPU only intervened once the write-buffer was filled, at which point the buffers were swapped. The only other mode the device can enter is USB mode. Upon connection to USB power data collection is halted and all files are flushed and closed in preparation for download. When USB power is removed, data collection starts again. 
 
 \begin{figure}
 	\begin{center}

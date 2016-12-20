@@ -38,7 +38,8 @@ Involving the patient in their own self-care can increase their QOL and reduce r
 \begin{figure}[ht]
 	\begin{center}
 		
-		\includegraphics[scale=1,width=0.9\textwidth]{Images/SelfCare_cropped.pdf} 
+		%\includegraphics[scale=1,width=0.9\textwidth]{Images/SelfCare_cropped.pdf} 
+		\includegraphics[scale=1,width=0.9\textwidth]{Images/SelfCare_recreated-cropped.pdf} 
 		\caption{Theory of HF Self-Care }
 		\label{fig:SelfCare}
 	\end{center}
@@ -54,7 +55,8 @@ The dissertation will address the design, implementation, and testing of the WHI
 \begin{figure}
 	\begin{center}
 
-		\includegraphics[scale=1,width=0.9\textwidth]{Images/DaysOfCare.png} 
+%		\includegraphics[scale=1,width=0.9\textwidth]{Images/DaysOfCare.png} 
+		\includegraphics[scale=1,width=0.9\textwidth]{Images/CHD_cost_recreated-cropped.pdf} 
 		\caption{Number of Days of Inpatient Hospital Care by Major Diagnosis U.S., 1990-2009 }
 		\label{fig:DaysofCare}
 	\end{center}
@@ -65,8 +67,7 @@ Mussilino, working for the National Institutes of Health, compiled statistical d
 
 \begin{figure}
 	\begin{center}
-		\label{fig:SurvivalRates}
-		\includegraphics[scale=1,width=0.9\textwidth]{Images/SurvivalRate.jpg} 
+		\includegraphics[scale=1,width=0.9\textwidth]{Images/daysOfCare_recreated-cropped (1).pdf} 
 		\caption{Survival Rates of Patients who Engage in Self Care vs. Those That Do Not}
 		\label{fig:SurvivalRates}
 	\end{center}
@@ -84,9 +85,6 @@ According to Mussolino, Cardiovascular diseases were the leading cause of hospit
 
 \begin{figure}
 	\begin{center}
-		%\includegraphics[scale=1,width=0.9\textwidth]{Images/CostOfCVD.jpg} 
-
-
 \begin{tabular}{lrrr}
           \null     & \multicolumn{3}{c}{Dollars (Billions)}                                                 \\ \cline{2-4}
 Disease        & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{Direct} & \multicolumn{1}{c}{Mortality} \\ \hline
@@ -105,7 +103,6 @@ Anemias        & 5.9                       & 4.7                        & 1.2   
 
 		\caption{Economic Cost of Cardiovascular, Lung, and Blood Diseases U.S., 2008 }
 		\label{fig:CVDCost}
-				
 	\end{center}
 \end{figure}
 
@@ -127,17 +124,12 @@ In addition, the dissertation develops techniques for fusing the collected infor
 
 \section{Hypothesis}
 \label{sec:Hypothesis} 
-
-NOTE: this is the hypothesis made, before the research, so does it use future tense?
-
 In the dissertation research, we are designing, developing, and testing an end-to-end system, along with proposing an exploratory study using a mix of technologies, proven evidence based practices, interventions to aid patients in learning about and becoming involved in home self-care. During the dissertation's research, we will determine if technology can assist patients to understand their own illness, and act to improve their QOL and decrease the chance of re-hospitalization. 
 
 Subsequently, when designing and experimenting with the WHIPPED system we propose to answer several questions. First, will patients use the technology? Second, will the technology aid patients in understanding their disease?  Third, can patients learn to act in improving their overall wellness? When considering adoption of the technology we propose looking at the smartphone by itself, the smartphone and sensor suite, the sensors themselves and a control group. If patients fully adopt the system, both the smartphone for its psychosocial elements and the sensors for the physiologic data, most robust analysis can be performed. Full technology adoption may allow us to answer, possibly, another question; is there a correlation between perceived wellness, as reported using the psychosocial data, and actual wellness, derived through sensor measurements? If the patient only uses the smartphone, no physiologic data can be gathered and only the perceived status of the patient can be discerned. Similarly, if the patient does not complete any of the psychosocial questionnaires only the biometric readings will be available. The dissertation hypothesizes we can improve patient QOL, reduce the need for re-hospitalization, and therefore lower costs by implementing the proposed system, primarily by educating the patient, using evidence based best practice philosophies.
 
 
 \section{Research Approach}
-
-NOTE: this is the research approach that was outlined before the research was performed, so does it use future tense?
 
 In order to actualize the WHIPPED system the design is divided into three parts: the sensor suite, the smartphone application, and the BKE. Each piece will be designed and the interfaces between each part specified. Before designing can take place however, the responsibilities of the system must be divided and the requirements of the system must be applied to each part of the system.
 
@@ -227,7 +219,7 @@ Currently we are working on new designs for both ECG and \spo2 analog front-end 
 	\end{center}
 \end{figure}
 
-However, the application note presents an alternative, shown in \cref{fig:sigmaDelta_topology}. \cite{Soundarapandian2010} Given a 24-bit sigma-delta ADC, only a low gain instrumentation amplifier and first order passive filter are needed to prepare the signal for conversion.  This approach offers higher accuracy than traditional ECG techniques and keeps the baseline drift of the signal intact allowing for more flexibility in the digital signal processing. We are currently designing an AFE component to capture both the ECG and \spo2 readings using the a $ \Sigma\Delta $ approach. Using the $ \Sigma\Delta $ approach simplifies future design problems. Designs can now have a simplified AFE and biometric signals can be filtered using simple to implement software filters using any hardware description language such as VHDL. This outcome is preferable to a fixed hardware design since it will allow more flexibility in the design stages. Adding additional features and filters need not increase hardware costs.
+However, the application note presents an alternative, shown in \cref{fig:sigmaDelta_topology}. \cite{Soundarapandian2010} Given a 24-bit sigma-delta ADC, only a low gain instrumentation amplifier and first order passive filter are needed to prepare the signal for conversion.  This approach offers higher accuracy than traditional ECG techniques and keeps the baseline drift of the signal intact allowing for more flexibility in the digital signal processing. We are currently designing an AFE component to capture both the ECG and \spo2 readings using a $ \Sigma\Delta $ approach. Using the $ \Sigma\Delta $ approach simplifies future design problems. Designs can now have a simplified AFE and biometric signals can be filtered using simple to implement software filters using any hardware description language such as VHDL. This outcome is preferable to a fixed hardware design since it will allow more flexibility in the design stages. Adding additional features and filters need not increase hardware costs.
 
 
 \begin{figure}

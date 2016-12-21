@@ -101,14 +101,9 @@ Capturing an ECG signal is the first step in assessing patient health. A healthy
 
 The dissertation's research, does not seek to revolutionize the acquisition of the ECG waveform. Rather, it seeks a preexisting robust method, using a minimum of leads and components. Based on the results indicated in the literature surveyed, the dissertation will more closely follow a two-lead approach. The analog front-end design, uses minimal gain and filtering components opting instead to use a high accuracy Analog to Digital Converter (ADC) and minimal gain. The proposed approach simplifies the system design and allows for sufficient resolution to detect small artifacts in the signal and preserve the baseline drift for the synthetic sensor measurements. A more detailed approach to ECG capture can be found in ``\cref{sec:ResearchDoneToDate}''
 
-
-
-%\subsubsection[Photoplethysmograph(PPG)]{Photoplethysmograph (PPG)/ Oxygen Saturation (\spo2)}
 \subsubsection{Photoplethysmograph (PPG)/Oxygen Saturation (\nospacespo2)}
-
 \label{subsubsec:Photoplethysmograph}
 The second transducer researched is used in measuring patient oxygen saturation (\spo2). The respiratory system of a human body takes in oxygen from the air into the lungs where oxygen is extracted. The absorbed oxygen is transferred to the blood cells for distribution to the rest of the body. Depending on the health of a patient, the level of oxygen in the blood at any moment can vary. \spo2 is a percentage of oxygenated blood cells versus non-oxygenated blood cells. The \spo2 metric does not identify the number of oxygenated cells; only the ratio of oxygen carrying cells (HbO$_2$) to the non-oxygen carrying cells (Hb). The absorption spectra of the two types of cells are different as shown in \cref{fig:Hemoglobin}\cite{Prahl1998} can be used to identify the ratio. Two waveforms are acquired by exposing the body to two different wavelengths, 660 nm (Red) and 940 nm (Infrared), and measuring either the transmittance or reflectance of the patient. These signals can then be used for additional processing. Pulse rate, \spo2, and respiration rate all require the PPG waveform \cite{Scully2012,Kraitl2011}.  Some research has suggested it is possible to measure blood perfusion based on a PPG however, this approach has only been tested on babies \cite{Noor2011}.
-
 
 \begin{figure}
 	\begin{center}
@@ -196,6 +191,7 @@ The heart rate of a patient can be a primary indicator of heart health. If a pat
 		(https://en.wikipedia.org/wiki/File:Telehealth\_-\_Blood\_Pressure\_Monitor.jpg)\\
 		``Telehealth - Blood Pressure Monitor'', \\
 		https://creativecommons.org/licenses/by/2.0/legalcode\\
+		
 		\caption{Commercially Available Blood Pressure Meter with Auto-inflating Cuff}
 		\label{fig:BP_cuff}
 	\end{center}
